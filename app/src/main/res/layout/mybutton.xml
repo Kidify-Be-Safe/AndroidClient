@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    
+
+    <Switch
+        android:id="@+id/sw"
+        android:layout_width="match_parent"
+        android:layout_height="81dp"
+        android:background="@color/black"
+        android:text="Switch"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
+        tools:layout_editor_absoluteY="439dp" />
+
+        <ImageView
+            android:id="@+id/image_icon"
+            android:layout_width="51dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_vertical"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="451dp" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

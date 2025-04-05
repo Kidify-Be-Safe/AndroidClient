@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">OnFlow</string>
+    <string name="hier_w_hlst_du_aus_welche_apps_von_der_sperre_betroffen_sein_sollen">Hier wählst du aus, welche Apps von der Sperre betroffen sein sollen.</string>
+    <string name="apps_gefunden">Apps gefunden:</string>
+    <string name="profil_name">Profil-Name</string>
+    <string name="maximale_geschwindigkeit">Maximale Geschwindigkeit</string>
+    <string name="apps_ausw_hlen">Apps auswählen</string>
+    <string name="app_profil_erstellen">App-Profil erstellen</string>
+    <string name="einstellungen">Einstellungen</string>
+    <string name="speichern">Speichern</string>
+    <string name="apps_bockieren">Apps bockieren</string>
+    <string name="benachrichtigungen_anzeigen">Benachrichtigungen anzeigen</string>
+    <string name="name">Name</string>
+    <string name="benachrichtigungen_vorlesen">Benachrichtigungen vorlesen</string>
+    <string name="ger_tenutzungsverlauf_und_statistiken">Gerätenutzungsverlauf und Statistiken.</string>
+    <string name="speicher_lesen">Speicher lesen</string>
+    <string name="ber_anderen_apps_setzen">Über anderen Apps setzen</string>
+    <string name="standort_ermitteln">Standort ermitteln</string>
+    <string name="kehre_zur_ck">Kehre zurück</string>
+</resources>
