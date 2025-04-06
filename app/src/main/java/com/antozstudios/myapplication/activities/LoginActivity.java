@@ -98,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putBoolean("is_logged_in", true);  // Setzt den Status auf "angemeldet"
+                            editor.putInt("userID",jsonParser.userList.get(tempEmail).id);
                             editor.putString("user_email", email.getText().toString());  // Speichert die E-Mail-Adresse des Benutzers
                             editor.apply();
 

@@ -12,6 +12,8 @@
     <string name="benachrichtigungen_anzeigen">Benachrichtigungen anzeigen</string>
     <string name="benachrichtigungen_vorlesen">Benachrichtigungen vorlesen</string>
     <string name="ber_anderen_apps_setzen">Über anderen Apps setzen</string>
+    <string name="channel_description"/>
+    <string name="channel_name"/>
     <string name="einstellungen">Einstellungen</string>
     <string name="ger_tenutzungsverlauf_und_statistiken">Gerätenutzungsverlauf und Statistiken.</string>
     <string name="hier_w_hlst_du_aus_welche_apps_von_der_sperre_betroffen_sein_sollen">Hier wählst du aus, welche Apps von der Sperre betroffen sein sollen.</string>

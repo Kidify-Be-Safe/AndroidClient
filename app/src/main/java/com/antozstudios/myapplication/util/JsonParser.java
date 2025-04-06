@@ -11,7 +11,7 @@ public class JsonParser {
 
     public String jsonResponse;
     public List<User> userList;
-    public List<User> emailList;
+
 
     // Methode zum Parsen aufrufen, nachdem jsonResponse gesetzt wurde
     public void parse() {
@@ -22,7 +22,7 @@ public class JsonParser {
 
     }
 
-
+// Vielleicht mit reflection verbessern
     public int getIndex(String email){
 
         for(int i =0;i<userList.size();i++){

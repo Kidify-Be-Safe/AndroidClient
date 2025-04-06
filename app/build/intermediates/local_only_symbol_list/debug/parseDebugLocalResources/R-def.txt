@@ -60,6 +60,8 @@ string apps_gefunden
 string benachrichtigungen_anzeigen
 string benachrichtigungen_vorlesen
 string ber_anderen_apps_setzen
+string channel_description
+string channel_name
 string einstellungen
 string ger_tenutzungsverlauf_und_statistiken
 string hier_w_hlst_du_aus_welche_apps_von_der_sperre_betroffen_sein_sollen
