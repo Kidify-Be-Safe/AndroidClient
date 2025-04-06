@@ -372,7 +372,7 @@
             "outputFile": "com.antozstudios.myapplication.app-debug-51:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\haupt\\Desktop\\AndroidClient\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "source": "C:\\Users\\haupt\\Documents\\GitHub\\AndroidClient\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -2038,23 +2038,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\haupt\\Desktop\\AndroidClient\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1,7,6,10,3,11,13,16,8,14,2,18,5,12,4,15,9,17",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "16,471,413,645,226,703,825,1072,541,909,60,1215,335,787,283,1014,597,1149",
-                        "endColumns": "43,69,57,57,56,83,83,76,55,104,165,53,77,37,51,57,47,65",
-                        "endOffsets": "55,536,466,698,278,782,904,1144,592,1009,221,1264,408,820,330,1067,640,1210"
-                    },
-                    "to": {
-                        "startLines": "1985,1986,1988,1989,1990,1993,1994,1995,2031,2052,2054,2060,2105,2175,2186,2206,2207,2208",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "131364,131408,131628,131686,131744,131910,131994,132078,135391,136856,137114,137645,143065,153659,154734,156346,156404,156452",
-                        "endColumns": "43,69,57,57,56,83,83,76,55,104,165,53,77,37,51,57,47,65",
-                        "endOffsets": "131403,131473,131681,131739,131796,131989,132073,132150,135442,136956,137275,137694,143138,153692,154781,156399,156447,156513"
-                    }
-                },
-                {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\ca277b1847e6718aa4d1a4958dbe90c2\\transformed\\lifecycle-runtime-2.6.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -2106,42 +2089,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\haupt\\Desktop\\AndroidClient\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "4,3,5,2",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "136,97,176,55",
-                        "endColumns": "39,38,38,41",
-                        "endOffsets": "171,131,210,92"
-                    },
-                    "to": {
-                        "startLines": "640,641,699,962",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "32798,32838,36867,56639",
-                        "endColumns": "39,38,38,41",
-                        "endOffsets": "32833,32872,36901,56676"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\haupt\\Desktop\\AndroidClient\\app\\src\\main\\res\\values\\themes.xml",
-                    "from": {
-                        "startLines": "2,8",
-                        "startColumns": "4,4",
-                        "startOffsets": "100,329",
-                        "endLines": "6,8",
-                        "endColumns": "12,74",
-                        "endOffsets": "323,399"
-                    },
-                    "to": {
-                        "startLines": "2644,6634",
-                        "startColumns": "4,4",
-                        "startOffsets": "185121,464648",
-                        "endLines": "2648,6634",
-                        "endColumns": "12,73",
-                        "endOffsets": "185238,464717"
-                    }
-                },
-                {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\575a35cf343d15a7b2a0ac43aff8cf7c\\transformed\\lifecycle-viewmodel-2.6.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -2175,6 +2122,23 @@
                         "endLines": "13637",
                         "endColumns": "24",
                         "endOffsets": "804446"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\haupt\\Documents\\GitHub\\AndroidClient\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1,7,6,10,3,11,13,16,8,14,2,18,5,12,4,15,9,17",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "16,471,413,645,226,703,825,1072,541,909,60,1215,335,787,283,1014,597,1149",
+                        "endColumns": "43,69,57,57,56,83,83,76,55,104,165,53,77,37,51,57,47,65",
+                        "endOffsets": "55,536,466,698,278,782,904,1144,592,1009,221,1264,408,820,330,1067,640,1210"
+                    },
+                    "to": {
+                        "startLines": "1985,1986,1988,1989,1990,1993,1994,1995,2031,2052,2054,2060,2105,2175,2186,2206,2207,2208",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "131364,131408,131628,131686,131744,131910,131994,132078,135391,136856,137114,137645,143065,153659,154734,156346,156404,156452",
+                        "endColumns": "43,69,57,57,56,83,83,76,55,104,165,53,77,37,51,57,47,65",
+                        "endOffsets": "131403,131473,131681,131739,131796,131989,132073,132150,135442,136956,137275,137694,143138,153692,154781,156399,156447,156513"
                     }
                 },
                 {
@@ -2305,6 +2269,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\haupt\\Documents\\GitHub\\AndroidClient\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "4,3,5,2",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "136,97,176,55",
+                        "endColumns": "39,38,38,41",
+                        "endOffsets": "171,131,210,92"
+                    },
+                    "to": {
+                        "startLines": "640,641,699,962",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "32798,32838,36867,56639",
+                        "endColumns": "39,38,38,41",
+                        "endOffsets": "32833,32872,36901,56676"
+                    }
+                },
+                {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\37b208793910d1ad3126e517cb58817d\\transformed\\savedstate-1.2.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -2338,6 +2319,25 @@
                         "endLines": "1768,1769,1770,1771,1772,1773,1774,1775,1776,1777,1778,1779,1780,1781,1782,1783,1784,1785,1786,1787,1788,1789,1790,1791,1792,1793,1794,1795,1796,1797,1798,1799,1804,1805,1806,1810,1812,1882,2024,2025,2028,2029,2030,2057,2058,2176,2177,2178,2180,2188,2189,2198,2211,2212,2213,5630,5633,5637",
                         "endColumns": "58,58,59,59,59,59,59,59,59,59,59,59,58,59,59,59,59,59,59,59,59,59,59,58,59,59,58,58,58,58,58,58,73,57,54,50,54,52,64,53,65,100,57,51,59,61,53,35,33,49,53,45,46,35,89,12,12,12",
                         "endOffsets": "118245,118304,118364,118424,118484,118544,118604,118664,118724,118784,118844,118904,118963,119023,119083,119143,119203,119263,119323,119383,119443,119503,119563,119622,119682,119742,119801,119860,119919,119978,120037,120096,120375,120433,120488,120683,120772,124434,135016,135070,135227,135328,135386,137521,137581,153754,153808,153844,153927,154893,154947,155661,156673,156709,156799,394654,394765,394960"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\haupt\\Documents\\GitHub\\AndroidClient\\app\\src\\main\\res\\values\\themes.xml",
+                    "from": {
+                        "startLines": "2,8",
+                        "startColumns": "4,4",
+                        "startOffsets": "100,329",
+                        "endLines": "6,8",
+                        "endColumns": "12,74",
+                        "endOffsets": "323,399"
+                    },
+                    "to": {
+                        "startLines": "2644,6634",
+                        "startColumns": "4,4",
+                        "startOffsets": "185121,464648",
+                        "endLines": "2648,6634",
+                        "endColumns": "12,73",
+                        "endOffsets": "185238,464717"
                     }
                 },
                 {

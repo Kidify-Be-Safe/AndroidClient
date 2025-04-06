@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\07ffddb6a66a1d1ec4c2fe4b1ae1af3f\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\haupt\.gradle\caches\8.11.1\transforms\c024b48485a3e57048f68faf94805411\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.compose.foundation:foundation-android:1.6.3] C:\Users\haupt\.gradle\caches\8.11.1\transforms\cf407f317de7e3f3dd81a9749af06e5f\transformed\foundation-release\AndroidManifest.xml:2:1-7:12
@@ -72,71 +72,71 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\haupt\.gradle\caches\8.11.1\tr
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\6a5acdfc36c4deeab0d6a050eed9f644\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\322efa88751aefa21d7b7f0a1cd0c38c\transformed\annotation-experimental-1.3.0\AndroidManifest.xml:17:1-22:12
 	package
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:4:5-45
-		INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:4:5-45
+		INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.KILL_BACKGROUND_PROCESSES
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:6:5-83
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:6:5-83
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:6:22-81
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:6:22-81
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:7:5-66
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:7:5-66
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:7:22-64
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:7:22-64
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:8:5-9:45
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:8:5-9:45
 	tools:ignore
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:9:9-42
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:9:9-42
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:8:22-76
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:8:22-76
 uses-permission#android.permission.POST_NOTIFICATIONS
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:13:5-77
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:13:5-77
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:13:22-74
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:13:22-74
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:14:5-15:38
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:14:5-15:38
 	android:maxSdkVersion
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:15:9-35
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:15:9-35
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:14:22-77
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:14:22-77
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:16:5-18:40
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:16:5-18:40
 	android:maxSdkVersion
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:17:9-35
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:17:9-35
 	tools:ignore
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:18:9-37
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:18:9-37
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:16:22-78
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:16:22-78
 uses-permission#android.permission.FOREGROUND_SERVICE
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:21:5-77
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:21:5-77
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:21:22-74
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:21:22-74
 uses-permission#android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:22:5-95
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:22:5-95
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:22:22-92
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:22:22-92
 uses-permission#android.permission.PACKAGE_USAGE_STATS
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:24:5-26:47
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:24:5-26:47
 	tools:ignore
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:26:9-44
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:26:9-44
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:25:9-62
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:25:9-62
 uses-permission#android.permission.QUERY_ALL_PACKAGES
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:27:5-29:53
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:27:5-29:53
 	tools:ignore
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:29:9-50
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:29:9-50
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:28:9-61
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:28:9-61
 application
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:31:5-64:19
-INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:31:5-64:19
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:31:5-64:19
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:31:5-64:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\07ffddb6a66a1d1ec4c2fe4b1ae1af3f\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\07ffddb6a66a1d1ec4c2fe4b1ae1af3f\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\haupt\.gradle\caches\8.11.1\transforms\c024b48485a3e57048f68faf94805411\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -154,65 +154,65 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\haupt\.gradle\cach
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\haupt\.gradle\caches\8.11.1\transforms\21cbd772bdde05f5e9d624c8475935f4\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\haupt\.gradle\caches\8.11.1\transforms\21cbd772bdde05f5e9d624c8475935f4\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 	android:extractNativeLibs
-		INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\e956fe7160e62e113943b58127fcf6c2\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:37:9-35
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:37:9-35
 	android:label
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:36:9-41
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:36:9-41
 	android:fullBackupContent
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:34:9-54
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:34:9-54
 	tools:targetApi
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:40:9-35
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:40:9-35
 	android:icon
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:35:9-38
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:35:9-38
 	android:allowBackup
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:32:9-35
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:32:9-35
 	android:theme
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:38:9-51
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:38:9-51
 	android:networkSecurityConfig
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:39:9-69
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:39:9-69
 	android:dataExtractionRules
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:33:9-65
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:33:9-65
 activity#com.antozstudios.myapplication.activities.PermissionActivity
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:43:9-51:20
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:43:9-51:20
 	android:launchMode
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:46:13-44
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:46:13-44
 	android:exported
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:45:13-36
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:45:13-36
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:44:13-58
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:44:13-58
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:47:13-50:29
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:47:13-50:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:48:17-69
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:48:17-69
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:48:25-66
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:48:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:49:17-77
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:49:17-77
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:49:27-74
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:49:27-74
 activity#com.antozstudios.myapplication.activities.LoginActivity
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:53:9-55:52
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:53:9-55:52
 	android:screenOrientation
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:55:13-49
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:55:13-49
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:54:13-53
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:54:13-53
 activity#com.antozstudios.myapplication.activities.MainActivity
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:57:9-59:52
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:57:9-59:52
 	android:screenOrientation
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:59:13-49
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:59:13-49
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:58:13-52
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:58:13-52
 service#com.antozstudios.myapplication.activities.CheckAppService
-ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:62:9-63:57
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:62:9-63:57
 	android:name
-		ADDED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml:63:13-55
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:63:13-55
 uses-sdk
-INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\07ffddb6a66a1d1ec4c2fe4b1ae1af3f\transformed\material-1.11.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\07ffddb6a66a1d1ec4c2fe4b1ae1af3f\transformed\material-1.11.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\haupt\.gradle\caches\8.11.1\transforms\c024b48485a3e57048f68faf94805411\transformed\constraintlayout-2.1.4\AndroidManifest.xml:5:5-7:41
@@ -348,9 +348,9 @@ MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\haupt\.gradle\cache
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\322efa88751aefa21d7b7f0a1cd0c38c\transformed\annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\322efa88751aefa21d7b7f0a1cd0c38c\transformed\annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
 	android:targetSdkVersion
-		INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\haupt\Desktop\AndroidClient\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml
 supports-screens
 ADDED from [org.osmdroid:osmdroid-android:6.1.18] C:\Users\haupt\.gradle\caches\8.11.1\transforms\22fef54c90000cc71d687c25da249161\transformed\osmdroid-android-6.1.18\AndroidManifest.xml:9:5-12:40
 	android:largeScreens
