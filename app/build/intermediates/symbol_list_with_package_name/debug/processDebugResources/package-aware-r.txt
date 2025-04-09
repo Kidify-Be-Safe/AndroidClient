@@ -1417,6 +1417,7 @@ color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
 color gray
+color green
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color m3_appbar_overlay_color
@@ -2081,6 +2082,7 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
+color red
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -2098,6 +2100,7 @@ color tooltip_background_light
 color vector_tint_color
 color vector_tint_theme_color
 color white
+color yellow
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -3106,6 +3109,7 @@ drawable osm_ic_ic_map_ortho
 drawable person
 drawable pointer
 drawable previous
+drawable round
 drawable round_navigation_white_48
 drawable settings_icon
 drawable sharp_add_black_36
@@ -3233,6 +3237,7 @@ id cancel_action
 id cancel_button
 id carryVelocity
 id center
+id centerButton
 id centerCrop
 id centerInside
 id center_horizontal
@@ -3331,6 +3336,7 @@ id flip
 id floating
 id forever
 id fragment_container_view_tag
+id frameLayout
 id frost
 id fullscreen_header
 id ghost_view
@@ -3339,6 +3345,7 @@ id gone
 id gpsButton
 id graph
 id graph_wrap
+id greenButton
 id group_divider
 id grouping
 id groups
@@ -3349,6 +3356,7 @@ id hideable
 id home
 id homeAsUp
 id honorRequest
+id horizontalScrollView
 id horizontal_only
 id icon
 id icon_group
@@ -3464,6 +3472,7 @@ id north
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id observeButton
 id off
 id on
 id onInterceptTouchReturnSwipe
@@ -3507,6 +3516,7 @@ id radio
 id ratio
 id readNotification
 id rectangles
+id redButton
 id report_drawn
 id returnButton
 id reverseSawtooth
@@ -3660,6 +3670,7 @@ id wrap_content_constrained
 id wrapped_composition_tag
 id x_left
 id x_right
+id yellowButton
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -3915,6 +3926,7 @@ string base
 string base_nl
 string benachrichtigungen_anzeigen
 string benachrichtigungen_vorlesen
+string beobachten
 string ber_anderen_apps_setzen
 string bing
 string bottom_sheet_behavior
@@ -4130,6 +4142,7 @@ string tooltip_description
 string tooltip_label
 string topo
 string unknown
+string zentrieren
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

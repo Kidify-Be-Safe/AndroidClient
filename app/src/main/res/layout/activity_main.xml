@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/black">
+    android:textAlignment="center">
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="MissingConstraints"
@@ -20,10 +21,90 @@
             app:layout_constraintBottom_toTopOf="@+id/drag"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" >
+
+        </org.osmdroid.views.MapView>
 
 
     </FrameLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout"
+        app:layout_constraintVertical_bias="0.92">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/centerButton"
+                android:layout_width="145dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/black"
+                android:text="@string/zentrieren"
+                android:textColor="@color/white" />
+
+            <TextClock
+                android:layout_width="85dp"
+                android:gravity="center"
+                android:layout_height="35dp" />
+
+            <Button
+                android:id="@+id/observeButton"
+                android:layout_width="145dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/white"
+                android:text="@string/beobachten"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:layout_width="80dp"
+        android:layout_height="219dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/greenButton"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/green"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/yellowButton"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/yellow" />
+
+            <Button
+                android:id="@+id/redButton"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/red" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

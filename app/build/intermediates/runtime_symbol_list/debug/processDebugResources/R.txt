@@ -1416,6 +1416,7 @@ int color error_color_material_light 0x7f05005c
 int color foreground_material_dark 0x7f05005d
 int color foreground_material_light 0x7f05005e
 int color gray 0x7f05005f
+int color green 0x7f050309
 int color highlighted_text_material_dark 0x7f050060
 int color highlighted_text_material_light 0x7f050061
 int color m3_appbar_overlay_color 0x7f050062
@@ -2080,6 +2081,7 @@ int color primary_text_default_material_dark 0x7f0502f4
 int color primary_text_default_material_light 0x7f0502f5
 int color primary_text_disabled_material_dark 0x7f0502f6
 int color primary_text_disabled_material_light 0x7f0502f7
+int color red 0x7f05030a
 int color ripple_material_dark 0x7f0502f8
 int color ripple_material_light 0x7f0502f9
 int color secondary_text_default_material_dark 0x7f0502fa
@@ -2097,6 +2099,7 @@ int color tooltip_background_light 0x7f050305
 int color vector_tint_color 0x7f050306
 int color vector_tint_theme_color 0x7f050307
 int color white 0x7f050308
+int color yellow 0x7f05030b
 int dimen abc_action_bar_content_inset_material 0x7f060000
 int dimen abc_action_bar_content_inset_with_nav 0x7f060001
 int dimen abc_action_bar_default_height_material 0x7f060002
@@ -3105,6 +3108,7 @@ int drawable osm_ic_ic_map_ortho 0x7f0700f5
 int drawable person 0x7f0700f6
 int drawable pointer 0x7f0700f7
 int drawable previous 0x7f0700f8
+int drawable round 0x7f070103
 int drawable round_navigation_white_48 0x7f0700f9
 int drawable settings_icon 0x7f0700fa
 int drawable sharp_add_black_36 0x7f0700fb
@@ -3232,6 +3236,7 @@ int id cancel_action 0x7f080071
 int id cancel_button 0x7f080072
 int id carryVelocity 0x7f080073
 int id center 0x7f080074
+int id centerButton 0x7f080221
 int id centerCrop 0x7f080075
 int id centerInside 0x7f080076
 int id center_horizontal 0x7f080077
@@ -3330,6 +3335,7 @@ int id flip 0x7f0800d3
 int id floating 0x7f0800d4
 int id forever 0x7f0800d5
 int id fragment_container_view_tag 0x7f0800d6
+int id frameLayout 0x7f080222
 int id frost 0x7f0800d7
 int id fullscreen_header 0x7f0800d8
 int id ghost_view 0x7f0800d9
@@ -3338,6 +3344,7 @@ int id gone 0x7f0800db
 int id gpsButton 0x7f0800dc
 int id graph 0x7f0800dd
 int id graph_wrap 0x7f0800de
+int id greenButton 0x7f080225
 int id group_divider 0x7f0800df
 int id grouping 0x7f0800e0
 int id groups 0x7f0800e1
@@ -3348,6 +3355,7 @@ int id hideable 0x7f0800e5
 int id home 0x7f0800e6
 int id homeAsUp 0x7f0800e7
 int id honorRequest 0x7f0800e8
+int id horizontalScrollView 0x7f080223
 int id horizontal_only 0x7f0800e9
 int id icon 0x7f0800ea
 int id icon_group 0x7f0800eb
@@ -3463,6 +3471,7 @@ int id north 0x7f080158
 int id notification_background 0x7f080159
 int id notification_main_column 0x7f08015a
 int id notification_main_column_container 0x7f08015b
+int id observeButton 0x7f080228
 int id off 0x7f08015c
 int id on 0x7f08015d
 int id onInterceptTouchReturnSwipe 0x7f08015e
@@ -3506,6 +3515,7 @@ int id radio 0x7f080183
 int id ratio 0x7f080184
 int id readNotification 0x7f080185
 int id rectangles 0x7f080186
+int id redButton 0x7f080226
 int id report_drawn 0x7f080187
 int id returnButton 0x7f080188
 int id reverseSawtooth 0x7f080189
@@ -3659,6 +3669,7 @@ int id wrap_content_constrained 0x7f08021c
 int id wrapped_composition_tag 0x7f08021d
 int id x_left 0x7f08021e
 int id x_right 0x7f08021f
+int id yellowButton 0x7f080227
 int integer abc_config_activityDefaultDur 0x7f090000
 int integer abc_config_activityShortDur 0x7f090001
 int integer app_bar_elevation_anim_duration 0x7f090002
@@ -3914,6 +3925,7 @@ int string base 0x7f0f0024
 int string base_nl 0x7f0f0025
 int string benachrichtigungen_anzeigen 0x7f0f0026
 int string benachrichtigungen_vorlesen 0x7f0f0027
+int string beobachten 0x7f0f00ff
 int string ber_anderen_apps_setzen 0x7f0f0028
 int string bing 0x7f0f0029
 int string bottom_sheet_behavior 0x7f0f002a
@@ -4129,6 +4141,7 @@ int string tooltip_description 0x7f0f00fb
 int string tooltip_label 0x7f0f00fc
 int string topo 0x7f0f00fd
 int string unknown 0x7f0f00fe
+int string zentrieren 0x7f0f0100
 int style AlertDialog_AppCompat 0x7f100000
 int style AlertDialog_AppCompat_Light 0x7f100001
 int style Animation_AppCompat_Dialog 0x7f100002

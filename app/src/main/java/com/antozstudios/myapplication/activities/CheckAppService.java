@@ -25,19 +25,25 @@ public class CheckAppService extends Service {
     private GpsMyLocationProvider gpsProvider;
     private double lat = 0.0, lon = 0.0;
 
+    SharedPreferences stateData;
+    SharedPreferences.Editor editor;
+    int ampelState;
     int userID;
     @Override
     public void onCreate() {
         super.onCreate();
         example = new PostHttp();
-        SharedPreferences sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE);
-       userID = sharedPreferences.getInt("userID",0);
+        SharedPreferences userData = getSharedPreferences("user_data", Context.MODE_PRIVATE);
+      stateData =  getSharedPreferences("state_data", Context.MODE_PRIVATE);
+        editor  = stateData.edit();
+       userID = userData.getInt("userID",0);
+
         // GPS-Provider initialisieren
         gpsProvider = new GpsMyLocationProvider(getApplicationContext());
 
         // Listener setzen
         gpsProvider.setLocationUpdateMinDistance(1); // Meter
-        gpsProvider.setLocationUpdateMinTime(10000*60);  // 10000 ms * 60 = 10 Minuten
+        gpsProvider.setLocationUpdateMinTime(1000);  // 10000 ms * 60 = 10 Minuten
 
         gpsProvider.startLocationProvider(new IMyLocationConsumer() {
             @Override
@@ -58,16 +64,21 @@ public class CheckAppService extends Service {
 
             while (true) {
                 if(lat > 0 && lon>0){
-                    String json = example.sendCoordinates(lon, lat, userID);
+
+                    ampelState = stateData.getInt("currentState",0);
+                    String json = example.sendCoordinates(lon, lat, userID,ampelState);
                     try {
                         String response = example.post("http://app.mluetzkendorf.xyz/api/koordinaten", json);
+                        editor.putInt("currentState",0);
+                        editor.apply();
                         Log.d("SERVICE", "POST: " + response);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
 
                     try {
-                        Thread.sleep(10000*60); // 10000 ms * 60 = 10 Minuten
+                        Thread.sleep(1000); // 10000 ms * 60 = 10 Minuten
+
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

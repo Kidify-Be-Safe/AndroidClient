@@ -19,4 +19,6 @@
     <string name="kehre_zur_ck">Kehre zurück</string>
     <string name="channel_name" />
     <string name="channel_description" />
+    <string name="zentrieren">Zentrieren</string>
+    <string name="beobachten">Beobachten</string>
 </resources>

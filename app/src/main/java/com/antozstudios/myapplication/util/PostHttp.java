@@ -24,12 +24,16 @@ public class PostHttp {
         }
     }
 
-    public String sendCoordinates(double lan, double lat, int b_id) {
+    public String sendCoordinates(double lan, double lat, int b_id,int ampelState) {
         return "{"
                 + "\"breitengrad\":" + lat + ","
+                + "\"ampel\":" + ampelState + ","
                 + "\"laengengrad\":" + lan + ","
                 + "\"b_id\":" + b_id
                 + "}";
     }
+
+
+
 
 }
