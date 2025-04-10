@@ -74,6 +74,9 @@
             android:name="com.antozstudios.myapplication.activities.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.antozstudios.myapplication.activities.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.antozstudios.myapplication.activities.MainActivity"
             android:screenOrientation="portrait" />
 

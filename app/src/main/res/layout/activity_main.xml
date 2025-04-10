@@ -21,7 +21,7 @@
             app:layout_constraintBottom_toTopOf="@+id/drag"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" >
+            app:layout_constraintStart_toStartOf="parent">
 
         </org.osmdroid.views.MapView>
 
@@ -41,6 +41,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
 
@@ -68,6 +69,7 @@
     </HorizontalScrollView>
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="80dp"
         android:layout_height="219dp"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
@@ -75,20 +77,20 @@
         app:layout_constraintHorizontal_bias="0.97"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.00999999">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:background="@drawable/curved"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/greenButton"
                 android:layout_width="60dp"
                 android:layout_height="70dp"
-                android:backgroundTint="@color/green"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:backgroundTint="@color/green" />
 
             <Button
                 android:id="@+id/yellowButton"
@@ -103,6 +105,68 @@
                 android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/red" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="271dp"
+        android:layout_height="207dp"
+        android:background="@drawable/curved"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toStartOf="@+id/scrollView3"
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.00999999">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Letzte übermittelten Daten:"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/roadTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="1"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/townTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/postCodeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/countryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1"
+                android:textSize="20dp" />
+
+
         </LinearLayout>
     </ScrollView>
 

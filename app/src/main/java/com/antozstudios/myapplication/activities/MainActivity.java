@@ -4,31 +4,26 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.ColorSpace;
-import android.graphics.Paint;
-import android.graphics.Picture;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.PointerIcon;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.antozstudios.myapplication.R;
+
+import com.antozstudios.myapplication.data.GeoCoding;
 import com.antozstudios.myapplication.util.CustomTileFactory;
+import com.antozstudios.myapplication.util.GetRequestTask;
+import com.google.gson.Gson;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
+import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
@@ -46,8 +41,16 @@ public class MainActivity extends AppCompatActivity {
     Button centerButton;
     Button observeButton;
 
-    Bitmap anchor;
 
+    TextView countryTextView;
+    TextView postCodeTextView;
+    TextView townTextView;
+    TextView roadTextView;
+
+
+    Thread thread;
+
+    GetRequestTask getRequestTask;
 
     SharedPreferences stateData;
     @SuppressLint("MissingInflatedId")
@@ -56,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getRequestTask = new GetRequestTask();
 
-        anchor = Bitmap.createBitmap(50,50, Bitmap.Config.RGB_565);
 
         greenStateButton = findViewById(R.id.greenButton);
         yellowStateButton = findViewById(R.id.yellowButton);
@@ -66,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         centerButton = findViewById(R.id.centerButton);
         observeButton = findViewById(R.id.observeButton);
 
+        postCodeTextView = findViewById(R.id.postCodeTextView);
+        townTextView = findViewById(R.id.townTextView);
+        countryTextView = findViewById(R.id.countryTextView);
+        roadTextView = findViewById(R.id.roadTextView);
         setupOSM();
         Intent service = new Intent(this, CheckAppService.class);
         startService(service);
@@ -81,20 +88,13 @@ public class MainActivity extends AppCompatActivity {
         mMap.setTileSource(CustomTileFactory.Dark);
         mMap.setMultiTouchControls(true);
 
+
         double maxZoom = 22.0;
         mMap.setMaxZoomLevel(maxZoom);
         double minZoom = 10.0;
         mMap.setMinZoomLevel(minZoom);
-        mMyLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(this), mMap);
-
+        mMyLocationOverlay = new MyLocationNewOverlay(mMap);
         mMyLocationOverlay.setPersonIcon(null);
-
-
-
-
-
-
-
 
 
         IMapController controller = mMap.getController();
@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         mMyLocationOverlay.setDrawAccuracyEnabled(true);
 
         controller.setZoom(minZoom);
-
         mMap.setBackgroundColor(Color.BLACK);
         mMap.getOverlays().add(mMyLocationOverlay);
 
@@ -126,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
         centerButton.setOnClickListener((view)->{
             mMyLocationOverlay.enableFollowLocation();
         });
-
 
 
 

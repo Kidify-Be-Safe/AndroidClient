@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-66:12
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-70:12
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-70:12
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-70:12
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:2:1-70:12
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\07ffddb6a66a1d1ec4c2fe4b1ae1af3f\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\haupt\.gradle\caches\8.11.1\transforms\c024b48485a3e57048f68faf94805411\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.compose.foundation:foundation-android:1.6.3] C:\Users\haupt\.gradle\caches\8.11.1\transforms\cf407f317de7e3f3dd81a9749af06e5f\transformed\foundation-release\AndroidManifest.xml:2:1-7:12
@@ -129,8 +129,8 @@ ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidMan
 	android:name
 		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:23:22-74
 application
-ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:26:5-64:19
-INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:26:5-64:19
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:26:5-68:19
+INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:26:5-68:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\07ffddb6a66a1d1ec4c2fe4b1ae1af3f\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\haupt\.gradle\caches\8.11.1\transforms\07ffddb6a66a1d1ec4c2fe4b1ae1af3f\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\haupt\.gradle\caches\8.11.1\transforms\c024b48485a3e57048f68faf94805411\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -193,16 +193,22 @@ ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidMan
 		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:50:13-49
 	android:name
 		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:49:13-53
-activity#com.antozstudios.myapplication.activities.MainActivity
+activity#com.antozstudios.myapplication.activities.SignUpActivity
 ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:52:9-54:52
 	android:screenOrientation
 		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:54:13-49
 	android:name
-		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:53:13-52
-service#com.antozstudios.myapplication.activities.CheckAppService
-ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:57:9-58:57
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:53:13-54
+activity#com.antozstudios.myapplication.activities.MainActivity
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:56:9-58:52
+	android:screenOrientation
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:58:13-49
 	android:name
-		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:58:13-55
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:57:13-52
+service#com.antozstudios.myapplication.activities.CheckAppService
+ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:61:9-62:57
+	android:name
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:62:13-55
 uses-sdk
 INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml

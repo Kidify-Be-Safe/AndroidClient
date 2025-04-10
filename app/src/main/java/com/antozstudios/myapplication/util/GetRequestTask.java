@@ -11,14 +11,15 @@ public class GetRequestTask {
 
     public String message;
 
+
     public GetRequestTask() {
         this.message = ""; // Initialisierung der message
     }
 
-    public void executeRequest(String table) {
+    public void executeRequest(String link,String table) {
         URL url = null;
         try {
-            url = new URL("http://app.mluetzkendorf.xyz/api/"+table);
+            url = new URL(link+table);
         } catch (MalformedURLException e) {
             e.printStackTrace(); // Fehlerprotokollierung
             message = "URL ist ungültig";

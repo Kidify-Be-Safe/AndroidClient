@@ -1,30 +1,20 @@
 package com.antozstudios.myapplication.activities;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
+
 import com.antozstudios.myapplication.R;
 import com.antozstudios.myapplication.util.GetRequestTask;
 import com.antozstudios.myapplication.util.JsonParser;
 import com.google.android.material.textfield.TextInputEditText;
-
-
-import java.io.IOException;
-import java.util.Objects;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -37,7 +27,8 @@ public class LoginActivity extends AppCompatActivity {
 
     TextInputEditText email;
     TextInputEditText passwort;
-    Button anmeldenButton;
+    Button loginButton;
+    Button signUpButton;
 
     Thread request;
 
@@ -61,14 +52,23 @@ public class LoginActivity extends AppCompatActivity {
         outPutText = findViewById(R.id.textView2);
         email = findViewById(R.id.inputField_Email);
         passwort = findViewById(R.id.inputField_Passwort);
-        anmeldenButton = findViewById(R.id.anmeldenButton);
+        loginButton = findViewById(R.id.loginButton);
+        signUpButton = findViewById(R.id.signUpButton);
         jsonParser = new JsonParser();
 
         request = new Thread(() -> {
-            getRequestTask.executeRequest("benutzer");
+            getRequestTask.executeRequest("http://app.mluetzkendorf.xyz/api/","benutzer");
         });
 
         request.start();
+
+
+        signUpButton.setOnClickListener((view)->{
+            Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
+            startActivity(intent);
+        });
+
+
     }
 
     @Override
@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                     jsonParser.parse();
                 }
 
-                anmeldenButton.setOnClickListener(new View.OnClickListener() {
+                loginButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
@@ -120,4 +120,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

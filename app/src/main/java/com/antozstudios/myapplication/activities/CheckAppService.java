@@ -10,7 +10,10 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.antozstudios.myapplication.data.GeoCoding;
+import com.antozstudios.myapplication.util.GetRequestTask;
 import com.antozstudios.myapplication.util.PostHttp;
+import com.google.gson.Gson;
 
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.IMyLocationConsumer;
@@ -24,15 +27,20 @@ public class CheckAppService extends Service {
     private PostHttp example;
     private GpsMyLocationProvider gpsProvider;
     private double lat = 0.0, lon = 0.0;
-
+    GeoCoding geoCoding;
     SharedPreferences stateData;
     SharedPreferences.Editor editor;
+    GetRequestTask getRequestTask;
     int ampelState;
     int userID;
+    String json;
+
+    boolean running = true;
     @Override
     public void onCreate() {
         super.onCreate();
         example = new PostHttp();
+        getRequestTask = new GetRequestTask();
         SharedPreferences userData = getSharedPreferences("user_data", Context.MODE_PRIVATE);
       stateData =  getSharedPreferences("state_data", Context.MODE_PRIVATE);
         editor  = stateData.edit();
@@ -43,7 +51,7 @@ public class CheckAppService extends Service {
 
         // Listener setzen
         gpsProvider.setLocationUpdateMinDistance(1); // Meter
-        gpsProvider.setLocationUpdateMinTime(1000);  // 10000 ms * 60 = 10 Minuten
+        gpsProvider.setLocationUpdateMinTime(1000);
 
         gpsProvider.startLocationProvider(new IMyLocationConsumer() {
             @Override
@@ -56,28 +64,49 @@ public class CheckAppService extends Service {
             }
         });
 
+
+
+
+
+
         startSending();
     }
 
     private void startSending() {
+
+
+        Thread checkAmpel= new Thread(()->{
+
+            while(true){
+                ampelState = stateData.getInt("currentState",0);
+                if(ampelState>0){
+                    updateCoordinates();
+                }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        });
+        checkAmpel.start();
+
+
+
+
         locationThread = new Thread(() -> {
 
-            while (true) {
-                if(lat > 0 && lon>0){
 
-                    ampelState = stateData.getInt("currentState",0);
-                    String json = example.sendCoordinates(lon, lat, userID,ampelState);
-                    try {
-                        String response = example.post("http://app.mluetzkendorf.xyz/api/koordinaten", json);
-                        editor.putInt("currentState",0);
-                        editor.apply();
-                        Log.d("SERVICE", "POST: " + response);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
 
+            while (running) {
+                ampelState = stateData.getInt("currentState",0);
+                if(lat > 0 && lon>0 && ampelState==0){
+
+                    updateCoordinates();
                     try {
-                        Thread.sleep(1000); // 10000 ms * 60 = 10 Minuten
+
+                        Thread.sleep(10000*60); // 10000 ms * 60 = 10 Minuten
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -85,10 +114,15 @@ public class CheckAppService extends Service {
 
                 }
 
+
+
             }
         });
 
+
         locationThread.start();
+
+
     }
 
     @Override
@@ -107,6 +141,28 @@ public class CheckAppService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    void updateCoordinates(){
+
+
+
+
+        getRequestTask.executeRequest("https://nominatim.openstreetmap.org/","reverse?lat="+lat+"&lon=+"+lon+"&format=json");
+
+        geoCoding = new Gson().fromJson(getRequestTask.message,GeoCoding.class);
+
+        json = example.sendCoordinates(lon, lat, userID,ampelState,geoCoding.address.road,Integer.parseInt(geoCoding.address.postcode),geoCoding.address.town,geoCoding.address.country);
+
+
+        try {
+             example.post("http://app.mluetzkendorf.xyz/api/koordinaten", json);
+            editor.putInt("currentState",0);
+            editor.apply();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

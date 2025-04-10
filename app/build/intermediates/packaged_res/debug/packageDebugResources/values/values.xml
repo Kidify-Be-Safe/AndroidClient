@@ -23,11 +23,13 @@
     <string name="hier_w_hlst_du_aus_welche_apps_von_der_sperre_betroffen_sein_sollen">Hier wählst du aus, welche Apps von der Sperre betroffen sein sollen.</string>
     <string name="kehre_zur_ck">Kehre zurück</string>
     <string name="maximale_geschwindigkeit">Maximale Geschwindigkeit</string>
+    <string name="nachname">Nachname</string>
     <string name="name">Name</string>
     <string name="profil_name">Profil-Name</string>
     <string name="speicher_lesen">Speicher lesen</string>
     <string name="speichern">Speichern</string>
     <string name="standort_ermitteln">Standort ermitteln</string>
+    <string name="vorname">Vorname</string>
     <string name="zentrieren">Zentrieren</string>
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
         

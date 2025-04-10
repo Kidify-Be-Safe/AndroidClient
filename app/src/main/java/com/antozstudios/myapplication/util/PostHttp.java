@@ -1,5 +1,7 @@
 package com.antozstudios.myapplication.util;
 
+import android.text.Editable;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -20,16 +22,47 @@ public class PostHttp {
                 .post(body)
                 .build();
         try (Response response = client.newCall(request).execute()) {
-            return response.body().string();
+            if(response.code()>200 && response.code()<300){
+                return response.body().string();
+            }
+            return "error";
+
         }
     }
 
-    public String sendCoordinates(double lan, double lat, int b_id,int ampelState) {
+
+
+
+
+
+
+    public String sendCoordinates(double lan, double lat, int b_id, int ampelState, String strasse, Integer plz, String stadt, String land) {
+
+
         return "{"
                 + "\"breitengrad\":" + lat + ","
-                + "\"ampel\":" + ampelState + ","
                 + "\"laengengrad\":" + lan + ","
-                + "\"b_id\":" + b_id
+                + "\"b_id\":" + b_id + ","
+                + "\"stadt\":" + (stadt == null ? "null" : "\"" + stadt + "\"") + ","
+                + "\"strasse\":\"" + strasse + "\","
+                + "\"plz\":" + plz + ","
+                + "\"land\":" + (land == null ? "null" : "\"" + land + "\"") + ","
+                + "\"ampel\":" + ampelState
+                + "}";
+    }
+
+    public String sendUser(String email, String vorname,String passwort,String nachname, String wohnort,String strasse, int plz,String HASH) {
+
+
+        return "{"
+                + "\"email\":\"" + email + "\","
+                +"\"name\":\"" + vorname + "\","
+                +"\"nachname\":\"" + nachname + "\","
+                +"\"passwort\":\"" + passwort + "\","
+                +"\"wohnort\":\"" + wohnort + "\","
+                + "\"strasse\":\"" + strasse + "\","
+                + "\"b_id_hash\":\"" + HASH + "\","
+                + "\"plz\":" + plz
                 + "}";
     }
 
