@@ -58,9 +58,7 @@ id strasseInput
 id submitButton
 id sw
 id textView
-id textView2
 id title
-id titleTextView
 id townTextView
 id usageButton
 id vornameInput

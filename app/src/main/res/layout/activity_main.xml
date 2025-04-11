@@ -125,12 +125,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/titleTextView"
+                android:id="@+id/countryTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Letzte übermittelten Daten:"
+                android:text="1"
                 android:textSize="40dp" />
 
             <TextView
@@ -140,7 +139,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="1"
-                android:textSize="40dp" />
+                android:textSize="35dp" />
 
             <TextView
                 android:id="@+id/townTextView"
@@ -152,14 +151,6 @@
 
             <TextView
                 android:id="@+id/postCodeTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="1"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/countryTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

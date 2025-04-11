@@ -76,6 +76,20 @@ public class MainActivity extends AppCompatActivity {
         setupOSM();
         Intent service = new Intent(this, CheckAppService.class);
         startService(service);
+
+
+
+
+
+        runOnUiThread(()->{
+            SharedPreferences locationData = getSharedPreferences("Location_Data",MODE_PRIVATE);
+            postCodeTextView.setText(locationData.getString("postCode",""));
+            countryTextView.setText(locationData.getString("country",""));
+            roadTextView.setText(locationData.getString("road",""));
+            townTextView.setText(locationData.getString("town",""));
+
+
+        });
     }
 
     void setupOSM() {
@@ -98,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         IMapController controller = mMap.getController();
-        mMyLocationOverlay.enableMyLocation();
         mMyLocationOverlay.enableFollowLocation();
         mMyLocationOverlay.setDrawAccuracyEnabled(true);
 
@@ -107,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         mMap.getOverlays().add(mMyLocationOverlay);
 
 
-        stateData = getSharedPreferences("state_data",Context.MODE_PRIVATE);
+        stateData = getSharedPreferences("State_Data",Context.MODE_PRIVATE);
         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = stateData.edit();
         greenStateButton.setOnClickListener((view)->{
           editor.putInt("currentState",1);

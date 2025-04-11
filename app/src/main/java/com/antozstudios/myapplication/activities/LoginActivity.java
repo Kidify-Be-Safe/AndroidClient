@@ -5,120 +5,113 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.antozstudios.myapplication.R;
+import com.antozstudios.myapplication.data.User;
 import com.antozstudios.myapplication.util.GetRequestTask;
+import com.antozstudios.myapplication.util.Hash;
 import com.antozstudios.myapplication.util.JsonParser;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
 
 
 public class LoginActivity extends AppCompatActivity {
 
-    Intent myIntent;
 
-    TextView outPutText;
-    GetRequestTask getRequestTask = new GetRequestTask();
-    JsonParser jsonParser;
+
+
 
     TextInputEditText email;
     TextInputEditText passwort;
     Button loginButton;
     Button signUpButton;
+    GetRequestTask getRequestTask;
 
-    Thread request;
 
+    SharedPreferences userData;
+    SharedPreferences.Editor editor;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getRequestTask = new GetRequestTask();
 
-        // Überprüfe, ob der Benutzer bereits angemeldet ist
-        SharedPreferences sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE);
-        boolean isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false);  // Überprüfe den Anmeldestatus
 
-        if (isLoggedIn) {
-            // Wenn der Benutzer angemeldet ist, direkt in die MainActivity gehen
-            Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(myIntent);
-            finish();  // Beende die LoginActivity
-        }
-
-        outPutText = findViewById(R.id.textView2);
         email = findViewById(R.id.inputField_Email);
         passwort = findViewById(R.id.inputField_Passwort);
         loginButton = findViewById(R.id.loginButton);
         signUpButton = findViewById(R.id.signUpButton);
-        jsonParser = new JsonParser();
 
-        request = new Thread(() -> {
-            getRequestTask.executeRequest("http://app.mluetzkendorf.xyz/api/","benutzer");
-        });
+        userData = getSharedPreferences("User_Data",MODE_PRIVATE);
+        editor = userData.edit();
+       int isLoggedIn = userData.getInt("isLoggedIn",0);
 
-        request.start();
-
-
-        signUpButton.setOnClickListener((view)->{
-            Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
-            startActivity(intent);
-        });
-
-
+       if(isLoggedIn==1){
+           startActivity(new Intent(LoginActivity.this,MainActivity.class));
+finish();
+       }
     }
+
 
     @Override
     protected void onResume() {
         super.onResume();
+        loginButton.setOnClickListener((view)->{
 
-        runOnUiThread(() -> {
-            try {
-                request.join();
-                String temp = getRequestTask.message;
+            if(Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches()){
+                Thread thread = new Thread(()->{
+                    getRequestTask.executeRequest("http://app.mluetzkendorf.xyz/api/","benutzer?email=eq."+email.getText().toString());
+                    User[] users = new Gson().fromJson(getRequestTask.message,User[].class);
 
-                if (jsonParser != null) {
-                    jsonParser.jsonResponse = temp;
-                    jsonParser.parse();
-                }
+                    if(users.length>0){
+                        String hashPasswort = Hash.sha256(passwort.getText().toString());
+                        if(hashPasswort.equals(users[0].passwort)){
 
-                loginButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
 
-                        int tempEmail = jsonParser.getIndex(email.getText().toString());
-
-                        if (tempEmail != -1 && jsonParser.userList.get(tempEmail).passwort.equals(passwort.getText().toString())) {
-                            outPutText.setText("Anmeldung war erfolgreich!");
-
-                            // Speichern des Anmeldestatus in SharedPreferences
-                            SharedPreferences sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putBoolean("is_logged_in", true);  // Setzt den Status auf "angemeldet"
-                            editor.putInt("userID",jsonParser.userList.get(tempEmail).id);
-                            editor.putString("user_email", email.getText().toString());  // Speichert die E-Mail-Adresse des Benutzers
+                            editor.putInt("b_id",users[0].id);
+                            editor.putString("lastEmail",users[0].email);
+                            editor.putString("lastPasswort",users[0].passwort);
+                            editor.putInt("isLoggedIn",1);
                             editor.apply();
 
-                            // Starten von MainActivity und die LoginActivity aus dem Stack entfernen
-                            myIntent = new Intent(LoginActivity.this, MainActivity.class);
-                            myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(myIntent);
-                            finish();
-                        } else if (tempEmail != 1 && !jsonParser.userList.get(tempEmail).passwort.equals(passwort.getText().toString())) {
-                            outPutText.setText("Passwort ist falsch!");
-                        } else {
-                            outPutText.setText("Das Konto existiert nicht!");
-                        }
-                    }
-                });
 
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                        }else{
+                            runOnUiThread(()->{
+                                Toast.makeText(this,"Passwort ist falsch!",Toast.LENGTH_LONG).show();
+                            });
+                        }
+                    }else{
+                        runOnUiThread(()->{
+                            Toast.makeText(this,"Nutzer nicht gefunden!",Toast.LENGTH_LONG).show();
+                        });
+                    }
+
+
+
+                });
+                thread.start();
             }
+
+
+
+
+
         });
+
+        signUpButton.setOnClickListener((view)->{
+
+            startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
+        });
+
     }
 
 

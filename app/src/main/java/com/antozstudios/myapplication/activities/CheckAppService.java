@@ -28,23 +28,25 @@ public class CheckAppService extends Service {
     private GpsMyLocationProvider gpsProvider;
     private double lat = 0.0, lon = 0.0;
     GeoCoding geoCoding;
-    SharedPreferences stateData;
-    SharedPreferences.Editor editor;
+
     GetRequestTask getRequestTask;
     int ampelState;
     int userID;
     String json;
 
+    SharedPreferences stateData,userData;
+    SharedPreferences.Editor stateDataEditor;
     boolean running = true;
     @Override
     public void onCreate() {
         super.onCreate();
         example = new PostHttp();
         getRequestTask = new GetRequestTask();
-        SharedPreferences userData = getSharedPreferences("user_data", Context.MODE_PRIVATE);
-      stateData =  getSharedPreferences("state_data", Context.MODE_PRIVATE);
-        editor  = stateData.edit();
-       userID = userData.getInt("userID",0);
+
+        userData = getSharedPreferences("User_Data",MODE_PRIVATE);
+        userID = userData.getInt("b_id",-1);
+        stateData = getSharedPreferences("State_Data",MODE_PRIVATE);
+        stateDataEditor = stateData.edit();
 
         // GPS-Provider initialisieren
         gpsProvider = new GpsMyLocationProvider(getApplicationContext());
@@ -53,15 +55,9 @@ public class CheckAppService extends Service {
         gpsProvider.setLocationUpdateMinDistance(1); // Meter
         gpsProvider.setLocationUpdateMinTime(1000);
 
-        gpsProvider.startLocationProvider(new IMyLocationConsumer() {
-            @Override
-            public void onLocationChanged(Location location, IMyLocationProvider source) {
-                if (location != null) {
-                    lat = location.getLatitude();
-                    lon = location.getLongitude();
-                    Log.d("SERVICE", "Neue Koordinaten: " + lat + ", " + lon);
-                }
-            }
+        gpsProvider.startLocationProvider((location,source)->{
+            lat = location.getLatitude();
+            lon = location.getLongitude();
         });
 
 
@@ -122,6 +118,18 @@ public class CheckAppService extends Service {
 
         locationThread.start();
 
+        Thread thread = new Thread(()->{
+            while(true){
+                try {
+                    Thread.sleep(5000);
+                    updateCoordinates();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        thread.start();
+
 
     }
 
@@ -145,6 +153,8 @@ public class CheckAppService extends Service {
 
     void updateCoordinates(){
 
+        SharedPreferences sharedPreferences = getSharedPreferences("Location_Data",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
 
@@ -152,13 +162,18 @@ public class CheckAppService extends Service {
 
         geoCoding = new Gson().fromJson(getRequestTask.message,GeoCoding.class);
 
-        json = example.sendCoordinates(lon, lat, userID,ampelState,geoCoding.address.road,Integer.parseInt(geoCoding.address.postcode),geoCoding.address.town,geoCoding.address.country);
 
+        json = example.sendCoordinates(lon, lat, userID,ampelState,geoCoding.address.road,Integer.parseInt(geoCoding.address.postcode),geoCoding.address.town,geoCoding.address.country);
+        editor.putString("postCode",geoCoding.address.postcode);
+        editor.putString("country",geoCoding.address.country);
+        editor.putString("road",geoCoding.address.road);
+        editor.putString("town",geoCoding.address.town);
+        editor.apply();
 
         try {
              example.post("http://app.mluetzkendorf.xyz/api/koordinaten", json);
-            editor.putInt("currentState",0);
-            editor.apply();
+           stateDataEditor.putInt("currentState",0);
+            stateDataEditor.apply();
 
         } catch (IOException e) {
             e.printStackTrace();

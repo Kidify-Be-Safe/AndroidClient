@@ -3628,7 +3628,6 @@ int id textSpacerNoTitle 0x7f0801e9
 int id textStart 0x7f0801ea
 int id textTop 0x7f0801eb
 int id textView 0x7f0801ec
-int id textView2 0x7f0801ed
 int id text_input_end_icon 0x7f0801ee
 int id text_input_error_icon 0x7f0801ef
 int id text_input_start_icon 0x7f0801f0
@@ -3641,7 +3640,6 @@ int id textinput_suffix_text 0x7f0801f6
 int id time 0x7f0801f7
 int id title 0x7f0801f8
 int id titleDividerNoCustom 0x7f0801f9
-int id titleTextView 0x7f080231
 int id title_template 0x7f0801fa
 int id toggle 0x7f0801fb
 int id top 0x7f0801fc
