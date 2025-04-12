@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -50,7 +51,7 @@ public class PermissionActivity extends AppCompatActivity {
         usageButton = findViewById(R.id.usageButton);
 
         gpsoutButton.setOnClickListener(view -> {
-           if(!checkLocation()){
+           if(!checkLocation(this)){
                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUESTCODE);
            }
         });
@@ -82,7 +83,7 @@ public class PermissionActivity extends AppCompatActivity {
         super.onResume();
         setColorForButtons();
 
-        if(checkLocation() && hasUsageStatsPermission(PermissionActivity.this)){
+        if(checkLocation(this) && hasUsageStatsPermission(PermissionActivity.this)){
             Intent myIntent = new Intent(PermissionActivity.this,LoginActivity.class);
             myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(myIntent);
@@ -93,7 +94,7 @@ public class PermissionActivity extends AppCompatActivity {
 
     }
     void setColorForButtons(){
-        if (checkLocation()) {
+        if (checkLocation(this)) {
             gpsoutButton.setBackgroundColor(Color.GREEN);
         } else {
             gpsoutButton.setBackgroundColor(Color.RED);
@@ -113,12 +114,11 @@ public class PermissionActivity extends AppCompatActivity {
     }
 
 
-    boolean checkLocation(){
-        return ContextCompat.checkSelfPermission(PermissionActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(PermissionActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+     public static boolean checkLocation(Context context){
+        return ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
 
     }
-
 
 
 

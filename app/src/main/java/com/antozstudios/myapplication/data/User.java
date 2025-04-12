@@ -10,6 +10,8 @@ public class User {
     public String wohnort;
     public String strasse;
     public boolean ispremium;
-    public String passwort;
+    public String passwort_hash;
+
+    public String b_id_hash;
 
 }

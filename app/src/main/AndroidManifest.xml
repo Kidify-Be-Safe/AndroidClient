@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
 
 
@@ -54,10 +55,20 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
+
+
+        <activity
+            android:name=".activities.ObserveActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait" />
 
-        <!-- Service -->
+
         <service
             android:name=".activities.CheckAppService"/>
 

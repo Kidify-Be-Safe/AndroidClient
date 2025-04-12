@@ -54,63 +54,70 @@ public class LoginActivity extends AppCompatActivity {
         editor = userData.edit();
        int isLoggedIn = userData.getInt("isLoggedIn",0);
 
-       if(isLoggedIn==1){
-           startActivity(new Intent(LoginActivity.this,MainActivity.class));
-finish();
+       if(isLoggedIn==1) {
+           startActivity(new Intent(LoginActivity.this, MainActivity.class));
+           finish();
        }
+
+           loginButton.setOnClickListener((view)->{
+
+               if(Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches()){
+                   Thread thread = new Thread(()->{
+                       getRequestTask.executeRequest("http://app.mluetzkendorf.xyz/api/","benutzer?email=eq."+email.getText());
+                       User[] users = new Gson().fromJson(getRequestTask.message,User[].class);
+
+                       if(users.length==1){
+                           String hashPasswort = Hash.sha256(passwort.getText().toString());
+                           if(hashPasswort.equals(users[0].passwort_hash)){
+
+
+                               editor.putInt("b_id",users[0].id);
+                               editor.putString("lastEmail",users[0].email);
+                               editor.putString("lastPasswort",users[0].passwort_hash);
+                               editor.putInt("isLoggedIn",1);
+                               editor.putString("b_id_hash",users[0].b_id_hash);
+                               editor.apply();
+
+
+                               startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                           }else{
+                               runOnUiThread(()->{
+                                   Toast.makeText(this,"Passwort ist falsch!",Toast.LENGTH_LONG).show();
+                               });
+                           }
+                       }else{
+                           runOnUiThread(()->{
+                               Toast.makeText(this,"Nutzer nicht gefunden!",Toast.LENGTH_LONG).show();
+                           });
+                       }
+
+
+
+                   });
+                   thread.start();
+               }
+
+
+
+
+
+           });
+
+
+
+           signUpButton.setOnClickListener((view)->{
+
+               startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
+           });
+
+
+
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        loginButton.setOnClickListener((view)->{
-
-            if(Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches()){
-                Thread thread = new Thread(()->{
-                    getRequestTask.executeRequest("http://app.mluetzkendorf.xyz/api/","benutzer?email=eq."+email.getText().toString());
-                    User[] users = new Gson().fromJson(getRequestTask.message,User[].class);
-
-                    if(users.length>0){
-                        String hashPasswort = Hash.sha256(passwort.getText().toString());
-                        if(hashPasswort.equals(users[0].passwort)){
-
-
-                            editor.putInt("b_id",users[0].id);
-                            editor.putString("lastEmail",users[0].email);
-                            editor.putString("lastPasswort",users[0].passwort);
-                            editor.putInt("isLoggedIn",1);
-                            editor.apply();
-
-
-                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                        }else{
-                            runOnUiThread(()->{
-                                Toast.makeText(this,"Passwort ist falsch!",Toast.LENGTH_LONG).show();
-                            });
-                        }
-                    }else{
-                        runOnUiThread(()->{
-                            Toast.makeText(this,"Nutzer nicht gefunden!",Toast.LENGTH_LONG).show();
-                        });
-                    }
-
-
-
-                });
-                thread.start();
-            }
-
-
-
-
-
-        });
-
-        signUpButton.setOnClickListener((view)->{
-
-            startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
-        });
 
     }
 

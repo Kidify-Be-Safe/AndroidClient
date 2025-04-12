@@ -1318,6 +1318,16 @@ attr windowNoTitle
 attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
+attr zxing_framing_rect_height
+attr zxing_framing_rect_width
+attr zxing_possible_result_points
+attr zxing_preview_scaling_strategy
+attr zxing_result_view
+attr zxing_scanner_layout
+attr zxing_use_texture_view
+attr zxing_viewfinder_laser
+attr zxing_viewfinder_laser_visibility
+attr zxing_viewfinder_mask
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
 bool mtrl_btn_textappearance_all_caps
@@ -2101,6 +2111,16 @@ color vector_tint_color
 color vector_tint_theme_color
 color white
 color yellow
+color zxing_custom_possible_result_points
+color zxing_custom_result_view
+color zxing_custom_viewfinder_laser
+color zxing_custom_viewfinder_mask
+color zxing_possible_result_points
+color zxing_result_view
+color zxing_status_text
+color zxing_transparent
+color zxing_viewfinder_laser
+color zxing_viewfinder_mask
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -3211,6 +3231,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id barcodeView
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3251,7 +3272,6 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
-id close_button
 id closest
 id collapseActionView
 id compose_view_saveable_id_tag
@@ -3265,6 +3285,7 @@ id contentPanel
 id contiguous
 id continuousVelocity
 id coordinator
+id copyButton
 id cos
 id counterclockwise
 id countryTextView
@@ -3349,6 +3370,7 @@ id greenButton
 id group_divider
 id grouping
 id groups
+id hashTextView
 id header_title
 id hide_ime_id
 id hide_in_inspector_tag
@@ -3365,7 +3387,6 @@ id ignore
 id ignoreRequest
 id image
 id imageIcon
-id image_icon
 id immediateStop
 id included
 id indeterminate
@@ -3419,7 +3440,6 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id matrix
-id maxSpeed
 id media_actions
 id message
 id middle
@@ -3514,12 +3534,10 @@ id postCodeTextView
 id postLayout
 id postleitzahlInput
 id pressed
-id profileName
 id progress_circular
 id progress_horizontal
 id radio
 id ratio
-id readNotification
 id rectangles
 id redButton
 id report_drawn
@@ -3532,17 +3550,16 @@ id right_side
 id roadTextView
 id rounded
 id row_index_key
-id saveData
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
 id scale
+id scanButton
 id screen
 id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
-id scrollView2
 id scrollView3
 id scrollable
 id search_badge
@@ -3563,12 +3580,8 @@ id settings
 id sharedValueSet
 id sharedValueUnset
 id shortcut
-id showApps
-id showAppsLin
-id showAppsScrollView
 id showCustom
 id showHome
-id showNotification
 id showTitle
 id signUpButton
 id sin
@@ -3606,7 +3619,6 @@ id submenuarrow
 id submitButton
 id submit_area
 id supportScrollUp
-id sw
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3629,6 +3641,7 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
+id textView4
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3683,6 +3696,19 @@ id wrapped_composition_tag
 id x_left
 id x_right
 id yellowButton
+id zxing_back_button
+id zxing_barcode_scanner
+id zxing_barcode_surface
+id zxing_camera_closed
+id zxing_camera_error
+id zxing_decode
+id zxing_decode_failed
+id zxing_decode_succeeded
+id zxing_possible_result_points
+id zxing_preview_failed
+id zxing_prewiew_size_ready
+id zxing_status_view
+id zxing_viewfinder_view
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -3801,8 +3827,6 @@ layout activity_blockapp
 layout activity_login
 layout activity_main
 layout activity_permission
-layout appmanager
-layout beispiel
 layout bonuspack_bubble
 layout bottom_sheet
 layout custom_dialog
@@ -3874,7 +3898,6 @@ layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
 layout mtrl_search_bar
 layout mtrl_search_view
-layout mybutton
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -3890,15 +3913,19 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout observe_activity
 layout profile_fragment
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout signupactivity
 layout support_simple_spinner_dropdown_item
+layout zxing_barcode_scanner
+layout zxing_capture
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
+raw zxing_beep
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -3928,9 +3955,11 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string about
 string about_message
+string andere_id_scannen
 string androidx_startup
 string app_name
 string app_profil_erstellen
+string app_version
 string appbar_scrolling_view_behavior
 string apps_ausw_hlen
 string apps_bockieren
@@ -3977,6 +4006,7 @@ string compass
 string cyclemap
 string default_error_message
 string default_popup_window_title
+string define_zxingandroidembedded
 string dropdown_menu
 string einstellungen
 string error_a11y_label
@@ -4002,11 +4032,21 @@ string hide_bottom_view_on_scroll_behavior
 string hier_w_hlst_du_aus_welche_apps_von_der_sperre_betroffen_sein_sollen
 string hills
 string icon_content_description
+string id_kopieren
 string in_progress
 string indeterminate
 string item_view_role_description
 string kehre_zur_ck
 string lib_name
+string library_zxingandroidembedded_author
+string library_zxingandroidembedded_authorWebsite
+string library_zxingandroidembedded_isOpenSource
+string library_zxingandroidembedded_libraryDescription
+string library_zxingandroidembedded_libraryName
+string library_zxingandroidembedded_libraryVersion
+string library_zxingandroidembedded_libraryWebsite
+string library_zxingandroidembedded_licenseId
+string library_zxingandroidembedded_repositoryLink
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium
 string m3_ref_typeface_brand_regular
@@ -4158,6 +4198,10 @@ string topo
 string unknown
 string vorname
 string zentrieren
+string zxing_app_name
+string zxing_button_ok
+string zxing_msg_camera_framework_bug
+string zxing_msg_default_status
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -5284,6 +5328,7 @@ style Widget_MaterialComponents_Toolbar_PrimarySurface
 style Widget_MaterialComponents_Toolbar_Surface
 style Widget_MaterialComponents_Tooltip
 style Widget_Support_CoordinatorLayout
+style zxing_CaptureTheme
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth
@@ -5437,6 +5482,9 @@ styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration ifTagNotSet ifTagSet motionInterpolator motionTarget onStateTransition pathMotionArc setsTag transitionDisable upDuration viewTransitionMode
 styleable include constraintSet
+styleable zxing_camera_preview zxing_framing_rect_height zxing_framing_rect_width zxing_preview_scaling_strategy zxing_use_texture_view
+styleable zxing_finder zxing_possible_result_points zxing_result_view zxing_viewfinder_laser zxing_viewfinder_laser_visibility zxing_viewfinder_mask
+styleable zxing_view zxing_scanner_layout
 xml backup_rules
 xml data_extraction_rules
 xml network_security_config

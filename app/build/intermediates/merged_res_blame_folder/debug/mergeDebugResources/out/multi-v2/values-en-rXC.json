@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-49:/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-50:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\cf407f317de7e3f3dd81a9749af06e5f\\transformed\\foundation-release\\res\\values-en-rXC\\values-en-rXC.xml",

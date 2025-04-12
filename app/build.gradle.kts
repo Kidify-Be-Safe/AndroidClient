@@ -63,6 +63,13 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics-buildtools:3.0.3")
     implementation ("com.google.code.gson:gson:2.10.1")
     implementation ("com.fasterxml.jackson.core:jackson-databind:2.12.3");
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:2.0.2")
+    implementation ("androidx.multidex:multidex:2.0.1")
+
+
+
+
 
 
 }

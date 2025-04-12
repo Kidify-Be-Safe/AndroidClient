@@ -56,15 +56,23 @@ public class PostHttp {
 
         return "{"
                 + "\"email\":\"" + email + "\","
-                +"\"name\":\"" + vorname + "\","
+                +"\"vorname\":\"" + vorname + "\","
                 +"\"nachname\":\"" + nachname + "\","
-                +"\"passwort\":\"" + passwort + "\","
+                +"\"passwort_hash\":\"" + passwort + "\","
                 +"\"wohnort\":\"" + wohnort + "\","
                 + "\"strasse\":\"" + strasse + "\","
                 + "\"b_id_hash\":\"" + HASH + "\","
                 + "\"plz\":" + plz
                 + "}";
     }
+
+    public String sendFriend(int b_id, int f_id) {
+        return "{"
+                + "\"b_id\":" + b_id + ","
+                + "\"f_id\":" + f_id
+                + "}";
+    }
+
 
 
 

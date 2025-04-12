@@ -1,31 +1,17 @@
 package com.antozstudios.myapplication.util;
 
-import static android.content.Context.ACTIVITY_SERVICE;
-
-import static androidx.core.content.ContextCompat.getSystemService;
-
-import android.Manifest;
-import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.AppOpsManager;
 import android.app.usage.UsageEvents;
-import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
-import android.util.Log;
-
-import com.antozstudios.myapplication.activities.AppManagerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class GetApps {
 

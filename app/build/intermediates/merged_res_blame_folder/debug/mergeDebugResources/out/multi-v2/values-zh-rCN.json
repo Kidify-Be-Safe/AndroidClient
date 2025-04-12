@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-49:/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-50:/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\f888187bb23784834319f63d9b4e89dc\\transformed\\ui-release\\res\\values-zh-rCN\\values-zh-rCN.xml",
@@ -88,6 +88,23 @@
                         "startOffsets": "3197,3289,3390,3484,3578,3671,3765,9408",
                         "endColumns": "91,100,93,93,92,93,95,100",
                         "endOffsets": "3284,3385,3479,3573,3666,3760,3856,9504"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\e5c1e722b041e9385313022641b5e6b2\\transformed\\zxing-android-embedded-4.3.0\\res\\values-zh-rCN\\values-zh-rCN.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,104,151,238",
+                        "endColumns": "48,46,86,68",
+                        "endOffsets": "99,146,233,302"
+                    },
+                    "to": {
+                        "startLines": "129,130,131,132",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "9922,9971,10018,10105",
+                        "endColumns": "48,46,86,68",
+                        "endOffsets": "9966,10013,10100,10169"
                     }
                 }
             ]

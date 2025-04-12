@@ -7,6 +7,7 @@
     <color name="red">#F44336</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFEB3B</color>
+    <string name="andere_id_scannen">Andere ID scannen</string>
     <string name="app_name">OnFlow</string>
     <string name="app_profil_erstellen">App-Profil erstellen</string>
     <string name="apps_ausw_hlen">Apps auswählen</string>
@@ -21,6 +22,7 @@
     <string name="einstellungen">Einstellungen</string>
     <string name="ger_tenutzungsverlauf_und_statistiken">Gerätenutzungsverlauf und Statistiken.</string>
     <string name="hier_w_hlst_du_aus_welche_apps_von_der_sperre_betroffen_sein_sollen">Hier wählst du aus, welche Apps von der Sperre betroffen sein sollen.</string>
+    <string name="id_kopieren">ID kopieren</string>
     <string name="kehre_zur_ck">Kehre zurück</string>
     <string name="maximale_geschwindigkeit">Maximale Geschwindigkeit</string>
     <string name="nachname">Nachname</string>

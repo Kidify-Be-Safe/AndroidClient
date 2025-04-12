@@ -118,17 +118,7 @@ public class CheckAppService extends Service {
 
         locationThread.start();
 
-        Thread thread = new Thread(()->{
-            while(true){
-                try {
-                    Thread.sleep(5000);
-                    updateCoordinates();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        thread.start();
+
 
 
     }

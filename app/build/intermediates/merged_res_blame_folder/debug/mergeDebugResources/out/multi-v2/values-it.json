@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-49:/values-it/values-it.xml",
+            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-50:/values-it/values-it.xml",
             "map": [
                 {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\22fef54c90000cc71d687c25da249161\\transformed\\osmdroid-android-6.1.18\\res\\values-it\\values-it.xml",
@@ -52,6 +52,23 @@
                         "startOffsets": "3595,3693,3795,3894,3996,4105,4212,11035",
                         "endColumns": "97,101,98,101,108,106,129,100",
                         "endOffsets": "3688,3790,3889,3991,4100,4207,4337,11131"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\e5c1e722b041e9385313022641b5e6b2\\transformed\\zxing-android-embedded-4.3.0\\res\\values-it\\values-it.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,114,161,334",
+                        "endColumns": "58,46,172,128",
+                        "endOffsets": "109,156,329,458"
+                    },
+                    "to": {
+                        "startLines": "137,138,139,140",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "11691,11750,11797,11970",
+                        "endColumns": "58,46,172,128",
+                        "endOffsets": "11745,11792,11965,12094"
                     }
                 },
                 {

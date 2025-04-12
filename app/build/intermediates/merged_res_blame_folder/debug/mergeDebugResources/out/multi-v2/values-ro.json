@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-49:/values-ro/values-ro.xml",
+            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-50:/values-ro/values-ro.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\e5c1e722b041e9385313022641b5e6b2\\transformed\\zxing-android-embedded-4.3.0\\res\\values-ro\\values-ro.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,114,166,275",
+                        "endColumns": "58,51,108,116",
+                        "endOffsets": "109,161,270,387"
+                    },
+                    "to": {
+                        "startLines": "130,131,132,133",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "11279,11338,11390,11499",
+                        "endColumns": "58,51,108,116",
+                        "endOffsets": "11333,11385,11494,11611"
+                    }
+                },
                 {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\cf407f317de7e3f3dd81a9749af06e5f\\transformed\\foundation-release\\res\\values-ro\\values-ro.xml",
                     "from": {

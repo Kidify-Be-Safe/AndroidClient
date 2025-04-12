@@ -2,16 +2,20 @@ package com.antozstudios.myapplication.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.antozstudios.myapplication.R;
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     TextView roadTextView;
 
 
-    Thread thread;
+
 
     GetRequestTask getRequestTask;
 
@@ -81,15 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        runOnUiThread(()->{
-            SharedPreferences locationData = getSharedPreferences("Location_Data",MODE_PRIVATE);
-            postCodeTextView.setText(locationData.getString("postCode",""));
-            countryTextView.setText(locationData.getString("country",""));
-            roadTextView.setText(locationData.getString("road",""));
-            townTextView.setText(locationData.getString("town",""));
 
-
-        });
     }
 
     void setupOSM() {
@@ -137,6 +133,11 @@ public class MainActivity extends AppCompatActivity {
 
         centerButton.setOnClickListener((view)->{
             mMyLocationOverlay.enableFollowLocation();
+
+        });
+
+        observeButton.setOnClickListener((view) -> {
+        startActivity(new Intent(MainActivity.this,ObserveActivity.class));
         });
 
 
@@ -148,6 +149,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mMap.onResume();
+
+        runOnUiThread(()->{
+            SharedPreferences locationData = getSharedPreferences("Location_Data",MODE_PRIVATE);
+            postCodeTextView.setText(locationData.getString("postCode",""));
+            countryTextView.setText(locationData.getString("country",""));
+            roadTextView.setText(locationData.getString("road",""));
+            townTextView.setText(locationData.getString("town",""));
+
+            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+
+            if (!isGPSEnabled) {
+                // Zeige eine Benachrichtigung oder Dialog, um den Nutzer aufzufordern, GPS zu aktivieren
+                new AlertDialog.Builder(this)
+                        .setMessage("GPS ist deaktiviert. Möchten Sie GPS aktivieren?")
+                        .setCancelable(false)
+                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));  // Öffnet die GPS-Einstellungen
+                            }
+                        })
+                        .setNegativeButton("Nein", null)
+                        .show();
+            }
+
+        });
 
 
 

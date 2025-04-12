@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-49:/values-zh-rTW/values-zh-rTW.xml",
+            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-50:/values-zh-rTW/values-zh-rTW.xml",
             "map": [
                 {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\f888187bb23784834319f63d9b4e89dc\\transformed\\ui-release\\res\\values-zh-rTW\\values-zh-rTW.xml",
@@ -69,6 +69,23 @@
                         "startOffsets": "3203,3295,3394,3488,3582,3675,3768,9424",
                         "endColumns": "91,98,93,93,92,92,95,100",
                         "endOffsets": "3290,3389,3483,3577,3670,3763,3859,9520"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\e5c1e722b041e9385313022641b5e6b2\\transformed\\zxing-android-embedded-4.3.0\\res\\values-zh-rTW\\values-zh-rTW.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,104,151,244",
+                        "endColumns": "48,46,92,69",
+                        "endOffsets": "99,146,239,309"
+                    },
+                    "to": {
+                        "startLines": "129,130,131,132",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "9945,9994,10041,10134",
+                        "endColumns": "48,46,92,69",
+                        "endOffsets": "9989,10036,10129,10199"
                     }
                 },
                 {
