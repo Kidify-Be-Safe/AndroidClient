@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
         double maxZoom = 22.0;
         mMap.setMaxZoomLevel(maxZoom);
-        double minZoom = 5;
+        double minZoom = 7;
         mMap.setMinZoomLevel(minZoom);
         mMyLocationOverlay = new MyLocationNewOverlay(mMap);
         mMyLocationOverlay.setPersonIcon(null);
@@ -174,16 +174,38 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences userData = getSharedPreferences("User_Data",Context.MODE_PRIVATE);
 
         Thread requestFriendData = new Thread(()->{
-            getFriendData.executeRequest("http://app.mluetzkendorf.xyz/api","/freund_daten?b_id=eq. "+userData.getInt("b_id",0));
 
-            FriendData[] friendData = new Gson().fromJson(getFriendData.message, FriendData[].class);
 
-            for(int i =0;i<friendData.length;i++){
-                Marker marker = new Marker(mMap);
-                marker.setPosition(new GeoPoint(friendData[i].breitengrad,friendData[i].laengengrad));
-                mMap.getOverlays().add(marker);
+
+            while(true){
+
+                getFriendData.executeRequest("http://app.mluetzkendorf.xyz/api","/freund_daten?b_id=eq."+userData.getInt("b_id",0));
+
+                FriendData[] friendData = new Gson().fromJson(getFriendData.message, FriendData[].class);
+
+                runOnUiThread(()->{
+                    for(int i =0;i<friendData.length;i++){
+                        Marker marker = new Marker(mMap);
+                        marker.setPosition(new GeoPoint(friendData[i].breitengrad,friendData[i].laengengrad));
+                        mMap.getOverlays().add(marker);
+                        mMap.invalidate();
+                    }
+
+                });
+
+                try {
+                    Thread.sleep(5000);
+
+
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
 
             }
+
+
+
 
 
         });
