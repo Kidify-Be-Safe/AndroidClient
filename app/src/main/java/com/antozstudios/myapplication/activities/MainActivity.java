@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
         double maxZoom = 22.0;
         mMap.setMaxZoomLevel(maxZoom);
-        double minZoom = 15;
+        double minZoom = 5;
         mMap.setMinZoomLevel(minZoom);
         mMyLocationOverlay = new MyLocationNewOverlay(mMap);
         mMyLocationOverlay.setPersonIcon(null);
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences userData = getSharedPreferences("User_Data",Context.MODE_PRIVATE);
 
         Thread requestFriendData = new Thread(()->{
-            getFriendData.executeRequest("http://app.mluetzkendorf.xyz/api/","freund_hinzufuegen?b_id=eq."+userData.getInt("b_id",0));
+            getFriendData.executeRequest("http://app.mluetzkendorf.xyz/api","/freund_daten?b_id=eq. "+userData.getInt("b_id",0));
 
             FriendData[] friendData = new Gson().fromJson(getFriendData.message, FriendData[].class);
 
