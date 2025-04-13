@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Looper;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import com.antozstudios.myapplication.R;
 import com.antozstudios.myapplication.data.User;
 import com.antozstudios.myapplication.util.GetRequestTask;
 import com.antozstudios.myapplication.util.PostHttp;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -45,73 +47,36 @@ public class ObserveActivity extends AppCompatActivity {
 
     Button copyButton;
 
+    TextInputEditText idInput;
+    Button idButton;
+
     GetRequestTask id_Request = new GetRequestTask();
     PostHttp postHttp = new PostHttp();
     private final ActivityResultLauncher<ScanOptions> barcodeLauncher =
             registerForActivityResult(new ScanContract(), result -> {
                 if (result.getContents() != null) {
 
-                    Thread getID = new Thread(()->{
-                        id_Request.executeRequest("http://app.mluetzkendorf.xyz/api/benutzer","?b_id_hash=eq."+"f4a3cffbeb7ad9883d7896522f75760f7d86db93ef1cc639be6be7077e4bff17");
-
-                    });
-                    getID.start();
-
-                    Thread post= new Thread(()->{
-
-
-                        try {
-                            getID.join();
-                            SharedPreferences sharedPreferences = getSharedPreferences("User_State",0);
-                            User[] users = new Gson().fromJson(id_Request.message,User[].class);
-
-                            if(users.length==1){
-                                String tempFreundesliste = postHttp.sendFriend(sharedPreferences.getInt("b_id",0),users[0].id);
-
-                                try {
-                                    postHttp.post("http://app.mluetzkendorf.xyz/api/freundesliste",tempFreundesliste);
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                Looper.prepare();
-                                Toast.makeText(this,"User gefunden.", LENGTH_LONG).show();
-                                Looper.loop();
-                            }else{
-                                Looper.prepare();
-                                Toast.makeText(this,"User nicht gefunden.", LENGTH_LONG).show();
-                                Looper.loop();
-                            }
-
-
-
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-
-                    });
-
-                    post.start();
-
-
-
-
-
-
+                   addUser(result.getContents());
 
                 }
             });
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        );
+
         setContentView(R.layout.observe_activity);
     hashTextView = findViewById(R.id.hashTextView);
         SharedPreferences sharedPreferences = getSharedPreferences("User_Data",MODE_PRIVATE);
         tempHASH = sharedPreferences.getString("b_id_hash","");
 scanButton = findViewById(R.id.scanButton);
 copyButton = findViewById(R.id.copyButton);
-
+idInput = findViewById(R.id.idInput);
+idButton = findViewById(R.id.idButton);
     hashTextView.setText(tempHASH);
 
     copyButton.setOnClickListener((view)->{
@@ -148,7 +113,9 @@ copyButton = findViewById(R.id.copyButton);
             barcodeLauncher.launch(options); // Startet den Scanner mit den definierten Optionen
         });
 
-
+idButton.setOnClickListener((view)->{
+    addUser(idInput.getText().toString());
+});
 
     }
 
@@ -157,4 +124,54 @@ copyButton = findViewById(R.id.copyButton);
         super.onResume();
 
     }
+
+    void addUser(String value){
+        Thread getID = new Thread(()->{
+            id_Request.executeRequest("http://app.mluetzkendorf.xyz/api/benutzer","?b_id_hash=eq."+value);
+
+        });
+        getID.start();
+
+        Thread post= new Thread(()->{
+
+
+            try {
+                getID.join();
+                SharedPreferences sharedPreferences = getSharedPreferences("User_Data",MODE_PRIVATE);
+                User[] users = new Gson().fromJson(id_Request.message,User[].class);
+
+                if(users.length==1){
+                    String tempFreundesliste = postHttp.sendFriend(sharedPreferences.getInt("b_id",0),users[0].id);
+
+                    try {
+                        postHttp.post("http://app.mluetzkendorf.xyz/api/freundesliste",tempFreundesliste);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Looper.prepare();
+                    Toast.makeText(this,"User gefunden.", LENGTH_LONG).show();
+                    Looper.loop();
+                }else{
+                    Looper.prepare();
+                    Toast.makeText(this,"User nicht gefunden.", LENGTH_LONG).show();
+                    Looper.loop();
+                }
+
+
+
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
+
+        post.start();
+
+
+
+
+finish();
+
+    }
+
 }

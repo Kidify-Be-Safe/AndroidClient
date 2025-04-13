@@ -41,8 +41,14 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        );
+
         setContentView(R.layout.activity_login);
         getRequestTask = new GetRequestTask();
+
+
 
 
         email = findViewById(R.id.inputField_Email);

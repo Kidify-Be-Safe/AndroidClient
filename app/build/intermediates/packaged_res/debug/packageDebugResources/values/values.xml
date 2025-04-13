@@ -2,12 +2,13 @@
 <resources>
     <color name="black">#000000</color>
     <color name="blue">#1862B1</color>
-    <color name="gray">#515151</color>
+    <color name="brightGray">#878181</color>
+    <color name="gray">#161515</color>
     <color name="green">#5FF436</color>
     <color name="red">#F44336</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFEB3B</color>
-    <string name="andere_id_scannen">Andere ID scannen</string>
+    <string name="andere_id_scannen">ID scannen</string>
     <string name="app_name">OnFlow</string>
     <string name="app_profil_erstellen">App-Profil erstellen</string>
     <string name="apps_ausw_hlen">Apps auswählen</string>
@@ -33,10 +34,15 @@
     <string name="standort_ermitteln">Standort ermitteln</string>
     <string name="vorname">Vorname</string>
     <string name="zentrieren">Zentrieren</string>
-    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
-        
-        
+    <style name="MyTheme" parent="Theme.AppCompat.NoActionBar">
+
+        <item name="colorPrimary">@color/black </item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="backgroundColor">@color/black</item>
+        <item name="passwordToggleEnabled"> false</item>
+
+
 
     </style>
-    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication"/>
+    <style name="Theme.MyApplication" parent="MyTheme"/>
 </resources>

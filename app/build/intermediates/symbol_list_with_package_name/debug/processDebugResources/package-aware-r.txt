@@ -1366,6 +1366,7 @@ color background_material_dark
 color background_material_light
 color black
 color blue
+color brightGray
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -1380,6 +1381,7 @@ color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
+color curved_color
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
 color design_dark_default_color_background
@@ -3382,6 +3384,8 @@ id horizontalScrollView
 id horizontal_only
 id icon
 id icon_group
+id idButton
+id idInput
 id ifRoom
 id ignore
 id ignoreRequest
@@ -3413,6 +3417,7 @@ id linearLayout
 id listMode
 id list_item
 id loginButton
+id loginTitle
 id m3_side_sheet
 id mapview
 id marquee
@@ -3548,6 +3553,7 @@ id rightToLeft
 id right_icon
 id right_side
 id roadTextView
+id roundButton
 id rounded
 id row_index_key
 id save_non_transition_alpha
@@ -3560,7 +3566,9 @@ id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
+id scrollView2
 id scrollView3
+id scrollView4
 id scrollable
 id search_badge
 id search_bar
@@ -4322,7 +4330,6 @@ style Base_Theme_MaterialComponents_Light_Dialog_Bridge
 style Base_Theme_MaterialComponents_Light_Dialog_FixedSize
 style Base_Theme_MaterialComponents_Light_Dialog_MinWidth
 style Base_Theme_MaterialComponents_Light_DialogWhenLarge
-style Base_Theme_MyApplication
 style Base_ThemeOverlay_AppCompat
 style Base_ThemeOverlay_AppCompat_ActionBar
 style Base_ThemeOverlay_AppCompat_Dark
@@ -4516,6 +4523,7 @@ style MaterialAlertDialog_MaterialComponents_Title_Panel
 style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked
 style MaterialAlertDialog_MaterialComponents_Title_Text
 style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked
+style MyTheme
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents

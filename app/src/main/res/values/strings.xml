@@ -23,6 +23,6 @@
     <string name="beobachten">Beobachten</string>
     <string name="nachname">Nachname</string>
     <string name="vorname">Vorname</string>
-    <string name="andere_id_scannen">Andere ID scannen</string>
+    <string name="andere_id_scannen">ID scannen</string>
     <string name="id_kopieren">ID kopieren</string>
 </resources>

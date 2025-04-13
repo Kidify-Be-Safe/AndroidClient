@@ -6,10 +6,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -20,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.antozstudios.myapplication.R;
 
+import com.antozstudios.myapplication.data.FriendData;
 import com.antozstudios.myapplication.data.GeoCoding;
 import com.antozstudios.myapplication.util.CustomTileFactory;
 import com.antozstudios.myapplication.util.GetRequestTask;
@@ -29,6 +33,7 @@ import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
@@ -62,6 +67,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        );
+
         setContentView(R.layout.activity_main);
         getRequestTask = new GetRequestTask();
 
@@ -101,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
         double maxZoom = 22.0;
         mMap.setMaxZoomLevel(maxZoom);
-        double minZoom = 10.0;
+        double minZoom = 15;
         mMap.setMinZoomLevel(minZoom);
         mMyLocationOverlay = new MyLocationNewOverlay(mMap);
         mMyLocationOverlay.setPersonIcon(null);
@@ -121,14 +135,29 @@ public class MainActivity extends AppCompatActivity {
         greenStateButton.setOnClickListener((view)->{
           editor.putInt("currentState",1);
           editor.apply();
+            new AlertDialog.Builder(MainActivity.this)
+                    .setMessage("Grünes Signal wurde verschickt.")
+                    .setCancelable(false)
+                    .setPositiveButton("Ok", null)
+                    .show();
         });
         yellowStateButton.setOnClickListener((view)->{
             editor.putInt("currentState",2);
             editor.apply();
+            new AlertDialog.Builder(MainActivity.this)
+                    .setMessage("Gelbes Signal wurde verschickt.")
+                    .setCancelable(false)
+                    .setPositiveButton("Ok", null)
+                    .show();
         });
         redStateButton.setOnClickListener((view)->{
             editor.putInt("currentState",3);
             editor.apply();
+            new AlertDialog.Builder(MainActivity.this)
+                    .setMessage("Rotes Signal wurde verschickt.")
+                    .setCancelable(false)
+                    .setPositiveButton("Ok", null)
+                    .show();
         });
 
         centerButton.setOnClickListener((view)->{
@@ -139,6 +168,26 @@ public class MainActivity extends AppCompatActivity {
         observeButton.setOnClickListener((view) -> {
         startActivity(new Intent(MainActivity.this,ObserveActivity.class));
         });
+
+
+        GetRequestTask getFriendData = new GetRequestTask();
+        SharedPreferences userData = getSharedPreferences("User_Data",Context.MODE_PRIVATE);
+
+        Thread requestFriendData = new Thread(()->{
+            getFriendData.executeRequest("http://app.mluetzkendorf.xyz/api/","freund_hinzufuegen?b_id=eq."+userData.getInt("b_id",0));
+
+            FriendData[] friendData = new Gson().fromJson(getFriendData.message, FriendData[].class);
+
+            for(int i =0;i<friendData.length;i++){
+                Marker marker = new Marker(mMap);
+                marker.setPosition(new GeoPoint(friendData[i].breitengrad,friendData[i].laengengrad));
+                mMap.getOverlays().add(marker);
+
+            }
+
+
+        });
+        requestFriendData.start();
 
 
 
@@ -157,23 +206,11 @@ public class MainActivity extends AppCompatActivity {
             roadTextView.setText(locationData.getString("road",""));
             townTextView.setText(locationData.getString("town",""));
 
-            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
 
-            if (!isGPSEnabled) {
-                // Zeige eine Benachrichtigung oder Dialog, um den Nutzer aufzufordern, GPS zu aktivieren
-                new AlertDialog.Builder(this)
-                        .setMessage("GPS ist deaktiviert. Möchten Sie GPS aktivieren?")
-                        .setCancelable(false)
-                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));  // Öffnet die GPS-Einstellungen
-                            }
-                        })
-                        .setNegativeButton("Nein", null)
-                        .show();
-            }
+
+
+
 
         });
 

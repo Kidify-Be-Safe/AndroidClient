@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -35,6 +36,9 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        );
         setContentView(R.layout.signupactivity);
 postHttp = new PostHttp();
         // Initialisieren der Felder
@@ -55,13 +59,13 @@ postHttp = new PostHttp();
 
             Thread thread = new Thread(() -> {
                 // Hole Eingabewerte
-                String tempEmail = email.getText().toString();
+                String tempEmail = email.getText().toString().toLowerCase();
                 String tempPasswort = passwort.getText().toString();
                 String tempPlz = plz.getText().toString();
-                String tempVorname = vorname.getText().toString();
-                String tempNachname = nachname.getText().toString();
-                String tempWohnort = wohnort.getText().toString();
-                String tempStrasse = strasse.getText().toString();
+                String tempVorname = vorname.getText().toString().toLowerCase();
+                String tempNachname = nachname.getText().toString().toLowerCase();
+                String tempWohnort = wohnort.getText().toString().toLowerCase();
+                String tempStrasse = strasse.getText().toString().toLowerCase();
 
                 boolean isValidEmail = Patterns.EMAIL_ADDRESS.matcher(tempEmail).matches();
 

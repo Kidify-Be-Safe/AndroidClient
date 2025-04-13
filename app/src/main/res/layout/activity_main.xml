@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAlignment="center">
@@ -41,27 +42,28 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/centerButton"
-                android:layout_width="145dp"
-                android:layout_height="70dp"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/black"
                 android:text="@string/zentrieren"
                 android:textColor="@color/white" />
 
             <TextClock
                 android:layout_width="85dp"
+                android:layout_height="35dp"
                 android:gravity="center"
-                android:layout_height="35dp" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/observeButton"
-                android:layout_width="145dp"
-                android:layout_height="70dp"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/white"
                 android:text="@string/beobachten"
                 android:textColor="@color/black" />
@@ -70,54 +72,60 @@
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="80dp"
-        android:layout_height="219dp"
+        android:layout_width="63dp"
+        android:layout_height="156dp"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.97"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.00999999">
+        app:layout_constraintVertical_bias="0.97">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/curved"
+            android:backgroundTint="@color/gray"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/greenButton"
-                android:layout_width="60dp"
-                android:layout_height="70dp"
+                android:id="@+id/redButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/green" />
+                android:background="@drawable/round"
+                android:backgroundTint="@color/red" />
 
             <Button
                 android:id="@+id/yellowButton"
-                android:layout_width="60dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:background="@drawable/round"
                 android:backgroundTint="@color/yellow" />
 
+
             <Button
-                android:id="@+id/redButton"
-                android:layout_width="60dp"
-                android:layout_height="70dp"
+                android:id="@+id/greenButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/red" />
+                android:background="@drawable/round"
+                android:backgroundTint="@color/green" />
         </LinearLayout>
     </ScrollView>
 
     <ScrollView
-        android:layout_width="271dp"
-        android:layout_height="207dp"
+        android:id="@+id/scrollView4"
+        android:layout_width="176dp"
+        android:layout_height="114dp"
         android:background="@drawable/curved"
+        android:backgroundTint="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
-        app:layout_constraintEnd_toStartOf="@+id/scrollView3"
-        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.00999999">
+        app:layout_constraintVertical_bias="0.07999998">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -129,7 +137,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="40dp" />
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/roadTextView"
@@ -137,25 +146,49 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="35dp" />
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/townTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="30dp" />
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/postCodeTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:textSize="20dp" />
 
 
         </LinearLayout>
     </ScrollView>
+
+
+    <ImageButton
+        android:id="@+id/roundButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round"
+        android:scaleType="centerInside"
+        android:src="@drawable/settings_icon"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toStartOf="@+id/scrollView4"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

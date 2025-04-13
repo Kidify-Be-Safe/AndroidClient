@@ -74,7 +74,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/Theme.MyApplication" >
+        android:theme="@style/MyTheme" >
 
         <!-- Hauptaktivität -->
         <activity

@@ -3,68 +3,109 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/black"
     android:layout_height="match_parent">
+
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="404dp"
-        android:layout_height="68dp"
+        android:layout_width="275dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/curved"
+        android:backgroundTint="@color/black"
         android:gravity="center"
         android:text="Andere müssen zuerst deine ID hinzufügen, damit du sie beobachten kannst."
-        app:layout_constraintBottom_toTopOf="@+id/scanButton"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.49" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/barcodeView"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:layout_marginBottom="248dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.573"
-        app:srcCompat="@drawable/curved" />
-
+        app:srcCompat="@color/white" />
 
     <Button
         android:id="@+id/scanButton"
-        android:layout_width="207dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="19dp"
         android:backgroundTint="@color/black"
         android:text="@string/andere_id_scannen"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/barcodeView"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/hashTextView"
-        android:layout_width="337dp"
-        android:layout_height="73dp"
+        android:layout_width="374dp"
+        android:layout_height="58dp"
         android:layout_marginBottom="16dp"
+        android:background="@color/black"
         android:gravity="center"
-        android:background="@drawable/curved"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idInput"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/copyButton"
-        android:layout_width="127dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="19dp"
         android:backgroundTint="@color/white"
         android:text="@string/id_kopieren"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/barcodeView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/idInput"
+        android:layout_width="292dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/curved"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:hint="ID suchen"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barcodeView" />
+
+    <Button
+        android:id="@+id/idButton"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/black"
+        android:text="Suche starten"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/hashTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idInput"
+        app:layout_constraintVertical_bias="0.318"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

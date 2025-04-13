@@ -141,8 +141,8 @@
 75        android:supportsRtl="true"
 75-->C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:33:9-35
 76        android:testOnly="true"
-77        android:theme="@style/Theme.MyApplication" >
-77-->C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:34:9-51
+77        android:theme="@style/MyTheme" >
+77-->C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:34:9-39
 78
 79        <!-- Hauptaktivität -->
 80        <activity

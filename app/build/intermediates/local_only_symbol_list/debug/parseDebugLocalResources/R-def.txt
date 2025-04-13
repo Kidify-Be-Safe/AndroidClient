@@ -2,6 +2,8 @@ R_DEF: Internal format may change without notice
 local
 color black
 color blue
+color brightGray
+color curved_color
 color gray
 color green
 color red
@@ -28,11 +30,14 @@ id gpsButton
 id greenButton
 id hashTextView
 id horizontalScrollView
+id idButton
+id idInput
 id imageIcon
 id inputField_Email
 id inputField_Passwort
 id linearLayout
 id loginButton
+id loginTitle
 id mapview
 id nachnameInput
 id observeButton
@@ -42,8 +47,11 @@ id postleitzahlInput
 id redButton
 id returnButton
 id roadTextView
+id roundButton
 id scanButton
+id scrollView2
 id scrollView3
+id scrollView4
 id selectProfileSpinner
 id settings
 id signUpButton
@@ -92,7 +100,7 @@ string speichern
 string standort_ermitteln
 string vorname
 string zentrieren
-style Base.Theme.MyApplication
+style MyTheme
 style Theme.MyApplication
 xml backup_rules
 xml data_extraction_rules

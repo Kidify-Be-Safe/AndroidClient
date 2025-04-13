@@ -174,7 +174,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ha
 	android:allowBackup
 		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:28:9-35
 	android:theme
-		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:34:9-51
+		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:34:9-39
 	android:networkSecurityConfig
 		ADDED from C:\Users\haupt\Documents\GitHub\AndroidClient\app\src\main\AndroidManifest.xml:35:9-69
 	android:dataExtractionRules
