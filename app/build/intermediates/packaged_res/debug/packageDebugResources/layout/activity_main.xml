@@ -171,22 +171,37 @@
 
 
     <ImageButton
-        android:id="@+id/roundButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:id="@+id/settingsButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_gravity="center"
+
         android:background="@drawable/round"
         android:scaleType="centerInside"
         android:src="@drawable/settings_icon"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toStartOf="@+id/scrollView4"
-        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.10" />
 
 
+    <ImageButton
 
+        android:id="@+id/myObserverButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+
+        android:background="@drawable/round"
+        android:scaleType="centerInside"
+        android:src="@drawable/app_icon"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toEndOf="@+id/scrollView4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.90999997" />
 
 
 

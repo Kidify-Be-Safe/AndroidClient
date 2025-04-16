@@ -1,6 +1,7 @@
 package com.antozstudios.myapplication.activities;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.antozstudios.myapplication.R;
@@ -24,7 +26,7 @@ import java.io.IOException;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    // Lokale Variablen für die Eingabefelder
+
     private TextInputEditText email, passwort, vorname, nachname, wohnort, strasse, plz;
     private Button submit;
 
@@ -65,7 +67,7 @@ postHttp = new PostHttp();
                 String tempVorname = vorname.getText().toString().toLowerCase();
                 String tempNachname = nachname.getText().toString().toLowerCase();
                 String tempWohnort = wohnort.getText().toString().toLowerCase();
-                String tempStrasse = strasse.getText().toString().toLowerCase();
+                String tempStrasse = strasse.getText().toString().toLowerCase().trim();
 
                 boolean isValidEmail = Patterns.EMAIL_ADDRESS.matcher(tempEmail).matches();
 
@@ -86,8 +88,15 @@ postHttp = new PostHttp();
 
                         if (!isValidPassword(tempPasswort)) {
                             runOnUiThread(() -> {
-                                Toast.makeText(SignUpActivity.this, "Passwort ungültig.", Toast.LENGTH_LONG).show();
-                            });
+                                new AlertDialog.Builder(SignUpActivity.this)
+                                        .setTitle("Ungültiges Passwort")
+                                        .setMessage("Das Passwort muss mindestens 8 Zeichen lang sein und folgende Anforderungen erfüllen:\n\n" +
+                                                "- Mindestens ein Großbuchstabe\n" +
+                                                "- Mindestens eine Zahl\n" +
+                                                "- Mindestens ein Sonderzeichen (@$!%*?&)\n\n" +
+                                                "Bitte versuchen Sie es erneut.")
+                                        .setPositiveButton("OK", null)
+                                        .show();                            });
                         } else {
 
                             boolean isValidVorname = isValidText(tempVorname);
@@ -112,7 +121,11 @@ postHttp = new PostHttp();
                                     } else {
                                         if (!isValidStrasse) {
                                             runOnUiThread(() -> {
-                                                Toast.makeText(SignUpActivity.this, "Straße ungültig. Beispiel: Beispielstraße 19 oder Beispielstraße. 19", Toast.LENGTH_LONG).show();
+                                                new AlertDialog.Builder(SignUpActivity.this)
+                                                        .setTitle("Ungültige Straße")
+                                                        .setMessage("Die eingegebene Straße ist ungültig.")
+                                                        .setPositiveButton("OK", null)
+                                                        .show();
                                             });
                                         } else {
                                             if(tempPlz.length()==5){
@@ -129,8 +142,18 @@ postHttp = new PostHttp();
                                                     try {
                                                         if(!postHttp.post("http://app.mluetzkendorf.xyz/api/benutzer",jsonResponse).equals("error")){
                                                             runOnUiThread(() -> {
-                                                                Toast.makeText(SignUpActivity.this, "Erfolgreich", Toast.LENGTH_LONG).show();
-                                                                finish();
+                                                                new AlertDialog.Builder(SignUpActivity.this)
+                                                                        .setMessage("Ihre Registrierung war erfolgreich. \n\n" +
+                                                                                "Sie erhalten in Kürze einen Brief. \n\n" +
+                                                                                "Bitte folgen Sie den Anweisungen und senden Sie den Brief innerhalb von 30 Tagen an uns zurück. Andernfalls wird Ihr Account automatisch gelöscht.")
+                                                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                                            @Override
+                                                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                                                finish();
+                                                                            }
+                                                                        })
+                                                                        .show();
+
                                                             });
                                                         }
                                                     } catch (IOException e) {
@@ -153,23 +176,27 @@ postHttp = new PostHttp();
                             }
                         }
                     }
+                }else{
+                    runOnUiThread(()->{
+                        Toast.makeText(SignUpActivity.this,"E-Mail ist ungültig.",Toast.LENGTH_LONG).show();
+                    });
                 }
             });
             thread.start();
         });
     }
 
-    // Methode zur Passwortvalidierung
+
     public boolean isValidPassword(String password) {
         return password.matches("^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$");
     }
 
-    // Methode zur Textvalidierung (Vorname, Nachname)
+
     boolean isValidText(String text) {
         return text.matches("[a-zA-Z ]+");
     }
 
-    // Methode zur Überprüfung der Straßeneingabe (Wort und Zahl, optional mit Punkt)
+
     boolean isValidStreet(String street) {
         return street.matches("^[a-zA-Z]+\\.?\\s?\\d+$");
     }

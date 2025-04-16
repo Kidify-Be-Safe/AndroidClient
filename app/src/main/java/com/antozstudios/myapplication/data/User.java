@@ -7,6 +7,7 @@ public class User {
     public String nachname;
     public String email;
     public int plz;
+    public boolean istverifiziert;
     public String wohnort;
     public String strasse;
     public boolean ispremium;

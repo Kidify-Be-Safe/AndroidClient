@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OnFlow</string>
+    <string name="app_name">Kidify</string>
     <string name="hier_w_hlst_du_aus_welche_apps_von_der_sperre_betroffen_sein_sollen">Hier wählst du aus, welche Apps von der Sperre betroffen sein sollen.</string>
     <string name="apps_gefunden">Apps gefunden:</string>
     <string name="profil_name">Profil-Name</string>
@@ -25,4 +25,5 @@
     <string name="vorname">Vorname</string>
     <string name="andere_id_scannen">ID scannen</string>
     <string name="id_kopieren">ID kopieren</string>
+    <string name="dark_modus">Dark Modus</string>
 </resources>

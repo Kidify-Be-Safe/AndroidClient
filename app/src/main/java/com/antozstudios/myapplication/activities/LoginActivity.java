@@ -76,16 +76,24 @@ public class LoginActivity extends AppCompatActivity {
                            String hashPasswort = Hash.sha256(passwort.getText().toString());
                            if(hashPasswort.equals(users[0].passwort_hash)){
 
+                               if(users[0].istverifiziert){
+                                   editor.putInt("b_id",users[0].id);
+                                   editor.putString("lastEmail",users[0].email);
+                                   editor.putString("lastPasswort",users[0].passwort_hash);
+                                   editor.putInt("isLoggedIn",1);
+                                   editor.putString("b_id_hash",users[0].b_id_hash);
+                                   editor.apply();
 
-                               editor.putInt("b_id",users[0].id);
-                               editor.putString("lastEmail",users[0].email);
-                               editor.putString("lastPasswort",users[0].passwort_hash);
-                               editor.putInt("isLoggedIn",1);
-                               editor.putString("b_id_hash",users[0].b_id_hash);
-                               editor.apply();
+
+                                   startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                   finish();
+                               }else{
+                                   runOnUiThread(()->{
+                                       Toast.makeText(this,"Konto nicht verifiziert!",Toast.LENGTH_LONG).show();
+                                   });
+                               }
 
 
-                               startActivity(new Intent(LoginActivity.this,MainActivity.class));
                            }else{
                                runOnUiThread(()->{
                                    Toast.makeText(this,"Passwort ist falsch!",Toast.LENGTH_LONG).show();

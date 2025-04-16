@@ -3,11 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/scrollView_signup"
+        android:layout_width="351dp"
+        android:layout_height="500dp"
+        android:background="@drawable/curved"
+        android:backgroundTint="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,11 +20,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/signupTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Registrieren"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailInput"
@@ -30,8 +46,8 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -42,13 +58,11 @@
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-
                     android:id="@+id/vornameInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -56,71 +70,65 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-
                     android:id="@+id/nachnameInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nachname"
-                    tools:ignore="DuplicateIds" />
+                    android:hint="@string/nachname" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-
                     android:id="@+id/wohnortInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Wohnort"
-                    tools:ignore="DuplicateIds" />
+                    android:hint="Wohnort" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-
                     android:id="@+id/strasseInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Strasse"
-                    tools:ignore="DuplicateIds" />
+                    android:hint="Strasse" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-
                     android:id="@+id/postleitzahlInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="PLZ"
                     android:inputType="number"
-                    android:maxLength="5"
-                    tools:ignore="DuplicateIds" />
+                    android:maxLength="5" />
             </com.google.android.material.textfield.TextInputLayout>
-
-
-            <Button
-                android:id="@+id/submitButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Konto erstellen" />
-
-
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/white"
+        android:text="Konto erstellen"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView_signup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

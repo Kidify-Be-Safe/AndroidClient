@@ -4,6 +4,10 @@
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\drawable\\settings_icon.png"
     },
     {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\layout_custom_info_window.xml.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\layout\\custom_info_window.xml"
+    },
+    {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\layout_activity_blockapp.xml.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\layout\\activity_blockapp.xml"
     },
@@ -14,6 +18,18 @@
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\layout_activity_login.xml.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\layout_settings_bottom_sheet.xml.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\layout\\settings_bottom_sheet.xml"
+    },
+    {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\drawable_yellow.png.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\drawable\\yellow.png"
+    },
+    {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\drawable_app_icon.png.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\drawable\\app_icon.png"
     },
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\drawable_round.xml.flat",
@@ -40,12 +56,32 @@
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\xml\\data_extraction_rules.xml"
     },
     {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\drawable_green.png.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\drawable\\green.png"
+    },
+    {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\layout_observe_activity.xml.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\layout\\observe_activity.xml"
     },
     {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\drawable_delete.png.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\drawable\\delete.png"
+    },
+    {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\layout_status.xml.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\layout\\status.xml"
+    },
+    {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\drawable_default_state.png.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\drawable\\default_state.png"
+    },
+    {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\drawable_friend_icon.png.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\drawable\\friend_icon.png"
     },
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\drawable_ic_launcher_background.xml.flat",
@@ -66,6 +102,10 @@
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\layout_my_observer_field.xml.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\layout\\my_observer_field.xml"
     },
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\xml_backup_rules.xml.flat",
@@ -108,8 +148,12 @@
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.antozstudios.myapplication.app-debug-52:/layout_activity_main.xml.flat",
-        "source": "com.antozstudios.myapplication.app-main-54:/layout/activity_main.xml"
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\drawable_red.png.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\drawable\\red.png"
+    },
+    {
+        "merged": "com.antozstudios.myapplication.app-debug-52:/layout_settings_bottom_sheet.xml.flat",
+        "source": "com.antozstudios.myapplication.app-main-54:/layout/settings_bottom_sheet.xml"
     },
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\layout_activity_main.xml.flat",
@@ -122,9 +166,5 @@
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-52:\\drawable_icon.png.flat",
-        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-54:\\drawable\\icon.png"
     }
 ]

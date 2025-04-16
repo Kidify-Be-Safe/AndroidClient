@@ -30,6 +30,46 @@ public class PostHttp {
         }
     }
 
+    public String put(String url, String json) throws IOException {
+        RequestBody body = RequestBody.create(json, JSON);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            if(response.code()>200 && response.code()<300){
+                return response.body().string();
+            }
+            return "error";
+
+        }
+    }
+
+    public String delete(String url, String json) throws IOException {
+        RequestBody body = RequestBody.create(json, JSON);
+
+        // Request mit DELETE-Methode und dem Body
+        Request request = new Request.Builder()
+                .url(url)
+                .delete(body)
+                .header("Content-Type", "application/json")  // Content-Type hinzufügen
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            // Überprüfen, ob der Statuscode im erfolgreichen Bereich liegt
+            if (response.code() >= 200 && response.code() < 300) {
+                return response.body().string();  // Erfolgreiche Antwort zurückgeben
+            } else {
+                // Fehlerbehandlung, falls der Statuscode nicht im 2xx-Bereich ist
+                System.out.println("Request failed with code: " + response.code());
+                System.out.println("Response: " + response.body().string());
+                return "error";
+            }
+        }
+    }
+
+
+
 
 
 
@@ -69,9 +109,14 @@ public class PostHttp {
     public String sendFriend(int b_id, int f_id) {
         return "{"
                 + "\"b_id\":" + b_id + ","
-                + "\"f_id\":" + f_id
-                + "}";
+                + "\"f_id\":" + f_id + "}";
     }
+
+    public String deleteUser(int id){
+        return "{" + "\"id\":" + id + "}";
+
+    }
+
 
 
 

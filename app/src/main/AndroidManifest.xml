@@ -15,6 +15,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+
 
 
 
@@ -28,7 +31,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/app_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MyTheme"
@@ -37,7 +40,7 @@
 
         <!-- Hauptaktivität -->
         <activity
-            android:name=".activities.PermissionActivity"
+            android:name=".activities.LoginActivity"
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
@@ -46,9 +49,8 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activities.LoginActivity"
-            android:screenOrientation="portrait" />
+       <activity android:name=".activities.MainActivity"
+           android:screenOrientation="portrait"/>
 
         <activity
             android:name=".activities.SignUpActivity"
@@ -64,13 +66,13 @@
             android:name=".activities.ObserveActivity"
             android:screenOrientation="portrait" />
 
-        <activity
-            android:name=".activities.MainActivity"
-            android:screenOrientation="portrait" />
+
 
 
         <service
-            android:name=".activities.CheckAppService"/>
+            android:name=".activities.CheckAppService"
+            android:foregroundServiceType="location"
+            android:exported="false"/>
 
 
 
