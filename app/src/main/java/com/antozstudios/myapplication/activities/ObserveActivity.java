@@ -190,7 +190,7 @@ public class ObserveActivity extends AppCompatActivity {
                             }else{
                                 new PostHttp().post("http://app.mluetzkendorf.xyz/api/freundesliste",new PostHttp().sendFriend(userData.getInt("b_id",0),users[0].id));
                                 Looper.prepare();
-                                Toast.makeText(ObserveActivity.this,"User wird beobachet.", LENGTH_LONG).show();
+                                Toast.makeText(ObserveActivity.this,"User wird beobachtet.", LENGTH_LONG).show();
                             }
 
                         } catch (IOException e) {
