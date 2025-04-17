@@ -22,10 +22,8 @@ drawable red
 drawable round
 drawable settings_icon
 drawable yellow
-id appName
 id barcodeView
 id bottomSheetLayout
-id button
 id centerButton
 id copyButton
 id countryTextView
@@ -38,7 +36,6 @@ id hashTextView
 id horizontalScrollView
 id idButton
 id idInput
-id imageIcon
 id inputField_Email
 id inputField_Passwort
 id loginButton
@@ -53,7 +50,6 @@ id postCodeTextView
 id postleitzahlInput
 id profilPicture
 id redButton
-id returnButton
 id roadTextView
 id scanButton
 id scrollView2
@@ -73,13 +69,11 @@ id userName
 id vornameInput
 id wohnortInput
 id yellowButton
-layout activity_blockapp
 layout activity_login
 layout activity_main
 layout bottom_sheet
 layout my_observer_field
 layout observe_activity
-layout profile_fragment
 layout settings_bottom_sheet
 layout signupactivity
 mipmap ic_launcher

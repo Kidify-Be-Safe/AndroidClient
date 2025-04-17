@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -92,9 +93,17 @@ startForegroundService();
         );
         notificationManager.createNotificationChannel(channel);
 
+        Intent closeSerice = new Intent(this,CheckAppService.class);
+        closeSerice.setAction("STOP_SERVICE");
+
+        PendingIntent closePendingIntent = PendingIntent.getService(
+                this, 0, closeSerice, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Du bist sicher.")
                 .setContentText("Die Position wird im Hintergrund gesendet.")
+                .setOngoing(true)
+                .addAction(R.drawable.app_icon,"Beenden",closePendingIntent)
                 .setSmallIcon(R.drawable.app_icon)
                 .build();
 
@@ -152,10 +161,14 @@ startForegroundService();
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent != null && "STOP_SERVICE".equals(intent.getAction())) {
+            stopForeground(true);
+            stopSelf();
+            System.exit(0); // App komplett beenden
+            return START_NOT_STICKY;
+        }
 
         return START_NOT_STICKY;
-
-
     }
 
     @Override

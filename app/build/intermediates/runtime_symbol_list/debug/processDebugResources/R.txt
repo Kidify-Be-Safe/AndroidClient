@@ -3229,7 +3229,6 @@ int id animateToEnd 0x7f08004e
 int id animateToStart 0x7f08004f
 int id antiClockwise 0x7f080050
 int id anticipate 0x7f080051
-int id appName 0x7f080052
 int id arc 0x7f080053
 int id asConfigured 0x7f080054
 int id async 0x7f080055
@@ -3255,7 +3254,6 @@ int id bubble_image 0x7f080068
 int id bubble_moreinfo 0x7f080069
 int id bubble_subdescription 0x7f08006a
 int id bubble_title 0x7f08006b
-int id button 0x7f08006c
 int id buttonPanel 0x7f08006d
 int id cache_measures 0x7f08006e
 int id callMeasure 0x7f08006f
@@ -3395,7 +3393,6 @@ int id ifRoom 0x7f0800f4
 int id ignore 0x7f0800f5
 int id ignoreRequest 0x7f0800f6
 int id image 0x7f0800f7
-int id imageIcon 0x7f0800f8
 int id immediateStop 0x7f0800f9
 int id included 0x7f0800fa
 int id indeterminate 0x7f0800fb
@@ -3553,7 +3550,6 @@ int id ratio 0x7f080192
 int id rectangles 0x7f080193
 int id redButton 0x7f080194
 int id report_drawn 0x7f080195
-int id returnButton 0x7f080196
 int id reverseSawtooth 0x7f080197
 int id right 0x7f080198
 int id rightToLeft 0x7f080199
@@ -3839,7 +3835,6 @@ int layout abc_search_dropdown_item_icons_2line 0x7f0b0018
 int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
-int layout activity_blockapp 0x7f0b001c
 int layout activity_login 0x7f0b001d
 int layout activity_main 0x7f0b001e
 int layout bonuspack_bubble 0x7f0b001f
@@ -3930,7 +3925,6 @@ int layout notification_template_media_custom 0x7f0b0073
 int layout notification_template_part_chronometer 0x7f0b0074
 int layout notification_template_part_time 0x7f0b0075
 int layout observe_activity 0x7f0b0076
-int layout profile_fragment 0x7f0b0077
 int layout select_dialog_item_material 0x7f0b0078
 int layout select_dialog_multichoice_material 0x7f0b0079
 int layout select_dialog_singlechoice_material 0x7f0b007a

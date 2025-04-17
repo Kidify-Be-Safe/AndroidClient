@@ -3230,7 +3230,6 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
-id appName
 id arc
 id asConfigured
 id async
@@ -3256,7 +3255,6 @@ id bubble_image
 id bubble_moreinfo
 id bubble_subdescription
 id bubble_title
-id button
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3396,7 +3394,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageIcon
 id immediateStop
 id included
 id indeterminate
@@ -3554,7 +3551,6 @@ id ratio
 id rectangles
 id redButton
 id report_drawn
-id returnButton
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3840,7 +3836,6 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-layout activity_blockapp
 layout activity_login
 layout activity_main
 layout bonuspack_bubble
@@ -3931,7 +3926,6 @@ layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout observe_activity
-layout profile_fragment
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

@@ -64,7 +64,13 @@
     <list default="true" id="d25fbdf7-b33f-43bd-be19-aa646e56ea51" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/antozstudios/myapplication/activities/CheckAppService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/antozstudios/myapplication/activities/CheckAppService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/antozstudios/myapplication/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/antozstudios/myapplication/activities/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_blockapp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/observe_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/observe_activity.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_fragment.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +80,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=Default, isTemplate=false, identifier=serial=emulator-5554;connection=b44921fe)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=65ORLF5HQK5L4XMB)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -279,12 +285,12 @@
       <map>
         <entry key="com.antozstudios.myapplication">
           <value>
-            <CheckInfo lastCheckTimestamp="1744740633411" />
+            <CheckInfo lastCheckTimestamp="1744916649944" />
           </value>
         </entry>
         <entry key="com.antozstudios.myapplication.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1744740633411" />
+            <CheckInfo lastCheckTimestamp="1744916649943" />
           </value>
         </entry>
       </map>

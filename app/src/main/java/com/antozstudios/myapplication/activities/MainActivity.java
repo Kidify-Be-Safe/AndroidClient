@@ -523,7 +523,8 @@ settingsButton.setOnClickListener(view ->{
 
 
             mMyLocationOverlay = new MyLocationNewOverlay(mMap);
-
+            Bitmap personIcon = Bitmap.createBitmap(1,1, Bitmap.Config.RGB_565);
+            mMyLocationOverlay.setPersonIcon(personIcon);
 
         mMyLocationOverlay.enableFollowLocation();
         mMyLocationOverlay.setDrawAccuracyEnabled(true);
