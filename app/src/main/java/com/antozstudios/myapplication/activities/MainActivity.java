@@ -245,16 +245,22 @@ public class MainActivity extends AppCompatActivity {
                             ImageButton unfollowButton = field.findViewById(R.id.unfollow);
 
                             unfollowButton.setOnClickListener(view1 -> {
-                                Thread deleteThread = new Thread(()->{
+                                new AlertDialog.Builder(MainActivity.this).setTitle("Bist du dir sicher?").setNegativeButton("Abbrechen",null)
+                                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Thread deleteThread = new Thread(()->{
 
-                                    try {
-                                        new PostHttp().delete("http://app.mluetzkendorf.xyz/api/freundesliste?b_id=eq."+userData.getInt("b_id",0)+"&f_id=eq."+friend.b_id,"");
-                                    } catch (IOException e) {
-                                        throw new RuntimeException(e);
+                                            try {
+                                                new PostHttp().delete("http://app.mluetzkendorf.xyz/api/freundesliste?b_id=eq."+userData.getInt("b_id",0)+"&f_id=eq."+friend.b_id,"");
+                                            } catch (IOException e) {
+                                                throw new RuntimeException(e);
+                                            }
+
+                                        });
+                                        deleteThread.start();
                                     }
-
                                 });
-                                deleteThread.start();
                             });
 
                             userName_TextField.setText(friend.vorname + " " + friend.nachname);
