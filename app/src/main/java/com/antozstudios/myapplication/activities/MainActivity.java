@@ -305,7 +305,7 @@ settingsButton.setOnClickListener(view ->{
                   locationDataEditor.apply();
                   userDataEditor.apply();
                   stateDataEditor.apply();
-
+                    stopService(service);
                   startActivity(new Intent(MainActivity.this,LoginActivity.class));
                   finish();
               }
