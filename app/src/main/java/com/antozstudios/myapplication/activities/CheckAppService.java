@@ -76,7 +76,7 @@ public class CheckAppService extends Service {
         });
 
 
-
+        startSending();
 startForegroundService();
 
     }
@@ -85,14 +85,12 @@ startForegroundService();
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(
-                    CHANNEL_ID,
-                    "CheckAppService Channel",
-                    NotificationManager.IMPORTANCE_DEFAULT
-            );
-            notificationManager.createNotificationChannel(channel);
-        }
+        NotificationChannel channel = new NotificationChannel(
+                CHANNEL_ID,
+                "SendLocation",
+                NotificationManager.IMPORTANCE_DEFAULT
+        );
+        notificationManager.createNotificationChannel(channel);
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Du bist sicher.")
@@ -155,18 +153,8 @@ startForegroundService();
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        if(ContextCompat.checkSelfPermission(CheckAppService.this,Manifest.permission.ACCESS_FINE_LOCATION)
-                !=PackageManager.PERMISSION_GRANTED) {
-            try {
-                startSending();
-                return START_STICKY;
-            } catch (Exception e) {
-                Log.e("CheckAppService", "Error starting service", e);
-                stopSelf();  // Stoppt den Service bei einem Fehler
-                return START_NOT_STICKY;
-            }
-        }
         return START_NOT_STICKY;
+
 
     }
 
@@ -192,23 +180,30 @@ startForegroundService();
 
         geoCoding = new Gson().fromJson(getRequestTask.message, GeoCoding.class);
 
-        if (geoCoding != null) {
-            json = example.sendCoordinates(lon, lat, userID, ampelState, geoCoding.address.road, Integer.parseInt(geoCoding.address.postcode),
-                    geoCoding.address.town, geoCoding.address.country);
+        if (geoCoding != null && geoCoding.address != null) {
+            if (example != null) {
+                json = example.sendCoordinates(lon, lat, userID, ampelState, geoCoding.address.road,
+                        Integer.parseInt(geoCoding.address.postcode),
+                        geoCoding.address.town, geoCoding.address.country);
 
-            editor.putString("postCode", geoCoding.address.postcode);
-            editor.putString("country", geoCoding.address.country);
-            editor.putString("road", geoCoding.address.road);
-            editor.putString("town", geoCoding.address.town);
-            editor.apply();
+                editor.putString("postCode", geoCoding.address.postcode);
+                editor.putString("country", geoCoding.address.country);
+                editor.putString("road", geoCoding.address.road);
+                editor.putString("town", geoCoding.address.town);
+                editor.apply();
 
-            try {
-                example.post("http://app.mluetzkendorf.xyz/api/koordinaten", json);
-                stateDataEditor.putInt("currentState", 0);
-                stateDataEditor.apply();
-            } catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    example.post("http://app.mluetzkendorf.xyz/api/koordinaten", json);
+                    stateDataEditor.putInt("currentState", 0);
+                    stateDataEditor.apply();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+        } else {
+            // Handle the case when geoCoding or geoCoding.address is null
+            Log.e("UpdateCoordinates", "GeoCoding or Address is null");
         }
     }
+
 }

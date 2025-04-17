@@ -30,6 +30,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 
@@ -66,6 +67,7 @@ import com.google.gson.Gson;
 import org.checkerframework.checker.units.qual.A;
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton settingsButton;
 
-    SharedPreferences userData;
+    SharedPreferences userData,locationData;
 
 
     LocationManager locationManager ;
@@ -108,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
     TextView townTextView;
     TextView roadTextView;
 
-    SharedPreferences.Editor userDataEditor,stateDataEditor;
+    SharedPreferences.Editor userDataEditor,stateDataEditor,locationDataEditor;
+
+
     FriendData[]friendData;
     Thread updateMarker;
     AlertDialog gpsProvideraAlert;
@@ -145,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         handler.removeCallbacks(checkGPSRunnable);
+
     }
 
     SharedPreferences stateData;
@@ -174,6 +179,13 @@ public class MainActivity extends AppCompatActivity {
 
         service  = new Intent(this, CheckAppService.class);
 
+
+        if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION)
+                ==PackageManager.PERMISSION_GRANTED){
+            startAppService();
+        }else{
+            stopService(service);
+        }
         setContentView(R.layout.activity_main);
         getRequestTask = new GetRequestTask();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -282,9 +294,12 @@ settingsButton.setOnClickListener(view ->{
               @Override
               public void onClick(DialogInterface dialogInterface, int i) {
                   userDataEditor.clear();
-                  userDataEditor.apply();
                   stateDataEditor.clear();
+                  locationDataEditor.clear();
+                  locationDataEditor.apply();
+                  userDataEditor.apply();
                   stateDataEditor.apply();
+
                   startActivity(new Intent(MainActivity.this,LoginActivity.class));
                   finish();
               }
@@ -344,6 +359,8 @@ settingsButton.setOnClickListener(view ->{
                             if(!deleteKonto.delete("http://app.mluetzkendorf.xyz/api/benutzer?id=eq."+userData.getInt("b_id",0),new PostHttp().deleteUser(userData.getInt("b_id",0))).equals("error")){
                                 userDataEditor.clear();
                                 stateDataEditor.clear();
+                                locationDataEditor.clear();
+                                locationDataEditor.apply();
                                 userDataEditor.apply();
                                 stateDataEditor.apply();
                                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
@@ -430,7 +447,6 @@ settingsButton.setOnClickListener(view ->{
                            }
                        }else{
                             alertDialogNotification.hide();
-                           startAppService();
                        }
 
 
@@ -447,11 +463,32 @@ settingsButton.setOnClickListener(view ->{
 
 
 
+        Thread updateLoactionUI = new Thread(()->{
+
+            while(true){
+                try {
+                    Thread.sleep(1000);
+
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                runOnUiThread(() -> {
+                    SharedPreferences locationData = getSharedPreferences("Location_Data", MODE_PRIVATE);
+                    postCodeTextView.setText(locationData.getString("postCode", ""));
+                    countryTextView.setText(locationData.getString("country", ""));
+                    roadTextView.setText(locationData.getString("road", ""));
+                    townTextView.setText(locationData.getString("town", ""));
+                });
+            }
+
+
+        });
+        updateLoactionUI.start();
+
+
 
 
     }
-
-
 
 
     void setupOSM() {
@@ -462,6 +499,7 @@ settingsButton.setOnClickListener(view ->{
         );
         stateData = getSharedPreferences("State_Data",Context.MODE_PRIVATE);
         userData =   getSharedPreferences("User_Data",Context.MODE_PRIVATE);
+        locationData = getSharedPreferences("Location_Data", MODE_PRIVATE);
 
 
         if(userData.getBoolean("DarkModus",false)){
@@ -472,28 +510,35 @@ settingsButton.setOnClickListener(view ->{
 
         mMap.setMultiTouchControls(true);
 
-
         double maxZoom = 22.0;
         mMap.setMaxZoomLevel(maxZoom);
         double minZoom = 7;
         mMap.setMinZoomLevel(minZoom);
-        mMyLocationOverlay = new MyLocationNewOverlay(mMap);
-        mMyLocationOverlay.setPersonIcon(null);
 
 
-        IMapController controller = mMap.getController();
+            mMyLocationOverlay = new MyLocationNewOverlay(mMap);
+
+
         mMyLocationOverlay.enableFollowLocation();
         mMyLocationOverlay.setDrawAccuracyEnabled(true);
 
-        controller.setZoom(minZoom);
         mMap.setBackgroundColor(Color.BLACK);
         mMap.getOverlays().add(mMyLocationOverlay);
+
+        IMapController controller = mMap.getController();
+
+
+        controller.setZoom(minZoom);
+        mMap.invalidate();
+
+
 
 
 
 
         stateDataEditor = stateData.edit();
         userDataEditor = userData.edit();
+        locationDataEditor = locationData.edit();
         greenStateButton.setOnClickListener((view)->{
             if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ) {
                 if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
@@ -556,7 +601,7 @@ settingsButton.setOnClickListener(view ->{
                     friendData = new Gson().fromJson(getRequestTask.message, FriendData[].class);
 
                     runOnUiThread(() -> {
-                        if (friendData != null) {
+                        if (friendData != null && friendData.length>0) {
                             mMap.getOverlays().removeIf(item -> item instanceof Marker);
 
                             for (FriendData friend : friendData) {
@@ -565,9 +610,8 @@ settingsButton.setOnClickListener(view ->{
                                 marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
                                 marker.setInfoWindow(null);
                                 Drawable tempDrawable;
-                                String name = "Vorname: "+friend.vorname + " " +"Nachname: "+ friend.nachname;
-                                String adresse = friend.strasse+" "+friend.wohnort+" "+friend.zeitpunkt;
-                                String koordinaten = "Breitengrad: \n"+ friend.breitengrad+ "Längengrad: "+friend.laengengrad;
+                                String name = friend.vorname+" " + friend.nachname;
+
 
                                 if(friend.ampel == 1){
                                     tempDrawable = getTextIcon(name.toUpperCase(), Color.GREEN, 60, Color.WHITE);
@@ -623,27 +667,22 @@ settingsButton.setOnClickListener(view ->{
     @Override
     protected void onResume() {
         super.onResume();
-
-        mMap.onResume();
-
-        Handler handler = new Handler();
-        Runnable updateLocationRunnable = new Runnable() {
-            @Override
-            public void run() {
-                runOnUiThread(() -> {
-                    SharedPreferences locationData = getSharedPreferences("Location_Data", MODE_PRIVATE);
-                    postCodeTextView.setText(locationData.getString("postCode", ""));
-                    countryTextView.setText(locationData.getString("country", ""));
-                    roadTextView.setText(locationData.getString("road", ""));
-                    townTextView.setText(locationData.getString("town", ""));
-                });
-
-                handler.postDelayed(this, 1000); // Wiederhole jede Sekunde
-            }
-        };
+        if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION)
+                ==PackageManager.PERMISSION_GRANTED){
+            mMap.onResume();
+            mMyLocationOverlay.enableFollowLocation();
+            startAppService();
+        }else{
+            stopService(service);
+        }
 
 
-        handler.post(updateLocationRunnable);
+
+
+
+
+
+
 
 
 
@@ -654,6 +693,9 @@ settingsButton.setOnClickListener(view ->{
     protected void onPause() {
         super.onPause();
         mMap.onPause();
+
+
+
     }
 
     public BitmapDrawable getTextIcon(final String pText, int backgroundColor, int textSize, int foregroundColor) {
@@ -669,21 +711,21 @@ settingsButton.setOnClickListener(view ->{
         textPaint.setTypeface(Typeface.DEFAULT_BOLD);
         textPaint.setTextAlign(Paint.Align.LEFT);
 
-        // Textmaße berechnen
+
         int width = (int) (textPaint.measureText(pText) + 0.5f);
         float baseline = -textPaint.ascent(); // baseline zum Zeichnen
         int height = (int) (baseline + textPaint.descent() + 0.5f);
 
-        // Bitmap erzeugen
+
         Bitmap image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(image);
 
-        // Hintergrund und Text zeichnen
+
         canvas.drawRect(0, 0, width, height, background);
         canvas.drawText(pText, 0, baseline, textPaint);
 
-        // Drawable zurückgeben
-        return new BitmapDrawable(getResources(), image);
+
+        return new BitmapDrawable(getApplicationContext().getResources(), image);
     }
 
 
@@ -715,11 +757,7 @@ settingsButton.setOnClickListener(view ->{
     private void startAppService() {
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(service);
-        } else {
-            startService(service);
-        }
+        startForegroundService(service);
     }
 
 }
