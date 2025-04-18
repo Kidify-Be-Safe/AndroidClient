@@ -4,7 +4,7 @@
     "type": "LINKED_RESOURCES_BINARY_FORMAT",
     "kind": "Directory"
   },
-  "applicationId": "com.antozstudios.kidify",
+  "applicationId": "com.antozstudios.myapplication",
   "variantName": "debug",
   "elements": [
     {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.antozstudios.kidify"
+    package="com.antozstudios.myapplication"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -59,10 +59,10 @@
         android:required="false" />
 
     <permission
-        android:name="com.antozstudios.kidify.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.antozstudios.myapplication.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.antozstudios.kidify.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.antozstudios.myapplication.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
         android:allowBackup="true"
@@ -113,7 +113,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.antozstudios.kidify.androidx-startup"
+            android:authorities="com.antozstudios.myapplication.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"

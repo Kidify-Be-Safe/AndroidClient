@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.antozstudios.kidify",
+  "applicationId": "com.antozstudios.myapplication",
   "variantName": "debug",
   "elements": [
     {

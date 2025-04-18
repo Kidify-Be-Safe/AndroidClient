@@ -23,7 +23,7 @@ packaging{
 
 
     defaultConfig {
-        applicationId = "com.antozstudios.kidify"
+        applicationId = "com.antozstudios.myapplication"
         minSdk = 34
         targetSdk = 35
         versionCode = 1

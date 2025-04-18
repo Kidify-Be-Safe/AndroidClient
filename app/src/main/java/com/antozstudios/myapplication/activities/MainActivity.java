@@ -157,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
         PostHttp deleteKonto= new PostHttp();
          gpsProvideraAlert =   new AlertDialog.Builder(MainActivity.this)
                 .setTitle("Dein GPS muss eingeschaltet werden.").setTitle("Wo bist du?")
+                 .setCancelable(false)
                 .setMessage("Ativiere deinen Standort.").setPositiveButton("Aktivieren", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -245,10 +246,17 @@ public class MainActivity extends AppCompatActivity {
                                                 throw new RuntimeException(e);
                                             }
 
+
                                         });
                                         deleteThread.start();
+                                        linearLayout.removeView(field);
+                                        runOnUiThread(()->{
+                                            Toast.makeText(MainActivity.this,"Beobachter entfernt",Toast.LENGTH_SHORT).show();
+                                        });
+                                        bottomSheetDialog.hide();
+
                                     }
-                                });
+                                }).show();
                             });
 
                             userName_TextField.setText(friend.vorname + " " + friend.nachname);
@@ -593,7 +601,7 @@ settingsButton.setOnClickListener(view ->{
                     friendData = new Gson().fromJson(getRequestTask.message, FriendData[].class);
 
                     runOnUiThread(() -> {
-                        if (friendData != null && friendData.length>0) {
+                        if (friendData != null ) {
                             mMap.getOverlays().removeIf(item -> item instanceof Marker);
 
                             for (FriendData friend : friendData) {
@@ -784,7 +792,9 @@ settingsButton.setOnClickListener(view ->{
     private void startAppService() {
 
 
-        startForegroundService(service);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(service);
+        }
     }
 
 }
