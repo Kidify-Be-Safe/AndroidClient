@@ -24,6 +24,13 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 
+
+
+/**
+ * Diese Aktivität ermöglicht es Benutzern, sich zu registrieren, indem sie ihre persönlichen Daten eingeben.
+ * Es werden mehrere Validierungen durchgeführt, um sicherzustellen, dass die Eingaben korrekt sind.
+ * Bei erfolgreicher Registrierung wird eine Bestätigung angezeigt.
+ */
 public class SignUpActivity extends AppCompatActivity {
 
 
@@ -34,6 +41,13 @@ public class SignUpActivity extends AppCompatActivity {
     private GetRequestTask getRequestTask;
     private PostHttp postHttp;
 
+
+    /**
+     * Initialisiert die Ansicht und die erforderlichen Komponenten der Aktivität.
+     * Wird beim Starten der Aktivität aufgerufen.
+     *
+     * @param savedInstanceState Gespeicherter Zustand der Aktivität, falls vorhanden.
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -186,17 +200,32 @@ postHttp = new PostHttp();
         });
     }
 
-
+    /**
+     * Überprüft, ob das Passwort den Sicherheitsanforderungen entspricht.
+     *
+     * @param password Das Passwort, das überprüft werden soll.
+     * @return true, wenn das Passwort gültig ist, andernfalls false.
+     */
     public boolean isValidPassword(String password) {
         return password.matches("^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$");
     }
 
-
+    /**
+     * Überprüft, ob der eingegebene Text nur Buchstaben enthält.
+     *
+     * @param text Der zu überprüfende Text.
+     * @return true, wenn der Text nur aus Buchstaben besteht, andernfalls false.
+     */
     boolean isValidText(String text) {
         return text.matches("[a-zA-Z ]+");
     }
 
-
+    /**
+     * Überprüft, ob der eingegebene Text nur Buchstaben enthält.
+     *
+     * @param street Der zu überprüfende Text.
+     * @return true, wenn der Text nur aus Buchstaben besteht, andernfalls false.
+     */
     boolean isValidStreet(String street) {
         return street.matches("^[a-zA-Z]+\\.?\\s?\\d+$");
     }

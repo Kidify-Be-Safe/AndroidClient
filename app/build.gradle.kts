@@ -7,6 +7,7 @@ plugins {
 
 }
 
+
 android {
     namespace = "com.antozstudios.myapplication"
     compileSdk = 34

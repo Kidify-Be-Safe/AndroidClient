@@ -2,7 +2,19 @@ package com.antozstudios.myapplication.util;
 
 import java.security.MessageDigest;
 
+
+/**
+ * Diese Klasse enthält eine Methode zur Berechnung eines SHA-256-Hashes für eine gegebene Eingabe.
+ */
 public class Hash {
+
+    /**
+     * Berechnet den SHA-256-Hash eines gegebenen Eingabestrings.
+     *
+     * @param input Der Eingabestring, dessen SHA-256-Hash berechnet werden soll.
+     * @return Der SHA-256-Hash des Eingabestrings als Hexadezimal-String.
+     * @throws RuntimeException Wenn ein Fehler bei der Hash-Berechnung auftritt.
+     */
     public static String sha256(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");

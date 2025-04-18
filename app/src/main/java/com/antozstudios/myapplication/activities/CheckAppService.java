@@ -32,6 +32,15 @@ import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 
 import java.io.IOException;
 
+/**
+ * Dienst zur Standortverfolgung und zum Senden von Koordinaten im Hintergrund.
+ * <p>
+ * Dieser Dienst verfolgt den GPS-Standort des Geräts und sendet die Koordinaten an einen Remote-Server,
+ * wenn bestimmte Bedingungen erfüllt sind. Er läuft auch als Vordergrunddienst, um sicherzustellen, dass
+ * er im Hintergrund weiterarbeitet.
+ * </p>
+ */
+
 public class CheckAppService extends Service {
 
     private Thread locationThread;
@@ -45,12 +54,17 @@ public class CheckAppService extends Service {
     int userID;
     String json;
 
-    SharedPreferences stateData, userData;
+    SharedPreferences stateData,
+    userData;
     SharedPreferences.Editor stateDataEditor;
     boolean running = true;
 
     private static final String CHANNEL_ID = "SendLocation";
 
+    /**
+     * Initialisiert den Dienst, richtet die Standortverfolgung ein und startet den Vordergrunddienst.
+     * Diese Methode wird aufgerufen, wenn der Dienst erstellt wird.
+     */
     @Override
     public void onCreate() {
         super.onCreate();
@@ -81,6 +95,10 @@ public class CheckAppService extends Service {
 startForegroundService();
 
     }
+    /**
+     * Startet den Vordergrunddienst mit einer Benachrichtigung.
+     * Dadurch wird der Dienst im Hintergrund weiter ausgeführt.
+     */
 
     private void startForegroundService() {
 
@@ -116,6 +134,10 @@ startForegroundService();
 
     }
 
+    /**
+     * Startet einen Hintergrund-Thread, um regelmäßig den Standort zu überprüfen und Daten zu senden.
+     * Es überwacht auch den Zustand einer Ampel und aktualisiert die Koordinaten basierend auf bestimmten Bedingungen.
+     */
     private void startSending() {
         Thread checkAmpel = new Thread(() -> {
             try {
@@ -159,6 +181,15 @@ startForegroundService();
         locationThread.start();
     }
 
+    /**
+     * Behandelt den Start des Dienstes basierend auf der eingehenden Absicht.
+     * Stoppt den Dienst, wenn die Aktion "STOP_SERVICE" ist.
+     *
+     * @param intent Die Absicht, die den Dienst gestartet hat.
+     * @param flags Flags, die vom System übergeben wurden.
+     * @param startId Eine eindeutige ID für den Dienststart.
+     * @return Ein Flag, das das Verhalten des Dienstes nach dem Stopp angibt.
+     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent != null && "STOP_SERVICE".equals(intent.getAction())) {
@@ -171,6 +202,11 @@ startForegroundService();
         return START_NOT_STICKY;
     }
 
+
+    /**
+     * Zerstört den Dienst, stoppt die Standortverfolgung und bereinigt Ressourcen.
+     */
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -179,12 +215,24 @@ startForegroundService();
         Log.d("CheckAppService", "Service destroyed.");
     }
 
+
+    /**
+     * Bindet an den Dienst. Dieser Dienst unterstützt kein Binden.
+     *
+     * @param intent Die Absicht, mit der verbunden werden soll.
+     * @return Null, da das Binden nicht unterstützt wird.
+     */
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
 
+
+    /**
+     * Aktualisiert die Koordinaten und sendet sie an den Remote-Server.
+     * Ruft die Adressinformationen durch Reverse-Geocoding ab und sendet sie zusammen mit den Koordinaten.
+     */
     void updateCoordinates() {
         SharedPreferences sharedPreferences = getSharedPreferences("Location_Data", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

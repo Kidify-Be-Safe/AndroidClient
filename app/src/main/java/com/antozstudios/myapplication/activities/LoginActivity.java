@@ -21,7 +21,13 @@ import com.antozstudios.myapplication.util.JsonParser;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 
-
+/**
+ * Aktivität für den Login-Bildschirm, in der Benutzer sich mit ihrer E-Mail und ihrem Passwort anmelden können.
+ * <p>
+ * Diese Aktivität ermöglicht es dem Benutzer, sich anzumelden, indem er seine E-Mail-Adresse und sein Passwort eingibt.
+ * Wenn der Benutzer bereits eingeloggt ist, wird er direkt zur Hauptaktivität weitergeleitet.
+ * </p>
+ */
 public class LoginActivity extends AppCompatActivity {
 
 
@@ -37,6 +43,15 @@ public class LoginActivity extends AppCompatActivity {
 
     SharedPreferences userData;
     SharedPreferences.Editor editor;
+
+
+    /**
+     * Wird aufgerufen, wenn die Aktivität erstellt wird.
+     * Initialisiert die Benutzeroberfläche, stellt sicher, dass der Benutzer nicht erneut die Login-Seite sieht,
+     * wenn er bereits eingeloggt ist, und richtet die Schaltflächen für die Anmeldung und Registrierung ein.
+     */
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +79,12 @@ public class LoginActivity extends AppCompatActivity {
            startActivity(new Intent(LoginActivity.this, MainActivity.class));
            finish();
        }
+        /**
+         * Behandelt den Klick auf die Login-Schaltfläche.
+         * Überprüft, ob die eingegebene E-Mail-Adresse gültig ist, und vergleicht das eingegebene Passwort mit dem gespeicherten Hash.
+         * Wenn die Anmeldedaten korrekt sind und der Benutzer verifiziert wurde, wird der Benutzer eingeloggt und zur Hauptaktivität weitergeleitet.
+         * Andernfalls wird eine Fehlermeldung angezeigt.
+         */
 
            loginButton.setOnClickListener((view)->{
 
@@ -129,6 +150,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+
+
+
+
+
+
+    /**
+     * Wird aufgerufen, wenn die Aktivität fortgesetzt wird.
+     * Diese Methode überschreibt die onResume-Methode der Elternklasse, jedoch wird sie in dieser Klasse nicht weiter angepasst.
+     */
     @Override
     protected void onResume() {
         super.onResume();

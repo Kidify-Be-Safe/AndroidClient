@@ -37,6 +37,12 @@ import com.journeyapps.barcodescanner.ScanOptions;
 import java.io.IOException;
 
 
+/**
+ * Diese Activity ermöglicht es dem Benutzer, seine ID zu scannen oder eine manuell einzugeben,
+ * um einen anderen Benutzer zu beobachten. Der Benutzer kann den QR-Code für seine eigene ID generieren und
+ * scannen, sowie die ID eines anderen Benutzers eingeben, um zu prüfen, ob dieser beobachtet werden kann.
+ */
+
 public class ObserveActivity extends AppCompatActivity {
 
     ImageView barcodeView;
@@ -66,6 +72,12 @@ public class ObserveActivity extends AppCompatActivity {
                 }
             });
 
+    /**
+     * Initialisiert die Activity. Lädt die Benutzer-ID und zeigt den QR-Code.
+     * Setzt die Buttons und ihre OnClickListener.
+     *
+     * @param savedInstanceState vorherige Instanzdaten
+     */
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -119,19 +131,30 @@ public class ObserveActivity extends AppCompatActivity {
         });
 
     }
-
+    /**
+     * Wird aufgerufen, wenn die Activity fortgesetzt wird. Keine zusätzliche Logik erforderlich.
+     */
     @Override
     protected void onResume() {
         super.onResume();
 
     }
 
+
+    /**
+     * Versucht, einen Benutzer hinzuzufügen, indem seine ID geprüft und in die Freundesliste aufgenommen wird.
+     *
+     * @param value die ID des Benutzers, der hinzugefügt werden soll
+     */
     void addUser(String value) {
 
 
         if(value.equals(userData.getString("b_id_hash",""))){
-            Looper.prepare();
-            Toast.makeText(ObserveActivity.this,"Du hast deine eigene ID eingegeben.", LENGTH_LONG).show();
+           runOnUiThread(()->{
+               Toast.makeText(ObserveActivity.this,"Du hast deine eigene ID eingegeben.", LENGTH_LONG).show();
+
+           });
+
         }else {
             Thread getID = new Thread(() -> {
                 id_Request.executeRequest("http://app.mluetzkendorf.xyz/api/benutzer", "?b_id_hash=eq."+value);
@@ -191,6 +214,7 @@ public class ObserveActivity extends AppCompatActivity {
                                 new PostHttp().post("http://app.mluetzkendorf.xyz/api/freundesliste",new PostHttp().sendFriend(userData.getInt("b_id",0),users[0].id));
                                 Looper.prepare();
                                 Toast.makeText(ObserveActivity.this,"User wird beobachtet.", LENGTH_LONG).show();
+                               finish();
                             }
 
                         } catch (IOException e) {
@@ -211,7 +235,7 @@ public class ObserveActivity extends AppCompatActivity {
 
 
 
-            finish();
+
         }
         }
 

@@ -87,39 +87,28 @@ import java.util.TimeZone;
 public class MainActivity extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     private static final int NOTIFICATION_PERMISSION_CODE =1002 ;
-
-    private MyLocationNewOverlay mMyLocationOverlay;
-    private MapView mMap;
-
     ImageButton myObserverButton;
     Button greenStateButton;
     Button yellowStateButton;
     Button redStateButton;
-
     Button centerButton;
     Button observeButton;
-
     ImageButton settingsButton;
-
     SharedPreferences userData,locationData;
-
-
     LocationManager locationManager ;
     TextView countryTextView;
     TextView postCodeTextView;
     TextView townTextView;
     TextView roadTextView;
-
     SharedPreferences.Editor userDataEditor,stateDataEditor,locationDataEditor;
-
-
     FriendData[]friendData;
     Thread updateMarker;
     AlertDialog gpsProvideraAlert;
-
     GetRequestTask getRequestTask;
     Intent service;
-
+    SharedPreferences stateData;
+    private MyLocationNewOverlay mMyLocationOverlay;
+    private MapView mMap;
     private Handler handler = new Handler();
     private Runnable checkGPSRunnable = new Runnable() {
         @Override
@@ -152,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    SharedPreferences stateData;
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -497,6 +485,23 @@ settingsButton.setOnClickListener(view ->{
     }
 
 
+    /**
+     * Initialisiert und konfiguriert die OpenStreetMap (OSM) Karte sowie die zugehörigen Overlay-Elemente.
+     *
+     * Diese Methode richtet die Karte ein, lädt die gespeicherten Benutzereinstellungen, konfiguriert die Kartenansicht
+     * und setzt die Zoom-Stufen. Es wird auch ein Standortüberlagerung für die Benutzerposition hinzugefügt und die
+     * GPS-Koordinaten des Benutzers sowie die Daten von Freunden auf der Karte angezeigt.
+     *
+     * Die Methode verwaltet auch Interaktionen mit verschiedenen Buttons, wie das Verschicken von Signalen (Grün, Gelb, Rot),
+     * das Zentrumsen der Karte auf den aktuellen Standort des Benutzers und das Öffnen einer Beobachtungsaktivität.
+     * Zusätzlich werden Marker für Freunde auf der Karte platziert, die abhängig vom Status der Freunde eine
+     * entsprechende Farbe erhalten.
+     *
+     * @see MyLocationNewOverlay
+     * @see Marker
+     * @see FriendData
+     * @see AlertDialog
+     */
     void setupOSM() {
         mMap = findViewById(R.id.mapview);
         Configuration.getInstance().load(
@@ -671,6 +676,22 @@ settingsButton.setOnClickListener(view ->{
 
     }
 
+    /**
+     * Wird aufgerufen, wenn die Aktivität wieder in den Vordergrund tritt und die Benutzeroberfläche sichtbar wird.
+     *
+     * In dieser Methode wird überprüft, ob die erforderliche Berechtigung für den Zugriff auf den Standort
+     * des Benutzers (`ACCESS_FINE_LOCATION`) gewährt wurde. Wenn die Berechtigung erteilt wurde, wird die Karte
+     * (OSM) fortgesetzt, die Standortüberlagerung aktiviert und der Hintergrunddienst gestartet.
+     * Andernfalls wird der Hintergrunddienst gestoppt.
+     *
+     * @see ContextCompat#checkSelfPermission(Context, String)
+     * @see PackageManager#PERMISSION_GRANTED
+     * @see MapView#onResume()
+     * @see MyLocationNewOverlay#enableFollowLocation()
+     * @see MainActivity#startAppService()
+
+     */
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -683,17 +704,6 @@ settingsButton.setOnClickListener(view ->{
             stopService(service);
         }
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @Override
@@ -705,6 +715,20 @@ settingsButton.setOnClickListener(view ->{
 
     }
 
+
+    /**
+     * Erzeugt ein Bitmap-Icon mit Text, der auf einem Hintergrund gezeichnet wird.
+     *
+     * Diese Methode erstellt ein Bitmap mit einem Text, der auf einem Hintergrund in einer angegebenen Farbe
+     * gezeichnet wird. Der Text wird in einer benutzerdefinierten Schriftgröße und -farbe dargestellt.
+     * Das resultierende Bitmap wird als `BitmapDrawable` zurückgegeben, um es als Drawable in einer Android-App zu verwenden.
+     *
+     * @param pText Der Text, der auf dem Bitmap gezeichnet werden soll.
+     * @param backgroundColor Die Hintergrundfarbe des Icons.
+     * @param textSize Die Schriftgröße des Textes.
+     * @param foregroundColor Die Farbe des Textes.
+     * @return Ein `BitmapDrawable`, das das erzeugte Bitmap mit dem Text und Hintergrund darstellt.
+     */
     public BitmapDrawable getTextIcon(final String pText, int backgroundColor, int textSize, int foregroundColor) {
         // Hintergrundfarbe
         Paint background = new Paint();
@@ -737,6 +761,17 @@ settingsButton.setOnClickListener(view ->{
 
 
 
+    /**
+     * Formatiert ein Datums-String von einem ISO 8601-Format in ein benutzerdefiniertes Datumsformat.
+     *
+     * Diese Methode nimmt einen Datums-String im Format "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX" (ISO 8601) entgegen,
+     * konvertiert ihn in ein Date-Objekt und gibt das Datum im Format "dd.MM.yyyy HH:mm:ss" zurück.
+     * Die Umwandlung erfolgt unter der Annahme, dass die Eingabezeit im UTC-Zeitraum vorliegt.
+     *
+     * @param dateStr Der Eingabe-Datums-String im ISO 8601 Format.
+     * @return Der formatierte Datums-String im Format "dd.MM.yyyy HH:mm:ss".
+     * @throws RuntimeException Wenn die Eingabe nicht geparst werden kann.
+     */
     public String formatDate(String dateStr) {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX");
@@ -760,7 +795,12 @@ settingsButton.setOnClickListener(view ->{
 
 
 
-
+    /**
+     * Startet den Dienst als Vordergrunddienst.
+     * Dies sorgt dafür, dass der Dienst auch dann weiterläuft, wenn die App im Hintergrund ist.
+     * Der Dienst wird mit der `startForegroundService()`-Methode gestartet, um sicherzustellen,
+     * dass er im Vordergrund ausgeführt wird und nicht vom System gestoppt wird, wenn die App im Hintergrund ist.
+     */
     private void startAppService() {
 
 
