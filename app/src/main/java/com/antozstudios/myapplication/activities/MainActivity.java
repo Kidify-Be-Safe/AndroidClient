@@ -448,38 +448,18 @@ settingsButton.setOnClickListener(view ->{
 
                });
 
-
+               runOnUiThread(() -> {
+                   SharedPreferences locationData = getSharedPreferences("Location_Data", MODE_PRIVATE);
+                   postCodeTextView.setText(locationData.getString("postCode", ""));
+                   countryTextView.setText(locationData.getString("country", ""));
+                   roadTextView.setText(locationData.getString("road", ""));
+                   townTextView.setText(locationData.getString("town", ""));
+               });
 
            }
 
        });
        thread.start();
-
-
-
-        Thread updateLoactionUI = new Thread(()->{
-
-            while(true){
-                try {
-                    Thread.sleep(1000);
-
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                runOnUiThread(() -> {
-                    SharedPreferences locationData = getSharedPreferences("Location_Data", MODE_PRIVATE);
-                    postCodeTextView.setText(locationData.getString("postCode", ""));
-                    countryTextView.setText(locationData.getString("country", ""));
-                    roadTextView.setText(locationData.getString("road", ""));
-                    townTextView.setText(locationData.getString("town", ""));
-                });
-            }
-
-
-        });
-        updateLoactionUI.start();
-
-
 
 
     }

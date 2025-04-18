@@ -4,7 +4,7 @@
     "type": "MERGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.antozstudios.myapplication",
+  "applicationId": "com.antozstudios.kidify",
   "variantName": "debug",
   "elements": [
     {

@@ -262,7 +262,7 @@ startForegroundService();
                 }
             }
         } else {
-            // Handle the case when geoCoding or geoCoding.address is null
+
             Log.e("UpdateCoordinates", "GeoCoding or Address is null");
         }
     }

@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.antozstudios.myapplication"
-    compileSdk = 34
+    compileSdk = 35
 
 
 packaging{
@@ -23,9 +23,9 @@ packaging{
 
 
     defaultConfig {
-        applicationId = "com.antozstudios.myapplication"
-        minSdk = 28
-        targetSdk = 34
+        applicationId = "com.antozstudios.kidify"
+        minSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
