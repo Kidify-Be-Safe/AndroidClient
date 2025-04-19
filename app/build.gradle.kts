@@ -50,12 +50,24 @@ packaging{
 }
 
 dependencies {
-    // deine anderen Abhängigkeiten hier...
 
 
+    implementation("androidx.test.espresso:espresso-intents:3.6.1")
+    implementation("androidx.test.ext:junit:1.2.1")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-core:5.11.0")
+    testImplementation("org.mockito:mockito-inline:5.2.0")
+    testImplementation("org.hamcrest:hamcrest:2.2")
+
+
+    testImplementation ("org.mockito:mockito-core:3.11.2")
+
+
+
+
+    testImplementation ("org.mockito:mockito-core:5.11.0")
 
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
-
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.compose.foundation:foundation-android:1.6.3")

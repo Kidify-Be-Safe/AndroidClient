@@ -1,8 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-50:/values-v18/values-v18.xml",
+            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-52:/values-v18/values-v18.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\a4718ce0d8862d5c7cc6a6558a5f9dc9\\transformed\\core-1.6.1\\res\\values-v18\\values.xml",
+                    "from": {
+                        "startLines": "4,12",
+                        "startColumns": "0,0",
+                        "startOffsets": "146,562",
+                        "endLines": "11,19",
+                        "endColumns": "8,8",
+                        "endOffsets": "561,975"
+                    },
+                    "to": {
+                        "startLines": "3,11",
+                        "startColumns": "4,4",
+                        "startOffsets": "104,524",
+                        "endLines": "10,18",
+                        "endColumns": "8,8",
+                        "endOffsets": "519,937"
+                    }
+                },
                 {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\316905532e0b14b2532750a0b70bf49e\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
                     "from": {

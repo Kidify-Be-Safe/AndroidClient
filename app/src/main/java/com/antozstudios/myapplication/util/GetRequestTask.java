@@ -68,7 +68,7 @@ public class GetRequestTask {
      * @param is Der InputStream, der in einen String umgewandelt werden soll.
      * @return Der konvertierte String.
      */
-    private String convertStreamToString(InputStream is) {
+    String convertStreamToString(InputStream is) {
         StringBuilder stringBuilder = new StringBuilder();
         try (java.util.Scanner scanner = new java.util.Scanner(is)) {
             while (scanner.hasNextLine()) {

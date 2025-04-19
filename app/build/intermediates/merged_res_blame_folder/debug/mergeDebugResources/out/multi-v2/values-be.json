@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-50:/values-be/values-be.xml",
+            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-52:/values-be/values-be.xml",
             "map": [
                 {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\f888187bb23784834319f63d9b4e89dc\\transformed\\ui-release\\res\\values-be\\values-be.xml",

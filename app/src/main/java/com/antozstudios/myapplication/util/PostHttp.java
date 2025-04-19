@@ -18,7 +18,7 @@ import okhttp3.Response;
 public class PostHttp {
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
-    final OkHttpClient client = new OkHttpClient();
+    public OkHttpClient client = new OkHttpClient();
 
 
     /**
@@ -35,7 +35,7 @@ public class PostHttp {
                 .post(body)
                 .build();
         try (Response response = client.newCall(request).execute()) {
-            if(response.code()>200 && response.code()<300){
+            if(response.code() >= 200 && response.code() < 300){
                 return response.body().string();
             }
             return "error";
@@ -56,10 +56,11 @@ public class PostHttp {
                 .post(body)
                 .build();
         try (Response response = client.newCall(request).execute()) {
-            if(response.code()>200 && response.code()<300){
+            if(response.code() >= 200 && response.code() < 300){
                 return response.body().string();
             }
             return "error";
+
 
         }
     }

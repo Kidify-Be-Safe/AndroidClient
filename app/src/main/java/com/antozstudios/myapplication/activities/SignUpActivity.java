@@ -216,7 +216,7 @@ postHttp = new PostHttp();
      * @param text Der zu überprüfende Text.
      * @return true, wenn der Text nur aus Buchstaben besteht, andernfalls false.
      */
-    boolean isValidText(String text) {
+    public boolean isValidText(String text) {
         return text.matches("[a-zA-Z ]+");
     }
 
@@ -226,7 +226,7 @@ postHttp = new PostHttp();
      * @param street Der zu überprüfende Text.
      * @return true, wenn der Text nur aus Buchstaben besteht, andernfalls false.
      */
-    boolean isValidStreet(String street) {
+    public boolean isValidStreet(String street) {
         return street.matches("^[a-zA-Z]+\\.?\\s?\\d+$");
     }
 

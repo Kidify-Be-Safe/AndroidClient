@@ -44,18 +44,18 @@ import java.io.IOException;
 public class CheckAppService extends Service {
 
     private Thread locationThread;
-    private PostHttp example;
+    public PostHttp example;
     private GpsMyLocationProvider gpsProvider;
     private double lat = 0.0, lon = 0.0;
-    GeoCoding geoCoding;
+    public GeoCoding geoCoding;
 
     GetRequestTask getRequestTask;
     int ampelState;
     int userID;
     String json;
 
-    SharedPreferences stateData,
-    userData;
+    public SharedPreferences stateData;
+    SharedPreferences userData;
     SharedPreferences.Editor stateDataEditor;
     boolean running = true;
 
@@ -100,7 +100,7 @@ startForegroundService();
      * Dadurch wird der Dienst im Hintergrund weiter ausgeführt.
      */
 
-    private void startForegroundService() {
+    public void startForegroundService() {
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -138,7 +138,7 @@ startForegroundService();
      * Startet einen Hintergrund-Thread, um regelmäßig den Standort zu überprüfen und Daten zu senden.
      * Es überwacht auch den Zustand einer Ampel und aktualisiert die Koordinaten basierend auf bestimmten Bedingungen.
      */
-    private void startSending() {
+    public void startSending() {
         Thread checkAmpel = new Thread(() -> {
             try {
                 LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -233,7 +233,7 @@ startForegroundService();
      * Aktualisiert die Koordinaten und sendet sie an den Remote-Server.
      * Ruft die Adressinformationen durch Reverse-Geocoding ab und sendet sie zusammen mit den Koordinaten.
      */
-    void updateCoordinates() {
+    public void updateCoordinates() {
         SharedPreferences sharedPreferences = getSharedPreferences("Location_Data", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 

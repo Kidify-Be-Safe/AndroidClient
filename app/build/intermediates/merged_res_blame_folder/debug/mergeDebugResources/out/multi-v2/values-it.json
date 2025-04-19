@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-50:/values-it/values-it.xml",
+            "outputFile": "com.antozstudios.myapplication.app-mergeDebugResources-52:/values-it/values-it.xml",
             "map": [
                 {
                     "source": "C:\\Users\\haupt\\.gradle\\caches\\8.11.1\\transforms\\22fef54c90000cc71d687c25da249161\\transformed\\osmdroid-android-6.1.18\\res\\values-it\\values-it.xml",
