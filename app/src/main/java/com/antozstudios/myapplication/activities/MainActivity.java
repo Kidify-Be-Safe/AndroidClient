@@ -1,6 +1,6 @@
 package com.antozstudios.myapplication.activities;
 
-import static org.apache.http.client.utils.DateUtils.formatDate;
+
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -64,17 +64,13 @@ import com.antozstudios.myapplication.util.PostHttp;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
 
-import org.checkerframework.checker.units.qual.A;
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
-import org.osmdroid.views.overlay.infowindow.BasicInfoWindow;
-import org.osmdroid.views.overlay.infowindow.InfoWindow;
-import org.osmdroid.views.overlay.infowindow.MarkerInfoWindow;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.io.IOException;
@@ -357,23 +353,34 @@ settingsButton.setOnClickListener(view ->{
                 if(Hash.sha256(passwort_EditText.getText().toString()).equals(userData.getString("lastPasswort",""))){
 
 
-                    Thread thread = new Thread(()->{
-                        try {
-                            if(!deleteKonto.delete("http://app.mluetzkendorf.xyz/api/benutzer?id=eq."+userData.getInt("b_id",0),new PostHttp().deleteUser(userData.getInt("b_id",0))).equals("error")){
-                                userDataEditor.clear();
-                                stateDataEditor.clear();
-                                locationDataEditor.clear();
-                                locationDataEditor.apply();
-                                userDataEditor.apply();
-                                stateDataEditor.apply();
-                                startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                                finish();
-                            }
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
-                    thread.start();
+                    new AlertDialog.Builder(MainActivity.this).setTitle("Bist du sicher?")
+                            .setMessage("Dein Konto wird unwiderruflich gelöscht.")
+                            .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Thread thread = new Thread(()->{
+                                        try {
+                                            if(!deleteKonto.delete("http://app.mluetzkendorf.xyz/api/benutzer?id=eq."+userData.getInt("b_id",0),new PostHttp().deleteUser(userData.getInt("b_id",0))).equals("error")){
+                                                userDataEditor.clear();
+                                                stateDataEditor.clear();
+                                                locationDataEditor.clear();
+                                                locationDataEditor.apply();
+                                                userDataEditor.apply();
+                                                stateDataEditor.apply();
+                                                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                                                stopService(service);
+                                                finish();
+                                            }
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                    });
+                                    thread.start();
+                                }
+                            })
+                            .setNegativeButton("Abbrechen",null)
+                            .show();
+
 
 
 
