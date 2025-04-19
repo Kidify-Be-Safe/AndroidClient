@@ -85,8 +85,6 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
-    private static final int NOTIFICATION_PERMISSION_CODE =1002 ;
     ImageButton myObserverButton;
     Button greenStateButton;
     Button yellowStateButton;
@@ -127,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
             handler.postDelayed(this, 5000);
         }
     };
+    private volatile boolean isRunning = true;
+
 
     @Override
     protected void onStart() {
@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+
         handler.removeCallbacks(checkGPSRunnable);
 
     }
@@ -592,73 +593,84 @@ settingsButton.setOnClickListener(view ->{
         observeButton.setOnClickListener((view) -> {
         startActivity(new Intent(MainActivity.this,ObserveActivity.class));
         });
-        
 
-        updateMarker = new Thread(() -> {
-            while (true) {
-                if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                    getRequestTask.executeRequest("http://app.mluetzkendorf.xyz/api/", "freundekoordinaten_view?b_id=neq." + userData.getInt("b_id", 0));
-                    friendData = new Gson().fromJson(getRequestTask.message, FriendData[].class);
+        mMap.addOnFirstLayoutListener((v, left, top, right, bottom) -> {
 
-                    runOnUiThread(() -> {
-                        if (friendData != null ) {
-                            mMap.getOverlays().removeIf(item -> item instanceof Marker);
+            isRunning = true;
 
-                            for (FriendData friend : friendData) {
-                                Marker marker = new Marker(mMap);
-                                marker.setPosition(new GeoPoint(friend.breitengrad, friend.laengengrad));
-                                marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-                                marker.setInfoWindow(null);
-                                Drawable tempDrawable;
-                                String name = friend.vorname+" " + friend.nachname;
+            updateMarker = new Thread(() -> {
+                while (isRunning) {
+                    if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
+                        getRequestTask.executeRequest("http://app.mluetzkendorf.xyz/api/", "freundekoordinaten_view?b_id=neq." + userData.getInt("b_id", 0));
+                        if (getRequestTask.message != null && !getRequestTask.message.isEmpty()) {
+                            try {
+                                friendData = new Gson().fromJson(getRequestTask.message, FriendData[].class);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                continue;
+                            }
+                        } else {
+                            continue;
+                        }
 
-                                if(friend.ampel == 1){
-                                    tempDrawable = getTextIcon(name.toUpperCase(), Color.GREEN, 60, Color.WHITE);
-                                } else if(friend.ampel == 2){
-                                    tempDrawable = getTextIcon(name.toUpperCase(), Color.YELLOW, 60, Color.BLACK);
-                                } else if(friend.ampel == 3){
-                                    tempDrawable = getTextIcon(name.toUpperCase(), Color.RED, 60, Color.WHITE);
-                                } else {
-                                    tempDrawable = getTextIcon(name.toUpperCase(), Color.WHITE, 60, Color.BLACK);
+                        runOnUiThread(() -> {
+                            if (friendData != null && mMap != null && mMap.getRepository() != null) {
+
+                                mMap.getOverlays().removeIf(item -> item instanceof Marker);
+
+                                for (FriendData friend : friendData) {
+                                    Marker marker = new Marker(mMap);
+                                    marker.setPosition(new GeoPoint(friend.breitengrad, friend.laengengrad));
+                                    marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                                    marker.setInfoWindow(null);
+
+                                    Drawable tempDrawable;
+                                    String name = friend.vorname + " " + friend.nachname;
+
+                                    if (friend.ampel == 1) {
+                                        tempDrawable = getTextIcon(name.toUpperCase(), Color.GREEN, 60, Color.WHITE);
+                                    } else if (friend.ampel == 2) {
+                                        tempDrawable = getTextIcon(name.toUpperCase(), Color.YELLOW, 60, Color.BLACK);
+                                    } else if (friend.ampel == 3) {
+                                        tempDrawable = getTextIcon(name.toUpperCase(), Color.RED, 60, Color.WHITE);
+                                    } else {
+                                        tempDrawable = getTextIcon(name.toUpperCase(), Color.WHITE, 60, Color.BLACK);
+                                    }
+
+                                    marker.setIcon(tempDrawable);
+                                    marker.setTitle(name);
+
+                                    FriendData finalFriend = friend;
+                                    marker.setOnMarkerClickListener((marker1, mapView) -> {
+                                        new AlertDialog.Builder(MainActivity.this)
+                                                .setMessage("Name: " + finalFriend.vorname + " " + finalFriend.nachname + "\n\n" +
+                                                        "Adresse: " + finalFriend.strasse + " " + finalFriend.wohnort + "\n" +
+                                                        "Zeitpunkt: " + formatDate(finalFriend.zeitpunkt) + "\n\n" +
+                                                        "Koordinaten:\n" + "Breitengrad: " + finalFriend.breitengrad + "\n" +
+                                                        "Längengrad: " + finalFriend.laengengrad)
+                                                .show();
+                                        return true;
+                                    });
+
+                                    mMap.getOverlays().add(marker);
                                 }
 
-
-                                marker.setIcon(tempDrawable);
-                                marker.setTitle(name);
-                                marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
-                                    @Override
-                                    public boolean onMarkerClick(Marker marker, MapView mapView) {
-
-                                        new AlertDialog.Builder(MainActivity.this)
-                                                .setMessage("Name: " + friend.vorname + " " + friend.nachname + "\n\n" +
-                                                        "Adresse: " + friend.strasse + " " + friend.wohnort + "\n" +
-                                                        "Zeitpunkt: " + formatDate(friend.zeitpunkt) + "\n\n" +
-                                                        "Koordinaten:\n" + "Breitengrad: " + friend.breitengrad + "\n" +
-                                                        "Längengrad: " + friend.laengengrad)
-                                                .show();
-
-
-                                        return true;
-                                    }
-                                });
-                                mMap.getOverlays().add(marker);
+                                mMap.invalidate();
                             }
+                        });
 
-                            mMap.invalidate();
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                    });
-
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
                     }
                 }
-            }
-        });
-        updateMarker.start();
+            });
 
+            updateMarker.start();
+        });
 
 
 
@@ -686,11 +698,13 @@ settingsButton.setOnClickListener(view ->{
         if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION)
                 ==PackageManager.PERMISSION_GRANTED){
             mMap.onResume();
+            isRunning = true;
             mMyLocationOverlay.enableFollowLocation();
             startAppService();
         }else{
             stopService(service);
         }
+
 
     }
 
@@ -779,8 +793,11 @@ settingsButton.setOnClickListener(view ->{
 
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        isRunning = false;
+    }
 
 
     /**
