@@ -74,6 +74,11 @@
             android:foregroundServiceType="location"
             android:exported="false"/>
 
+        <service android:name=".activities.SOS_Service"
+            android:foregroundServiceType="mediaPlayback"
+            android:exported="false"
+            tools:ignore="ForegroundServicePermission" />
+
 
 
 

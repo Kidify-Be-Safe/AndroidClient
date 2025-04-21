@@ -59,6 +59,7 @@ id scrollView_signup
 id settingsButton
 id signUpButton
 id signupTitle
+id sosButton
 id strasseInput
 id submitButton
 id switch_darkModus
@@ -78,6 +79,7 @@ layout settings_bottom_sheet
 layout signupactivity
 mipmap ic_launcher
 mipmap ic_launcher_round
+raw sos
 string andere_id_scannen
 string app_name
 string app_profil_erstellen

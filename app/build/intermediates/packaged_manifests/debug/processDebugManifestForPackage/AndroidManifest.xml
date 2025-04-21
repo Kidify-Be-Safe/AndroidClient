@@ -118,6 +118,10 @@
             android:name="com.antozstudios.myapplication.activities.CheckAppService"
             android:exported="false"
             android:foregroundServiceType="location" />
+        <service
+            android:name="com.antozstudios.myapplication.activities.SOS_Service"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
 
         <activity
             android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"

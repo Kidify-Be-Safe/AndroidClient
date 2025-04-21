@@ -4,6 +4,7 @@ package com.antozstudios.myapplication.activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.KeyguardManager;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -32,6 +33,7 @@ import android.os.PowerManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 
 import android.widget.Button;
@@ -81,7 +83,12 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE_UNLOCK =1001 ;
     ImageButton myObserverButton;
+
+    final int[] sekunden ={5};
+    final boolean[] countdown = {false};
+    Button sosButton;
     Button greenStateButton;
     Button yellowStateButton;
     Button redStateButton;
@@ -103,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences stateData;
     private MyLocationNewOverlay mMyLocationOverlay;
     private MapView mMap;
+    Thread countDownThread;
+    Intent sosService;
     private Handler handler = new Handler();
     private Runnable checkGPSRunnable = new Runnable() {
         @Override
@@ -122,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     private volatile boolean isRunning = true;
+    private boolean[] sosAktiviert = {false};
 
 
     @Override
@@ -138,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
+    @SuppressLint({"MissingInflatedId", "WrongViewCast", "ClickableViewAccessibility"})
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -151,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         );
+
+        KeyguardManager keyguardManager = getSystemService(KeyguardManager.class);
         PostHttp deleteKonto= new PostHttp();
          gpsProvideraAlert =   new AlertDialog.Builder(MainActivity.this)
                 .setTitle("Dein GPS muss eingeschaltet werden.").setTitle("Wo bist du?")
@@ -164,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         service  = new Intent(this, CheckAppService.class);
-
+        sosService  = new Intent(this,SOS_Service.class);
 
         if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION)
                 ==PackageManager.PERMISSION_GRANTED){
@@ -188,6 +200,89 @@ public class MainActivity extends AppCompatActivity {
         townTextView = findViewById(R.id.townTextView);
         countryTextView = findViewById(R.id.countryTextView);
         roadTextView = findViewById(R.id.roadTextView);
+
+        sosButton = findViewById(R.id.sosButton);
+
+        /**
+         * Setzt den Click-Listener für den SOS-Button.
+         * <p>
+         * Verhalten:
+         * <ul>
+         *     <li>Beim ersten Tippen (wenn Tutorial nicht abgeschlossen): Zeigt eine Erklärung per AlertDialog.</li>
+         *     <li>Nach dem Tutorial:
+         *         <ul>
+         *             <li>Wenn der Countdown läuft oder SOS aktiv ist, dann wird ein Dialog zum Abbrechen mit Entsperrung angezeigt.</li>
+         *             <li>Wenn noch nichts aktiv ist, dann wird ein 5-Sekunden-Countdown gestartet. Danach wird der SOS-Service gestartet.</li>
+         *         </ul>
+         *     </li>
+         * </ul>
+         */
+
+        sosButton.setOnClickListener(view -> {
+            boolean tutorial = userData.getBoolean("TutorialPassed", false);
+
+            if (!tutorial) {
+                new AlertDialog.Builder(MainActivity.this)
+                        .setMessage("Tippe den Knopf an. Nach 5 Sekunden startet ein lauter Hilfeton.")
+                        .setPositiveButton("Ok", (dialog, which) -> {
+                            userDataEditor.putBoolean("TutorialPassed", true);
+                            userDataEditor.apply();
+                        })
+                        .show();
+                return;
+            }
+
+            if (countdown[0] ) {
+                new AlertDialog.Builder(MainActivity.this)
+                        .setMessage("SOS abbrechen?")
+                        .setNegativeButton("Nein", null)
+                        .setPositiveButton("Ja", (dialog, which) -> {
+                            if (keyguardManager != null && keyguardManager.isKeyguardSecure()) {
+                                Intent intent = keyguardManager.createConfirmDeviceCredentialIntent(
+                                        "Bitte entsperren!",
+                                        "Damit das SOS-Signal abgebrochen wird."
+                                );
+                                if (intent != null) {
+                                    startActivityForResult(intent, REQUEST_CODE_UNLOCK);
+                                }
+                            }
+                        })
+                        .show();
+                return;
+            }
+
+
+            countdown[0] = true;
+            sekunden[0] = 5;
+
+            countDownThread = new Thread(() -> {
+                while (countdown[0]) {
+                    runOnUiThread(() -> {
+                        sosButton.setText(String.valueOf(sekunden[0]));
+                    });
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        return;
+                    }
+
+                    if (sekunden[0] <= 0) {
+                        countdown[0] = false;
+                        sosAktiviert[0] = true;
+                        runOnUiThread(() -> {
+                            startService(sosService);
+                            sosButton.setText("SOS");
+                        });
+                    } else {
+                        sekunden[0]--;
+                    }
+                }
+            });
+            countDownThread.start();
+        });
+
+
         setupOSM();
 
 
@@ -420,12 +515,10 @@ settingsButton.setOnClickListener(view ->{
                 .setPositiveButton("Benachrichtigung aktivieren", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                            Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-                            intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
-                            startActivity(intent);
+                        Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                        intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                        startActivity(intent);
 
-                        }
                     }
                 })
                 .setCancelable(false).create();
@@ -688,6 +781,35 @@ settingsButton.setOnClickListener(view ->{
 
 
     }
+
+
+
+
+
+    /**
+     * Wird aufgerufen, wenn eine gestartete Aktivität (z. B. zum Entsperren des Geräts)
+     * ein Ergebnis zurückgibt. In diesem Fall wird überprüft, ob der Benutzer das Gerät
+     * erfolgreich entsperrt hat, um den SOS-Modus zu deaktivieren.
+     *
+     * @param requestCode Der ursprüngliche Anfragecode, der beim Starten der Aktivität übergeben wurde.
+     * @param resultCode  Der Ergebniscode, der von der Aktivität zurückgegeben wurde.
+     * @param data        Ein Intent, der evtl. zusätzliche Daten enthält (hier nicht genutzt).
+     */
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_UNLOCK && resultCode == RESULT_OK) {
+            stopService(sosService);
+            sosButton.setText("Hilfe");
+            countdown[0] = false;
+            sekunden[0] = 5;
+            sosAktiviert[0] = false;
+        }
+    }
+
+
 
     /**
      * Wird aufgerufen, wenn die Aktivität wieder in den Vordergrund tritt und die Benutzeroberfläche sichtbar wird.

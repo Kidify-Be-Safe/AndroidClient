@@ -3603,6 +3603,7 @@ int id snackbar_action 0x7f0801c4
 int id snackbar_text 0x7f0801c5
 int id snap 0x7f0801c6
 int id snapMargins 0x7f0801c7
+int id sosButton 0x7f08023f
 int id south 0x7f0801c8
 int id spacer 0x7f0801c9
 int id special_effects_controller_view_tag 0x7f0801ca
@@ -3936,6 +3937,7 @@ int layout zxing_capture 0x7f0b007d
 int mipmap ic_launcher 0x7f0d0000
 int mipmap ic_launcher_round 0x7f0d0001
 int plurals mtrl_badge_content_description 0x7f0e0000
+int raw sos 0x7f0f0002
 int raw zxing_beep 0x7f0f0000
 int string abc_action_bar_home_description 0x7f100000
 int string abc_action_bar_up_description 0x7f100001

@@ -3604,6 +3604,7 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id sosButton
 id south
 id spacer
 id special_effects_controller_view_tag
@@ -3937,6 +3938,7 @@ layout zxing_capture
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
+raw sos
 raw zxing_beep
 string abc_action_bar_home_description
 string abc_action_bar_up_description

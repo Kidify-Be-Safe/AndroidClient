@@ -12,6 +12,10 @@
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-54:\\raw_sos_sound.mp3.flat",
+        "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\raw\\sos_sound.mp3"
+    },
+    {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-54:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
@@ -120,6 +124,10 @@
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "com.antozstudios.myapplication.app-debug-54:/raw_sos.mp3.flat",
+        "source": "com.antozstudios.myapplication.app-main-56:/raw/sos.mp3"
+    },
+    {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-54:\\drawable_settings_icon.png.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\drawable\\settings_icon.png"
     },
@@ -134,10 +142,6 @@
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-54:\\xml_network_security_config.xml.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\xml\\network_security_config.xml"
-    },
-    {
-        "merged": "com.antozstudios.myapplication.app-debug-54:/layout_settings_bottom_sheet.xml.flat",
-        "source": "com.antozstudios.myapplication.app-main-56:/layout/settings_bottom_sheet.xml"
     },
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-54:\\drawable_green.png.flat",
