@@ -28,7 +28,7 @@
         <Button
             android:id="@+id/deleteAccountButton"
             android:backgroundTint="@color/red"
-            android:text="Konto endgültig loeschen"
+            android:text="Konto endgültig löschen"
             android:layout_width="match_parent"
              android:layout_height="wrap_content"
             />

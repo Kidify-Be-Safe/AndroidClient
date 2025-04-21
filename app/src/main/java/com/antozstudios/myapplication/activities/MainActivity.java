@@ -579,13 +579,19 @@ settingsButton.setOnClickListener(view ->{
             if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
 
-                    stateDataEditor.putInt("currentState", 3);
-                stateDataEditor.apply();
-                new AlertDialog.Builder(MainActivity.this)
-                        .setMessage("Rotes Signal wurde verschickt.")
-                        .setCancelable(false)
-                        .setPositiveButton("Ok", null)
-                        .show();
+                  new AlertDialog.Builder(MainActivity.this).setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialog, int which) {
+                          stateDataEditor.putInt("currentState", 3);
+                          stateDataEditor.apply();
+                          new AlertDialog.Builder(MainActivity.this)
+                                  .setMessage("Rotes Signal wurde verschickt.")
+                                  .setCancelable(false)
+                                  .setPositiveButton("Ok", null)
+                                  .show();
+                      }
+                  }).setMessage("Bist du dir sicher?")
+                          .setNegativeButton("Abbrechen",null).show();
             }
             }
 
