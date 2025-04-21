@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -86,8 +87,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_UNLOCK =1001 ;
     ImageButton myObserverButton;
 
-    final int[] sekunden ={5};
-    final boolean[] countdown = {false};
+
+
+
     Button sosButton;
     Button greenStateButton;
     Button yellowStateButton;
@@ -95,13 +97,13 @@ public class MainActivity extends AppCompatActivity {
     Button centerButton;
     Button observeButton;
     ImageButton settingsButton;
-    SharedPreferences userData,locationData;
+    SharedPreferences userData,locationData,sosData;
     LocationManager locationManager ;
     TextView countryTextView;
     TextView postCodeTextView;
     TextView townTextView;
     TextView roadTextView;
-    SharedPreferences.Editor userDataEditor,stateDataEditor,locationDataEditor;
+    SharedPreferences.Editor userDataEditor,stateDataEditor,locationDataEditor,sosDataEditor;
     FriendData[]friendData;
     Thread updateMarker;
     AlertDialog gpsProvideraAlert;
@@ -131,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     private volatile boolean isRunning = true;
-    private boolean[] sosAktiviert = {false};
+
 
 
     @Override
@@ -149,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast", "ClickableViewAccessibility"})
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         );
+
 
         KeyguardManager keyguardManager = getSystemService(KeyguardManager.class);
         PostHttp deleteKonto= new PostHttp();
@@ -203,83 +205,76 @@ public class MainActivity extends AppCompatActivity {
 
         sosButton = findViewById(R.id.sosButton);
 
-        /**
-         * Setzt den Click-Listener für den SOS-Button.
-         * <p>
-         * Verhalten:
-         * <ul>
-         *     <li>Beim ersten Tippen (wenn Tutorial nicht abgeschlossen): Zeigt eine Erklärung per AlertDialog.</li>
-         *     <li>Nach dem Tutorial:
-         *         <ul>
-         *             <li>Wenn der Countdown läuft oder SOS aktiv ist, dann wird ein Dialog zum Abbrechen mit Entsperrung angezeigt.</li>
-         *             <li>Wenn noch nichts aktiv ist, dann wird ein 5-Sekunden-Countdown gestartet. Danach wird der SOS-Service gestartet.</li>
-         *         </ul>
-         *     </li>
-         * </ul>
-         */
+/**
+ * Setzt einen OnClickListener für den SOS-Button.
+ *
+ * Beim ersten Klick (wenn das Tutorial noch nicht abgeschlossen wurde) wird ein Hinweisdialog angezeigt,
+ * der erklärt, wie der SOS-Knopf funktioniert. Danach wird das Tutorial als abgeschlossen markiert.
+ *
+ * Wenn das Tutorial bereits abgeschlossen wurde:
+ * - Falls das SOS-Signal gerade aktiv ist, fragt ein Dialog, ob es beendet werden soll.
+ *   Falls der Benutzer zustimmt, wird zur Sicherheit die Gerätesperre abgefragt.
+ * - Falls das SOS-Signal nicht aktiv ist, fragt ein Dialog, ob es gestartet werden soll.
+ *   Wird dies bestätigt, startet der SOS-Service und der Status wird gespeichert.
+ */
 
         sosButton.setOnClickListener(view -> {
             boolean tutorial = userData.getBoolean("TutorialPassed", false);
 
             if (!tutorial) {
                 new AlertDialog.Builder(MainActivity.this)
-                        .setMessage("Tippe den Knopf an. Nach 5 Sekunden startet ein lauter Hilfeton.")
+                        .setMessage("Tippe den Knopf an. Es wird ein lauter Hilfeton umgehend gestartet!.")
                         .setPositiveButton("Ok", (dialog, which) -> {
                             userDataEditor.putBoolean("TutorialPassed", true);
                             userDataEditor.apply();
                         })
                         .show();
-                return;
-            }
 
-            if (countdown[0] ) {
-                new AlertDialog.Builder(MainActivity.this)
-                        .setMessage("SOS abbrechen?")
-                        .setNegativeButton("Nein", null)
-                        .setPositiveButton("Ja", (dialog, which) -> {
-                            if (keyguardManager != null && keyguardManager.isKeyguardSecure()) {
-                                Intent intent = keyguardManager.createConfirmDeviceCredentialIntent(
-                                        "Bitte entsperren!",
-                                        "Damit das SOS-Signal abgebrochen wird."
-                                );
-                                if (intent != null) {
-                                    startActivityForResult(intent, REQUEST_CODE_UNLOCK);
+            }else{
+                boolean sos_IsRunning = userData.getBoolean("SOS",false);
+                if(sos_IsRunning){
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setMessage("SOS Abbrechen?")
+                            .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    if (keyguardManager != null && keyguardManager.isKeyguardSecure()) {
+                                        Intent intent = keyguardManager.createConfirmDeviceCredentialIntent(
+                                                "Bitte entsperren!",
+                                                "Damit das SOS-Signal abgebrochen wird."
+                                        );
+                                        if (intent != null) {
+                                            startActivityForResult(intent, REQUEST_CODE_UNLOCK);
+                                        }
+                                    }
+
                                 }
-                            }
-                        })
-                        .show();
-                return;
-            }
+                            }).setNegativeButton("Abbrechen",null).show();
 
+                }else{
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setMessage("SOS Starten? Signal startet umgehend!")
+                            .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
 
-            countdown[0] = true;
-            sekunden[0] = 5;
+                                    startService(sosService);
+                                    userDataEditor.putBoolean("SOS",true);
+                                    userDataEditor.apply();
 
-            countDownThread = new Thread(() -> {
-                while (countdown[0]) {
-                    runOnUiThread(() -> {
-                        sosButton.setText(String.valueOf(sekunden[0]));
-                    });
-
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException ex) {
-                        return;
-                    }
-
-                    if (sekunden[0] <= 0) {
-                        countdown[0] = false;
-                        sosAktiviert[0] = true;
-                        runOnUiThread(() -> {
-                            startService(sosService);
-                            sosButton.setText("SOS");
-                        });
-                    } else {
-                        sekunden[0]--;
-                    }
+                                }
+                            }).setNegativeButton("Abbrechen",null).show();
                 }
-            });
-            countDownThread.start();
+
+
+
+
+
+
+                }
+
+
         });
 
 
@@ -599,6 +594,7 @@ settingsButton.setOnClickListener(view ->{
         );
         stateData = getSharedPreferences("State_Data",Context.MODE_PRIVATE);
         userData =   getSharedPreferences("User_Data",Context.MODE_PRIVATE);
+
         locationData = getSharedPreferences("Location_Data", MODE_PRIVATE);
 
 
@@ -639,6 +635,9 @@ settingsButton.setOnClickListener(view ->{
 
         stateDataEditor = stateData.edit();
         userDataEditor = userData.edit();
+
+
+
         locationDataEditor = locationData.edit();
         greenStateButton.setOnClickListener((view)->{
             if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ) {
@@ -801,13 +800,19 @@ settingsButton.setOnClickListener(view ->{
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_CODE_UNLOCK && resultCode == RESULT_OK) {
+
+
             stopService(sosService);
-            sosButton.setText("Hilfe");
-            countdown[0] = false;
-            sekunden[0] = 5;
-            sosAktiviert[0] = false;
+            userDataEditor.putBoolean("SOS",false);
+            userDataEditor.apply();
+
+
+
+            }
+
         }
-    }
+
+
 
 
 
@@ -839,6 +844,10 @@ settingsButton.setOnClickListener(view ->{
         }else{
             stopService(service);
         }
+
+
+
+
 
 
     }
@@ -932,6 +941,7 @@ settingsButton.setOnClickListener(view ->{
     protected void onDestroy() {
         super.onDestroy();
         isRunning = false;
+
     }
 
 
