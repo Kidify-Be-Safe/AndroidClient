@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"Alle Packages","u":"allpackages-index.html"},{"l":"com.antozstudios.myapplication"},{"l":"com.antozstudios.myapplication.activities"},{"l":"com.antozstudios.myapplication.data"},{"l":"com.antozstudios.myapplication.util"}];updateSearchResults();
