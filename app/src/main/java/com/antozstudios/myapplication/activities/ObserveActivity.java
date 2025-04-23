@@ -157,7 +157,7 @@ public class ObserveActivity extends AppCompatActivity {
 
         }else {
             Thread getID = new Thread(() -> {
-                id_Request.executeRequest("http://app.mluetzkendorf.xyz/api/benutzer", "?b_id_hash=eq."+value);
+                id_Request.executeRequest("https://app.mluetzkendorf.xyz/api/benutzer", "?b_id_hash=eq."+value);
             });
             getID.start();
 
@@ -180,7 +180,7 @@ public class ObserveActivity extends AppCompatActivity {
                 try {
                     threadIfUserExist.join();
                     if(users.length>0){
-                        observerRequest.executeRequest("http://app.mluetzkendorf.xyz/api/","freundesliste?b_id=eq."+userData.getInt("b_id",0)+"&f_id=eq."+users[0].id);
+                        observerRequest.executeRequest("https://app.mluetzkendorf.xyz/api/","freundesliste?b_id=eq."+userData.getInt("b_id",0)+"&f_id=eq."+users[0].id);
                     }else{
                         Looper.prepare();
                         Toast.makeText(ObserveActivity.this,"User nicht gefunden", LENGTH_LONG).show();
@@ -211,7 +211,7 @@ public class ObserveActivity extends AppCompatActivity {
                                 Looper.prepare();
                                 Toast.makeText(ObserveActivity.this,"User wird bereits beobachtet.", LENGTH_LONG).show();
                             }else{
-                                new PostHttp().post("http://app.mluetzkendorf.xyz/api/freundesliste",new PostHttp().sendFriend(userData.getInt("b_id",0),users[0].id));
+                                new PostHttp().post("https://app.mluetzkendorf.xyz/api/freundesliste",new PostHttp().sendFriend(userData.getInt("b_id",0),users[0].id));
                                 Looper.prepare();
                                 Toast.makeText(ObserveActivity.this,"User wird beobachtet.", LENGTH_LONG).show();
                                finish();

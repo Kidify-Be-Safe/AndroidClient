@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="blue">#1862B1</color>
+    <color name="brightGray">#878181</color>
+    <color name="gray">#161515</color>
+    <color name="green">#5FF436</color>
+    <color name="red">#F44336</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#FFEB3B</color>
+    <string name="andere_id_scannen">ID scannen</string>
+    <string name="app_name">Kidify</string>
+    <string name="app_profil_erstellen">App-Profil erstellen</string>
+    <string name="apps_ausw_hlen">Apps auswählen</string>
+    <string name="apps_bockieren">Apps bockieren</string>
+    <string name="apps_gefunden">Apps gefunden:</string>
+    <string name="benachrichtigungen_anzeigen">Benachrichtigungen anzeigen</string>
+    <string name="benachrichtigungen_vorlesen">Benachrichtigungen vorlesen</string>
+    <string name="beobachten">Beobachten</string>
+    <string name="ber_anderen_apps_setzen">Über anderen Apps setzen</string>
+    <string name="channel_description"/>
+    <string name="channel_name"/>
+    <string name="dark_modus">Dark Modus</string>
+    <string name="einstellungen">Einstellungen</string>
+    <string name="ger_tenutzungsverlauf_und_statistiken">Gerätenutzungsverlauf und Statistiken.</string>
+    <string name="hier_w_hlst_du_aus_welche_apps_von_der_sperre_betroffen_sein_sollen">Hier wählst du aus, welche Apps von der Sperre betroffen sein sollen.</string>
+    <string name="id_kopieren">ID kopieren</string>
+    <string name="kehre_zur_ck">Kehre zurück</string>
+    <string name="maximale_geschwindigkeit">Maximale Geschwindigkeit</string>
+    <string name="nachname">Nachname</string>
+    <string name="name">Name</string>
+    <string name="profil_name">Profil-Name</string>
+    <string name="speicher_lesen">Speicher lesen</string>
+    <string name="speichern">Speichern</string>
+    <string name="standort_ermitteln">Standort ermitteln</string>
+    <string name="vorname">Vorname</string>
+    <string name="zentrieren">Zentrieren</string>
+    <style name="MyTheme" parent="Theme.AppCompat.NoActionBar">
+
+        <item name="colorPrimary">@color/black </item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="backgroundColor">@color/black</item>
+        <item name="passwordToggleEnabled"> false</item>
+
+
+
+    </style>
+    <style name="Theme.MyApplication" parent="MyTheme"/>
+</resources>

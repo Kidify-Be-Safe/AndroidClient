@@ -254,7 +254,7 @@ startForegroundService();
                 editor.apply();
 
                 try {
-                    example.post("http://app.mluetzkendorf.xyz/api/koordinaten", json);
+                    example.post("https://app.mluetzkendorf.xyz/api/koordinaten", json);
                     stateDataEditor.putInt("currentState", 0);
                     stateDataEditor.apply();
                 } catch (IOException e) {

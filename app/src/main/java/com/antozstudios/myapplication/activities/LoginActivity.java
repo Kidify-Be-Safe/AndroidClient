@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
                if(Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches()){
                    Thread thread = new Thread(()->{
-                       getRequestTask.executeRequest("http://app.mluetzkendorf.xyz/api/","benutzer?email=eq."+email.getText());
+                       getRequestTask.executeRequest("https://app.mluetzkendorf.xyz/api/","benutzer?email=eq."+email.getText());
                        User[] users = new Gson().fromJson(getRequestTask.message,User[].class);
 
                        if(users.length==1){

@@ -294,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
 
             GetRequestTask friendRequest = new GetRequestTask();
             Thread friendRequest_Thread = new Thread(()->{
-                friendRequest.executeRequest("http://app.mluetzkendorf.xyz/","api/freunde?b_id=neq."+userData.getInt("b_id",0));
+                friendRequest.executeRequest("https://app.mluetzkendorf.xyz/","api/freunde?b_id=neq."+userData.getInt("b_id",0));
 
                 FriendData[] friends = new Gson().fromJson(friendRequest.message,FriendData[].class);
 
@@ -328,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
                                         Thread deleteThread = new Thread(()->{
 
                                             try {
-                                                new PostHttp().delete("http://app.mluetzkendorf.xyz/api/freundesliste?b_id=eq."+userData.getInt("b_id",0)+"&f_id=eq."+friend.b_id,"");
+                                                new PostHttp().delete("https://app.mluetzkendorf.xyz/api/freundesliste?b_id=eq."+userData.getInt("b_id",0)+"&f_id=eq."+friend.b_id,"");
                                             } catch (IOException e) {
                                                 throw new RuntimeException(e);
                                             }
@@ -450,7 +450,7 @@ settingsButton.setOnClickListener(view ->{
                                 public void onClick(DialogInterface dialog, int which) {
                                     Thread thread = new Thread(()->{
                                         try {
-                                            if(!deleteKonto.delete("http://app.mluetzkendorf.xyz/api/benutzer?id=eq."+userData.getInt("b_id",0),new PostHttp().deleteUser(userData.getInt("b_id",0))).equals("error")){
+                                            if(!deleteKonto.delete("https://app.mluetzkendorf.xyz/api/benutzer?id=eq."+userData.getInt("b_id",0),new PostHttp().deleteUser(userData.getInt("b_id",0))).equals("error")){
                                                 userDataEditor.clear();
                                                 stateDataEditor.clear();
                                                 locationDataEditor.clear();
@@ -707,7 +707,7 @@ settingsButton.setOnClickListener(view ->{
                 while (isRunning) {
                     if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
-                        getRequestTask.executeRequest("http://app.mluetzkendorf.xyz/api/", "freundekoordinaten_view?b_id=neq." + userData.getInt("b_id", 0));
+                        getRequestTask.executeRequest("https://app.mluetzkendorf.xyz/api/", "freundekoordinaten_view?b_id=neq." + userData.getInt("b_id", 0));
                         if (getRequestTask.message != null && !getRequestTask.message.isEmpty()) {
                             try {
                                 friendData = new Gson().fromJson(getRequestTask.message, FriendData[].class);

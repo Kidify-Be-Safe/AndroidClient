@@ -86,7 +86,7 @@ postHttp = new PostHttp();
                 boolean isValidEmail = Patterns.EMAIL_ADDRESS.matcher(tempEmail).matches();
 
                 getRequestTask.executeRequest(
-                        "http://app.mluetzkendorf.xyz/api/benutzer",
+                        "https://app.mluetzkendorf.xyz/api/benutzer",
                         "?email=eq." + tempEmail
                 );
 
@@ -154,7 +154,7 @@ postHttp = new PostHttp();
 
 
                                                     try {
-                                                        if(!postHttp.post("http://app.mluetzkendorf.xyz/api/benutzer",jsonResponse).equals("error")){
+                                                        if(!postHttp.post("https://app.mluetzkendorf.xyz/api/benutzer",jsonResponse).equals("error")){
                                                             runOnUiThread(() -> {
                                                                 new AlertDialog.Builder(SignUpActivity.this)
                                                                         .setMessage("Ihre Registrierung war erfolgreich. \n\n" +
