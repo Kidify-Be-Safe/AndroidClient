@@ -27,6 +27,9 @@ id bottomSheetLayout
 id centerButton
 id copyButton
 id countryTextView
+id customServer_Hinweis
+id customServer_Switch
+id customServer_URL
 id deleteAccountButton
 id drag
 id emailInput

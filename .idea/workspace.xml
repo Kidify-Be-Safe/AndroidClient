@@ -128,11 +128,11 @@
       <list>
         <option value="Interface" />
         <option value="resourceFile" />
-        <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
         <option value="JUnit5 Test Class" />
         <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -448,12 +448,12 @@
       <map>
         <entry key="com.antozstudios.myapplication">
           <value>
-            <CheckInfo lastCheckTimestamp="1745241555773" />
+            <CheckInfo lastCheckTimestamp="1745554295867" />
           </value>
         </entry>
         <entry key="com.antozstudios.myapplication.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1745241555772" />
+            <CheckInfo lastCheckTimestamp="1745554295866" />
           </value>
         </entry>
       </map>

@@ -1,5 +1,8 @@
 package com.antozstudios.myapplication.activities;
 
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +11,10 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +67,10 @@ public class LoginActivity extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         );
 
+
+
+
+
         setContentView(R.layout.activity_login);
         getRequestTask = new GetRequestTask();
 
@@ -70,6 +81,31 @@ public class LoginActivity extends AppCompatActivity {
         passwort = findViewById(R.id.inputField_Passwort);
         loginButton = findViewById(R.id.loginButton);
         signUpButton = findViewById(R.id.signUpButton);
+
+
+        @SuppressLint("UseSwitchCompatOrMaterialCode")
+
+        Switch customSwitch = findViewById(R.id.customServer_Switch);
+        EditText customServerInput = findViewById(R.id.customServer_URL);
+        TextView customServerHinweisText = findViewById(R.id.customServer_Hinweis);
+        customSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                runOnUiThread(()->{
+                    if(isChecked){
+                        customServerInput.setVisibility(VISIBLE);
+                        customServerHinweisText.setVisibility(VISIBLE);
+                    }else{
+                        customServerInput.setVisibility(INVISIBLE);
+                        customServerHinweisText.setVisibility(INVISIBLE);
+                    }
+                });
+
+
+
+            }
+        });
+
 
         userData = getSharedPreferences("User_Data",MODE_PRIVATE);
         editor = userData.edit();
