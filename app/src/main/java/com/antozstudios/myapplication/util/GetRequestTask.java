@@ -1,8 +1,14 @@
 package com.antozstudios.myapplication.util;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.ContentHandler;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,6 +21,7 @@ import java.net.URL;
 public class GetRequestTask {
 
 
+    SharedPreferences userData;
     /**
      * Enthält die Antwortnachricht der GET-Anfrage.
      */
@@ -24,8 +31,9 @@ public class GetRequestTask {
      * Konstruktor der {@link GetRequestTask} Klasse.
      * Initialisiert das {@link #message}-Feld mit einem leeren String.
      */
-    public GetRequestTask() {
+    public GetRequestTask(Context context) {
         this.message = ""; // Initialisierung der message
+        userData = context.getSharedPreferences("KEY",MODE_PRIVATE);
     }
 
     /**
@@ -48,6 +56,7 @@ public class GetRequestTask {
         HttpURLConnection urlConnection = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.addRequestProperty("apikey",userData.getString("KEY",""));
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
             // Hier kannst du die Antwort weiter verarbeiten (z. B. als String lesen)

@@ -3,6 +3,7 @@ package com.antozstudios.myapplication.activities;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Patterns;
@@ -41,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
     private GetRequestTask getRequestTask;
     private PostHttp postHttp;
 
+    SharedPreferences userData;
 
     /**
      * Initialisiert die Ansicht und die erforderlichen Komponenten der Aktivität.
@@ -56,7 +58,8 @@ public class SignUpActivity extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         );
         setContentView(R.layout.signupactivity);
-postHttp = new PostHttp();
+        userData = getSharedPreferences("User_Data",MODE_PRIVATE);
+postHttp = new PostHttp(SignUpActivity.this);
         // Initialisieren der Felder
         vorname = findViewById(R.id.vornameInput);
         nachname = findViewById(R.id.nachnameInput);
@@ -86,7 +89,7 @@ postHttp = new PostHttp();
                 boolean isValidEmail = Patterns.EMAIL_ADDRESS.matcher(tempEmail).matches();
 
                 getRequestTask.executeRequest(
-                        "https://app.mluetzkendorf.xyz/api/benutzer",
+                        userData.getString("URL",""),
                         "?email=eq." + tempEmail
                 );
 

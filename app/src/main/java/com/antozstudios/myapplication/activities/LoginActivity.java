@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.antozstudios.myapplication.R;
 import com.antozstudios.myapplication.data.User;
+import com.antozstudios.myapplication.util.AppMode;
 import com.antozstudios.myapplication.util.GetRequestTask;
 import com.antozstudios.myapplication.util.Hash;
 import com.antozstudios.myapplication.util.JsonParser;
@@ -72,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-
+        new AppMode(getApplicationContext());
 
 
         getRequestTask = new GetRequestTask();
@@ -143,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
 
                if(Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches()){
                    Thread thread = new Thread(()->{
-                       getRequestTask.executeRequest("https://app.mluetzkendorf.xyz/api/","benutzer?email=eq."+email.getText());
+                       getRequestTask.executeRequest(userData.getString("URL",""),"benutzer?email=eq."+email.getText());
                        User[] users = new Gson().fromJson(getRequestTask.message,User[].class);
 
                        if(users.length==1){
