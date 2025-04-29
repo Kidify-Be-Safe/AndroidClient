@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.antozstudios.myapplication.R;
 import com.antozstudios.myapplication.data.User;
+import com.antozstudios.myapplication.util.AppMode;
 import com.antozstudios.myapplication.util.GetRequestTask;
 import com.antozstudios.myapplication.util.Hash;
 import com.antozstudios.myapplication.util.JsonParser;
@@ -70,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         );
 
         setContentView(R.layout.activity_login);
-
+        new AppMode(getApplicationContext());
 
 
 
@@ -100,28 +101,10 @@ public class LoginActivity extends AppCompatActivity {
         signUpButton = findViewById(R.id.signUpButton);
 
 
-        @SuppressLint("UseSwitchCompatOrMaterialCode")
-
-        Switch customSwitch = findViewById(R.id.customServer_Switch);
-        EditText customServerInput = findViewById(R.id.customServer_URL);
-        TextView customServerHinweisText = findViewById(R.id.customServer_Hinweis);
-        customSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                runOnUiThread(()->{
-                    if(isChecked){
-                        customServerInput.setVisibility(VISIBLE);
-                        customServerHinweisText.setVisibility(VISIBLE);
-                    }else{
-                        customServerInput.setVisibility(INVISIBLE);
-                        customServerHinweisText.setVisibility(INVISIBLE);
-                    }
-                });
 
 
 
-            }
-        });
+
 
 
         userData = getSharedPreferences("User_Data",MODE_PRIVATE);
@@ -143,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
 
                if(Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches()){
                    Thread thread = new Thread(()->{
-                       getRequestTask.executeRequest("https://app.mluetzkendorf.xyz/api/","benutzer?email=eq."+email.getText());
+                       getRequestTask.executeRequest(userData.getString("URL",""),"benutzer?email=eq."+email.getText());
                        User[] users = new Gson().fromJson(getRequestTask.message,User[].class);
 
                        if(users.length==1){

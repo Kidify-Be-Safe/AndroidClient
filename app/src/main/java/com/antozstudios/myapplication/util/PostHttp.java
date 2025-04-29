@@ -1,5 +1,9 @@
 package com.antozstudios.myapplication.util;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.text.Editable;
 
 import java.io.IOException;
@@ -20,6 +24,7 @@ public class PostHttp {
 
     public OkHttpClient client = new OkHttpClient();
 
+    private SharedPreferences sharedPreferences;
 
     /**
      * Sendet einen POST-Request an die angegebene URL mit JSON-Inhalt.
@@ -29,10 +34,12 @@ public class PostHttp {
      * @throws IOException bei Netzwerkfehlern
      */
     public String post(String url, String json) throws IOException {
+
         RequestBody body = RequestBody.create(json, JSON);
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)
+                .header("apikey", sharedPreferences.getString("KEY",""))
                 .build();
         try (Response response = client.newCall(request).execute()) {
             if(response.code() >= 200 && response.code() < 300){
@@ -54,6 +61,7 @@ public class PostHttp {
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)
+                .header("apikey", sharedPreferences.getString("KEY",""))
                 .build();
         try (Response response = client.newCall(request).execute()) {
             if(response.code() >= 200 && response.code() < 300){
@@ -79,7 +87,7 @@ public class PostHttp {
         Request request = new Request.Builder()
                 .url(url)
                 .delete(body)
-                .header("Content-Type", "application/json")  // Content-Type hinzufügen
+                .header("apikey", sharedPreferences.getString("KEY",""))
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
@@ -97,7 +105,9 @@ public class PostHttp {
 
 
 
-
+public PostHttp(Context context){
+     sharedPreferences = context.getSharedPreferences("User_Data",MODE_PRIVATE);
+}
 
 
 

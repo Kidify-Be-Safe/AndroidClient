@@ -68,7 +68,7 @@ public class CheckAppService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        example = new PostHttp();
+        example = new PostHttp(CheckAppService.this);
         getRequestTask = new GetRequestTask();
 
         userData = getSharedPreferences("User_Data", MODE_PRIVATE);

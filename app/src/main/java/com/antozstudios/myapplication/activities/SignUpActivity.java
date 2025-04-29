@@ -3,6 +3,7 @@ package com.antozstudios.myapplication.activities;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Patterns;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.antozstudios.myapplication.R;
 import com.antozstudios.myapplication.data.User;
+import com.antozstudios.myapplication.util.AppMode;
 import com.antozstudios.myapplication.util.GetRequestTask;
 import com.antozstudios.myapplication.util.Hash;
 import com.antozstudios.myapplication.util.PostHttp;
@@ -42,6 +44,8 @@ public class SignUpActivity extends AppCompatActivity {
     private PostHttp postHttp;
 
 
+
+
     /**
      * Initialisiert die Ansicht und die erforderlichen Komponenten der Aktivität.
      * Wird beim Starten der Aktivität aufgerufen.
@@ -56,7 +60,8 @@ public class SignUpActivity extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         );
         setContentView(R.layout.signupactivity);
-postHttp = new PostHttp();
+
+postHttp = new PostHttp(getApplicationContext());
         // Initialisieren der Felder
         vorname = findViewById(R.id.vornameInput);
         nachname = findViewById(R.id.nachnameInput);
@@ -84,10 +89,11 @@ postHttp = new PostHttp();
                 String tempStrasse = strasse.getText().toString().toLowerCase().trim();
 
                 boolean isValidEmail = Patterns.EMAIL_ADDRESS.matcher(tempEmail).matches();
+SharedPreferences userData = getSharedPreferences("User_Data",MODE_PRIVATE);
 
                 getRequestTask.executeRequest(
-                        "https://app.mluetzkendorf.xyz/api/benutzer",
-                        "?email=eq." + tempEmail
+                        userData.getString("URL",""),
+                        "/benutzer?email=eq." + tempEmail
                 );
 
                 User[] users = new Gson().fromJson(getRequestTask.message, User[].class);
