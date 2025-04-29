@@ -3304,6 +3304,7 @@ id customServer_Switch
 id customServer_URL
 id cut
 id date_picker_actions
+id datenschutzButton
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
@@ -3506,6 +3507,7 @@ id north
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id nutzungsbedingungButton
 id observeButton
 id off
 id on
@@ -3634,6 +3636,7 @@ id stretch
 id submenuarrow
 id submitButton
 id submit_area
+id supportButton
 id supportScrollUp
 id switch_darkModus
 id tabMode

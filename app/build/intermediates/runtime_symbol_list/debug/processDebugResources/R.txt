@@ -3303,6 +3303,7 @@ int id customServer_Switch 0x7f080241
 int id customServer_URL 0x7f080240
 int id cut 0x7f080097
 int id date_picker_actions 0x7f080098
+int id datenschutzButton 0x7f080244
 int id decelerate 0x7f080099
 int id decelerateAndComplete 0x7f08009a
 int id decor_content_parent 0x7f08009b
@@ -3505,6 +3506,7 @@ int id north 0x7f08015f
 int id notification_background 0x7f080160
 int id notification_main_column 0x7f080161
 int id notification_main_column_container 0x7f080162
+int id nutzungsbedingungButton 0x7f080245
 int id observeButton 0x7f080163
 int id off 0x7f080164
 int id on 0x7f080165
@@ -3633,6 +3635,7 @@ int id stretch 0x7f0801df
 int id submenuarrow 0x7f0801e0
 int id submitButton 0x7f0801e1
 int id submit_area 0x7f0801e2
+int id supportButton 0x7f080243
 int id supportScrollUp 0x7f0801e3
 int id switch_darkModus 0x7f0801e4
 int id tabMode 0x7f0801e5

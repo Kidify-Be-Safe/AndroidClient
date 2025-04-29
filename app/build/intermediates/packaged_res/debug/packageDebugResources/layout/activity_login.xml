@@ -15,7 +15,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.362">
 
 
         <LinearLayout
@@ -66,27 +67,28 @@
             <Switch
                 android:id="@id/customServer_Switch"
                 android:layout_width="wrap_content"
-                android:text="Erweiterte Optionen"
+                android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_margin="20dp"
-                android:layout_height="wrap_content"
+                android:text="Erweiterte Optionen"
                 tools:ignore="UseSwitchCompatOrMaterialXml">
 
             </Switch>
 
             <EditText
                 android:id="@+id/customServer_URL"
-                android:hint="Benutzerdefinierter Server"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:hint="Benutzerdefinierter Server"
+                android:visibility="invisible" />
+
             <TextView
                 android:id="@+id/customServer_Hinweis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
                 android:gravity="center"
-                android:text="Füge deinen eigenen Server hinzu. https://DEINE_EINGABE/api" />
+                android:text="https://DEINE_EINGABE/api"
+                android:visibility="invisible" />
         </LinearLayout>
     </ScrollView>
 
@@ -95,7 +97,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="136dp"
         android:backgroundTint="@color/black"
@@ -104,7 +106,8 @@
         android:textColorLink="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/signUpButton"
@@ -119,6 +122,53 @@
         android:textColorLink="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:layout_width="355dp"
+        android:layout_height="162dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:id="@+id/supportButton"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Brauchen Sie hilfe?" />
+
+            <Button
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:id="@+id/datenschutzButton"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Datenschutz" />
+
+            <Button
+                android:id="@+id/nutzungsbedingungButton"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Nutzungsbedingungen"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

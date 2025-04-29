@@ -30,6 +30,7 @@ id countryTextView
 id customServer_Hinweis
 id customServer_Switch
 id customServer_URL
+id datenschutzButton
 id deleteAccountButton
 id drag
 id emailInput
@@ -47,6 +48,7 @@ id logutButton
 id mapview
 id myObserverButton
 id nachnameInput
+id nutzungsbedingungButton
 id observeButton
 id passwortInput
 id postCodeTextView
@@ -65,6 +67,7 @@ id signupTitle
 id sosButton
 id strasseInput
 id submitButton
+id supportButton
 id switch_darkModus
 id textView4
 id townTextView

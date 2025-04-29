@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -63,18 +64,34 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         );
 
-
-
-
-
         setContentView(R.layout.activity_login);
+
+
+
+
+
         getRequestTask = new GetRequestTask();
 
 
+        Button supportButton = findViewById(R.id.supportButton);
+        supportButton.setOnClickListener(view -> {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://app.mluetzkendorf.xyz/support")));
+        });
+
+        Button datenschutzButton = findViewById(R.id.datenschutzButton);
+        datenschutzButton.setOnClickListener(view -> {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://app.mluetzkendorf.xyz/datenschutz")));
+        });
+
+        Button nutzungsbedingungButton = findViewById(R.id.nutzungsbedingungButton);
+        nutzungsbedingungButton.setOnClickListener(view -> {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://app.mluetzkendorf.xyz/nutzungsbedingungen")));
+        });
 
 
         email = findViewById(R.id.inputField_Email);
