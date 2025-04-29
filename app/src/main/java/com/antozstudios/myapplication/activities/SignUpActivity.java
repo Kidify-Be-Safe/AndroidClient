@@ -71,7 +71,7 @@ postHttp = new PostHttp(SignUpActivity.this);
         wohnort = findViewById(R.id.wohnortInput);
 
         // Initialisieren der Aufgaben
-        getRequestTask = new GetRequestTask();
+        getRequestTask = new GetRequestTask(SignUpActivity.this);
         user = new User();
 
         submit.setOnClickListener((view) -> {

@@ -69,7 +69,7 @@ public class CheckAppService extends Service {
     public void onCreate() {
         super.onCreate();
         example = new PostHttp(CheckAppService.this);
-        getRequestTask = new GetRequestTask();
+        getRequestTask = new GetRequestTask(getApplicationContext());
 
         userData = getSharedPreferences("User_Data", MODE_PRIVATE);
         userID = userData.getInt("b_id", -1);

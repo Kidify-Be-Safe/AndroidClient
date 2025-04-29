@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         new AppMode(getApplicationContext());
 
 
-        getRequestTask = new GetRequestTask();
+        getRequestTask = new GetRequestTask(LoginActivity.this);
 
 
         Button supportButton = findViewById(R.id.supportButton);
@@ -101,28 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         signUpButton = findViewById(R.id.signUpButton);
 
 
-        @SuppressLint("UseSwitchCompatOrMaterialCode")
 
-        Switch customSwitch = findViewById(R.id.customServer_Switch);
-        EditText customServerInput = findViewById(R.id.customServer_URL);
-        TextView customServerHinweisText = findViewById(R.id.customServer_Hinweis);
-        customSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                runOnUiThread(()->{
-                    if(isChecked){
-                        customServerInput.setVisibility(VISIBLE);
-                        customServerHinweisText.setVisibility(VISIBLE);
-                    }else{
-                        customServerInput.setVisibility(INVISIBLE);
-                        customServerHinweisText.setVisibility(INVISIBLE);
-                    }
-                });
-
-
-
-            }
-        });
 
 
         userData = getSharedPreferences("User_Data",MODE_PRIVATE);

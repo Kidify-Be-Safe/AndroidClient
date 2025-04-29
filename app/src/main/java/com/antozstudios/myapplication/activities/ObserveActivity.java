@@ -60,8 +60,8 @@ public class ObserveActivity extends AppCompatActivity {
 
     User[] users;
     User[] observer;
-    GetRequestTask id_Request = new GetRequestTask();
-    GetRequestTask observerRequest = new GetRequestTask();
+    GetRequestTask id_Request = new GetRequestTask(ObserveActivity.this);
+    GetRequestTask observerRequest = new GetRequestTask(ObserveActivity.this);
     PostHttp postHttp = new PostHttp(ObserveActivity.this);
     private final ActivityResultLauncher<ScanOptions> barcodeLauncher =
             registerForActivityResult(new ScanContract(), result -> {

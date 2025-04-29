@@ -3299,9 +3299,7 @@ id cradle
 id currentState
 id custom
 id customPanel
-id customServer_Hinweis
 id customServer_Switch
-id customServer_URL
 id cut
 id date_picker_actions
 id datenschutzButton

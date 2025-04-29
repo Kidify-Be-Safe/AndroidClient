@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
             stopService(service);
         }
         setContentView(R.layout.activity_main);
-        getRequestTask = new GetRequestTask();
+        getRequestTask = new GetRequestTask(MainActivity.this);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         greenStateButton = findViewById(R.id.greenButton);
@@ -292,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout linearLayout = bottomSheetDialog.findViewById(R.id.bottomSheetLayout);
 
 
-            GetRequestTask friendRequest = new GetRequestTask();
+            GetRequestTask friendRequest = new GetRequestTask(MainActivity.this);
             Thread friendRequest_Thread = new Thread(()->{
                 friendRequest.executeRequest(userData.getString("URL",""),"freunde?b_id=neq."+userData.getInt("b_id",0));
 

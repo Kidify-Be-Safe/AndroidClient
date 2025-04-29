@@ -17,14 +17,14 @@ public class AppMode {
         //Basic URL https://app.mluetzkendorf.xyz/api/
         SharedPreferences sharedPreferences = context.getSharedPreferences("User_Data",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        if(!PATH.equals("https://app.mluetzkendorf.xyz/api/")){
-
-            editor.putString("URL",PATH);
-            editor.putString("KEY",KEY);
-            editor.apply();
-        }else{
+        if(PATH.equals("PATH_PLACEHOLDER")){
             editor.putString("URL","https://app.mluetzkendorf.xyz/api/");
             editor.putString("KEY","KrtKNkLNGcwKQ56la4jcHwxF");
+            editor.apply();
+
+        }else{
+            editor.putString("URL",PATH);
+            editor.putString("KEY",KEY);
             editor.apply();
         }
     }

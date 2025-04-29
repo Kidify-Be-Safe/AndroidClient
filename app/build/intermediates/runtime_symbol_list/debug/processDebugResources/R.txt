@@ -3298,9 +3298,7 @@ int id cradle 0x7f080093
 int id currentState 0x7f080094
 int id custom 0x7f080095
 int id customPanel 0x7f080096
-int id customServer_Hinweis 0x7f080097
 int id customServer_Switch 0x7f080098
-int id customServer_URL 0x7f080099
 int id cut 0x7f08009a
 int id date_picker_actions 0x7f08009b
 int id datenschutzButton 0x7f08009c
