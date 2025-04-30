@@ -71,12 +71,12 @@ public class LoginActivity extends AppCompatActivity {
         );
 
         setContentView(R.layout.activity_login);
-
+        userData = getSharedPreferences("User_Data",MODE_PRIVATE);
 
         new AppMode(getApplicationContext());
 
 
-        getRequestTask = new GetRequestTask(LoginActivity.this);
+        getRequestTask = new GetRequestTask(getApplicationContext());
 
 
         Button supportButton = findViewById(R.id.supportButton);
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        userData = getSharedPreferences("User_Data",MODE_PRIVATE);
+
         editor = userData.edit();
        int isLoggedIn = userData.getInt("isLoggedIn",0);
 

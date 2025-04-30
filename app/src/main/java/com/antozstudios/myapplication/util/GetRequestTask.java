@@ -33,7 +33,7 @@ public class GetRequestTask {
      */
     public GetRequestTask(Context context) {
         this.message = ""; // Initialisierung der message
-        userData = context.getSharedPreferences("KEY",MODE_PRIVATE);
+        userData = context.getSharedPreferences("User_Data",MODE_PRIVATE);
     }
 
     /**

@@ -17,7 +17,7 @@ public class AppMode {
         //Basic URL https://app.mluetzkendorf.xyz/api/
         SharedPreferences sharedPreferences = context.getSharedPreferences("User_Data",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        if(PATH.equals("PATH_PLACEHOLDER")){
+        if(PATH.contains("PATH_PLACEHOLDER")){
             editor.putString("URL","https://app.mluetzkendorf.xyz/api/");
             editor.putString("KEY","KrtKNkLNGcwKQ56la4jcHwxF");
             editor.apply();
