@@ -9,6 +9,7 @@ import android.os.Looper;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -59,6 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
         );
         setContentView(R.layout.signupactivity);
         userData = getSharedPreferences("User_Data",MODE_PRIVATE);
+       
 postHttp = new PostHttp(SignUpActivity.this);
         // Initialisieren der Felder
         vorname = findViewById(R.id.vornameInput);
@@ -90,7 +92,7 @@ postHttp = new PostHttp(SignUpActivity.this);
 
                 getRequestTask.executeRequest(
                         userData.getString("URL",""),
-                        "?email=eq." + tempEmail
+                        "benutzer?email=eq." + tempEmail
                 );
 
                 User[] users = new Gson().fromJson(getRequestTask.message, User[].class);

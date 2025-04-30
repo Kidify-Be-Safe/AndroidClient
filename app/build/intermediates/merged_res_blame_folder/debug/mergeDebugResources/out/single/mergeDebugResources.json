@@ -120,6 +120,10 @@
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\color\\curved_color.xml"
     },
     {
+        "merged": "com.antozstudios.myapplication.app-debug-54:/layout_signupactivity.xml.flat",
+        "source": "com.antozstudios.myapplication.app-main-56:/layout/signupactivity.xml"
+    },
+    {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-54:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
@@ -142,10 +146,6 @@
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-54:\\drawable_green.png.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\drawable\\green.png"
-    },
-    {
-        "merged": "com.antozstudios.myapplication.app-debug-54:/layout_activity_login.xml.flat",
-        "source": "com.antozstudios.myapplication.app-main-56:/layout/activity_login.xml"
     },
     {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-54:\\drawable_delete.png.flat",
