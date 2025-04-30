@@ -60,9 +60,9 @@ public class ObserveActivity extends AppCompatActivity {
 
     User[] users;
     User[] observer;
-    GetRequestTask id_Request = new GetRequestTask(ObserveActivity.this);
-    GetRequestTask observerRequest = new GetRequestTask(ObserveActivity.this);
-    PostHttp postHttp = new PostHttp(ObserveActivity.this);
+    GetRequestTask id_Request;
+    GetRequestTask observerRequest;
+
     private final ActivityResultLauncher<ScanOptions> barcodeLauncher =
             registerForActivityResult(new ScanContract(), result -> {
                 if (result.getContents() != null) {
@@ -87,7 +87,11 @@ public class ObserveActivity extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         );
 
+
         setContentView(R.layout.observe_activity);
+
+        id_Request = new GetRequestTask(getApplicationContext());
+        observerRequest = new GetRequestTask(getApplicationContext());
         hashTextView = findViewById(R.id.hashTextView);
         SharedPreferences sharedPreferences = getSharedPreferences("User_Data", MODE_PRIVATE);
         tempHASH = sharedPreferences.getString("b_id_hash", "");
@@ -211,7 +215,7 @@ public class ObserveActivity extends AppCompatActivity {
                                 Looper.prepare();
                                 Toast.makeText(ObserveActivity.this,"User wird bereits beobachtet.", LENGTH_LONG).show();
                             }else{
-                                new PostHttp(ObserveActivity.this).post("https://app.mluetzkendorf.xyz/api/freundesliste",new PostHttp(ObserveActivity.this).sendFriend(userData.getInt("b_id",0),users[0].id));
+                                new PostHttp(getApplicationContext()).post("https://app.mluetzkendorf.xyz/api/freundesliste",new PostHttp(getApplicationContext()).sendFriend(userData.getInt("b_id",0),users[0].id));
                                 Looper.prepare();
                                 Toast.makeText(ObserveActivity.this,"User wird beobachtet.", LENGTH_LONG).show();
                                finish();

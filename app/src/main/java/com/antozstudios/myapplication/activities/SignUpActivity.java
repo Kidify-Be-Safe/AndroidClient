@@ -38,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputEditText email, passwort, vorname, nachname, wohnort, strasse, plz;
     private Button submit;
 
-    private User user;
+
     private GetRequestTask getRequestTask;
     private PostHttp postHttp;
 
@@ -71,8 +71,8 @@ postHttp = new PostHttp(SignUpActivity.this);
         wohnort = findViewById(R.id.wohnortInput);
 
         // Initialisieren der Aufgaben
-        getRequestTask = new GetRequestTask(SignUpActivity.this);
-        user = new User();
+        getRequestTask = new GetRequestTask(getApplicationContext());
+
 
         submit.setOnClickListener((view) -> {
 
