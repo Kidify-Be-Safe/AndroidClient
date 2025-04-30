@@ -159,17 +159,29 @@ postHttp = new PostHttp(SignUpActivity.this);
                                                     try {
                                                         if(!postHttp.post("https://app.mluetzkendorf.xyz/api/benutzer",jsonResponse).equals("error")){
                                                             runOnUiThread(() -> {
-                                                                new AlertDialog.Builder(SignUpActivity.this)
-                                                                        .setMessage("Ihre Registrierung war erfolgreich. \n\n" +
-                                                                                "Sie erhalten in Kürze einen Brief. \n\n" +
-                                                                                "Bitte folgen Sie den Anweisungen und senden Sie den Brief innerhalb von 30 Tagen an uns zurück. Andernfalls wird Ihr Account automatisch gelöscht.")
-                                                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(DialogInterface dialogInterface, int i) {
-                                                                                finish();
-                                                                            }
-                                                                        })
-                                                                        .show();
+                                                              if(userData.getBoolean("CUSTOM_SERVER",false)==false){
+                                                                  new AlertDialog.Builder(SignUpActivity.this)
+                                                                          .setMessage("Ihre Registrierung war erfolgreich. \n\n" +
+                                                                                  "Sie erhalten in Kürze einen Brief. \n\n" +
+                                                                                  "Bitte folgen Sie den Anweisungen und senden Sie den Brief innerhalb von 30 Tagen an uns zurück. Andernfalls wird Ihr Account automatisch gelöscht.")
+                                                                          .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                                              @Override
+                                                                              public void onClick(DialogInterface dialogInterface, int i) {
+                                                                                  finish();
+                                                                              }
+                                                                          })
+                                                                          .show();
+                                                              }else{
+                                                                  new AlertDialog.Builder(SignUpActivity.this)
+                                                                          .setMessage("Ihre Registrierung war erfolgreich")
+                                                                          .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                                              @Override
+                                                                              public void onClick(DialogInterface dialogInterface, int i) {
+                                                                                  finish();
+                                                                              }
+                                                                          })
+                                                                          .show();
+                                                              }
 
                                                             });
                                                         }

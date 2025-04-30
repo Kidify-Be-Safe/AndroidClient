@@ -25,6 +25,7 @@ public class AppMode {
         }else{
             editor.putString("URL",PATH);
             editor.putString("KEY",KEY);
+            editor.putBoolean("CUSTOM_SERVER",true);
             editor.apply();
         }
     }
