@@ -3161,7 +3161,6 @@ int id SHOW_PROGRESS 0x7f08000a
 int id SYM 0x7f08000b
 int id TOP_END 0x7f08000c
 int id TOP_START 0x7f08000d
-int id abc 0x7f080245
 int id accelerate 0x7f08000e
 int id accessibility_action_clickable_span 0x7f08000f
 int id accessibility_custom_action_0 0x7f080010
@@ -3230,6 +3229,7 @@ int id animateToEnd 0x7f08004e
 int id animateToStart 0x7f08004f
 int id antiClockwise 0x7f080050
 int id anticipate 0x7f080051
+int id appNameTextView 0x7f080246
 int id arc 0x7f080052
 int id asConfigured 0x7f080053
 int id async 0x7f080054

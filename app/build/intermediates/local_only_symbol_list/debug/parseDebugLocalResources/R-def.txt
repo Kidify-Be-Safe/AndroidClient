@@ -22,7 +22,7 @@ drawable red
 drawable round
 drawable settings_icon
 drawable yellow
-id abc
+id appNameTextView
 id barcodeView
 id bottomSheetLayout
 id centerButton

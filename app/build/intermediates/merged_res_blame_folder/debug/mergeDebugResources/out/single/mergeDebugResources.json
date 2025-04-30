@@ -148,6 +148,10 @@
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\drawable\\green.png"
     },
     {
+        "merged": "com.antozstudios.myapplication.app-debug-54:/layout_activity_login.xml.flat",
+        "source": "com.antozstudios.myapplication.app-main-56:/layout/activity_login.xml"
+    },
+    {
         "merged": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-debug-54:\\drawable_delete.png.flat",
         "source": "C:\\Users\\haupt\\.gradle\\daemon\\8.11.1\\com.antozstudios.myapplication.app-main-56:\\drawable\\delete.png"
     }

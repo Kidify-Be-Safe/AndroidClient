@@ -73,6 +73,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         userData = getSharedPreferences("User_Data",MODE_PRIVATE);
 
+        TextView appnameTextView = findViewById(R.id.appNameTextView);
+        if(userData.getBoolean("CUSTOM_KEY",false)){
+            appnameTextView.setText("Kidify for business");
+        }else{
+            appnameTextView.setText("Kidify");
+        }
         new AppMode(getApplicationContext());
 
 

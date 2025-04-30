@@ -60,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
         );
         setContentView(R.layout.signupactivity);
         userData = getSharedPreferences("User_Data",MODE_PRIVATE);
-       
+
 postHttp = new PostHttp(SignUpActivity.this);
         // Initialisieren der Felder
         vorname = findViewById(R.id.vornameInput);
