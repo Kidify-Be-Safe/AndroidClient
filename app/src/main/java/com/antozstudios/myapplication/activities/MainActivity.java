@@ -292,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout linearLayout = bottomSheetDialog.findViewById(R.id.bottomSheetLayout);
 
 
-            GetRequestTask friendRequest = new GetRequestTask(getApplicationContext());
+            GetRequestTask friendRequest = new GetRequestTask(MainActivity.this);
             Thread friendRequest_Thread = new Thread(()->{
                 friendRequest.executeRequest(userData.getString("URL",""),"freunde?b_id=neq."+userData.getInt("b_id",0));
 
