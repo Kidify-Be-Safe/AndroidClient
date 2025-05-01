@@ -32,7 +32,7 @@ public class FriendData {
     public String wohnort;
 
     /** Straße des Wohnorts des Freundes. */
-    public String strasse;
+    public String benutzer_strasse;
 
     /** Pfad oder URL zum Profilbild. */
     public String img;
@@ -53,7 +53,7 @@ public class FriendData {
     public String stadt;
 
     /** Straße, an der sich der Freund aktuell befindet. */
-    public String f_strasse;
+    public String strasse;
 
     /** Postleitzahl des aktuellen Standorts. */
     public int f_plz;

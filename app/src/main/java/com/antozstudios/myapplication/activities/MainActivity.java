@@ -750,7 +750,7 @@ settingsButton.setOnClickListener(view ->{
                                     marker.setOnMarkerClickListener((marker1, mapView) -> {
                                         new AlertDialog.Builder(MainActivity.this)
                                                 .setMessage("Name: " + finalFriend.vorname + " " + finalFriend.nachname + "\n\n" +
-                                                        "Adresse: " + finalFriend.strasse + " " + finalFriend.wohnort + "\n" +
+                                                        "Adresse: " + finalFriend.strasse + " " + finalFriend.stadt + "\n" +
                                                         "Zeitpunkt: " + formatDate(finalFriend.zeitpunkt) + "\n\n" +
                                                         "Koordinaten:\n" + "Breitengrad: " + finalFriend.breitengrad + "\n" +
                                                         "Längengrad: " + finalFriend.laengengrad)
