@@ -4,7 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.text.Editable;
+
 
 import java.io.IOException;
 
@@ -27,6 +27,7 @@ public class PostHttp {
     public PostHttp(Context context){
         sharedPreferences = context.getSharedPreferences("User_Data",MODE_PRIVATE);
     }
+    public PostHttp(){}
 
     private SharedPreferences sharedPreferences;
     /**

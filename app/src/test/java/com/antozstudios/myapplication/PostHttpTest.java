@@ -3,6 +3,8 @@ package com.antozstudios.myapplication;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
+import android.content.Context;
+
 import com.antozstudios.myapplication.util.PostHttp;
 
 import org.junit.Before;
