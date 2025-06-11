@@ -641,7 +641,7 @@ settingsButton.setOnClickListener(view ->{
         locationDataEditor = locationData.edit();
         greenStateButton.setOnClickListener((view)->{
             if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ) {
-                if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+                if(ContextCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
                     stateDataEditor.putInt("currentState", 1);
                     stateDataEditor.apply();
                     new AlertDialog.Builder(MainActivity.this)
@@ -655,7 +655,7 @@ settingsButton.setOnClickListener(view ->{
         });
         yellowStateButton.setOnClickListener((view)->{
             if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
                     stateDataEditor.putInt("currentState", 2);
                     stateDataEditor.apply();
@@ -669,7 +669,7 @@ settingsButton.setOnClickListener(view ->{
         });
         redStateButton.setOnClickListener((view)->{
             if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+                if(ContextCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
 
                   new AlertDialog.Builder(MainActivity.this).setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                       @Override

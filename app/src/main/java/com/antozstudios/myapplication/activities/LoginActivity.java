@@ -87,12 +87,12 @@ public class LoginActivity extends AppCompatActivity {
 
         Button supportButton = findViewById(R.id.supportButton);
         supportButton.setOnClickListener(view -> {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://app.mluetzkendorf.xyz/support")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://app.mluetzkendorf.xyz/kontakt")));
         });
 
         Button datenschutzButton = findViewById(R.id.datenschutzButton);
         datenschutzButton.setOnClickListener(view -> {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://app.mluetzkendorf.xyz/datenschutz")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://app.mluetzkendorf.xyz/datenschutzerklaerung")));
         });
 
         Button nutzungsbedingungButton = findViewById(R.id.nutzungsbedingungButton);
